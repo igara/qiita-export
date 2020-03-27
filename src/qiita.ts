@@ -125,7 +125,7 @@ export const parseImageTag = async (item: UserItem) => {
         fs.writeFileSync(`./data/${dirName}/${imageFileName}`, image, "binary");
       });
 
-      return [imageTag, imageFileName];
+      return [imageTag, imageTag.replace(/src="\S*"/, `src="${imageFileName}"`)];
     }),
   );
 

@@ -109,7 +109,7 @@ https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca6
 
 どうゆうことかというと
 
-0-img-tag.png
+<img width="1290" alt="スクリーンショット 2017-12-11 17.21.23.png" src="0-img-tag.png">
 
 赤枠の箇所の情報を全て取得できるわけです。
 当然不要なリソースも存在するかと思いますので任意で取り除いたりすると良いかと思います。
