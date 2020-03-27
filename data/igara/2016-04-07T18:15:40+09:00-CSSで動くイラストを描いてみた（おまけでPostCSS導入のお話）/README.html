@@ -1,6 +1,1101 @@
-<h1 id="内容">内容</h1>
+<style>
+/*
+
+Railscasts-like style (c) Visoft, Inc. (Damien White)
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #232323;
+  color: #e6e1dc;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #bc9458;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #c26230;
+}
+
+.hljs-string,
+.hljs-number,
+.hljs-regexp,
+.hljs-variable,
+.hljs-template-variable {
+  color: #a5c261;
+}
+
+.hljs-subst {
+  color: #519f50;
+}
+
+.hljs-tag,
+.hljs-name {
+  color: #e8bf6a;
+}
+
+.hljs-type {
+  color: #da4939;
+}
+
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-attr,
+.hljs-link {
+  color: #6d9cbe;
+}
+
+.hljs-params {
+  color: #d0d0ff;
+}
+
+.hljs-attribute {
+  color: #cda869;
+}
+
+.hljs-meta {
+  color: #9b859d;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #ffc66d;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-selector-class {
+  color: #9b703f;
+}
+
+.hljs-selector-id {
+  color: #8b98ab;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1:hover .anchor .octicon-link:before,
+.markdown-body h2:hover .anchor .octicon-link:before,
+.markdown-body h3:hover .anchor .octicon-link:before,
+.markdown-body h4:hover .anchor .octicon-link:before,
+.markdown-body h5:hover .anchor .octicon-link:before,
+.markdown-body h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'%3E%3C/path%3E%3C/svg%3E");
+}.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #24292e;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body details {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body a {
+  background-color: initial;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: initial;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+
+.markdown-body hr:after,
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol ol ol,
+.markdown-body ol ul ol,
+.markdown-body ul ol ol,
+.markdown-body ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body input::-webkit-inner-spin-button,
+.markdown-body input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.markdown-body :checked+.radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+
+.markdown-body .border {
+  border: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .border-0 {
+  border: 0!important;
+}
+
+.markdown-body .border-bottom {
+  border-bottom: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .rounded-1 {
+  border-radius: 3px!important;
+}
+
+.markdown-body .bg-white {
+  background-color: #fff!important;
+}
+
+.markdown-body .bg-gray-light {
+  background-color: #fafbfc!important;
+}
+
+.markdown-body .text-gray-light {
+  color: #6a737d!important;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-top: 8px!important;
+  margin-bottom: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+
+.markdown-body .pl-3,
+.markdown-body .px-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .px-3 {
+  padding-right: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .f6 {
+  font-size: 12px!important;
+}
+
+.markdown-body .lh-condensed {
+  line-height: 1.25!important;
+}
+
+.markdown-body .text-bold {
+  font-weight: 600!important;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.markdown-body .pl-smw,
+.markdown-body .pl-v {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+
+.markdown-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+
+.markdown-body .pl-c2:before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: 700;
+  color: #22863a;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: 700;
+  color: #005cc5;
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+
+.markdown-body .pl-mb {
+  font-weight: 700;
+  color: #24292e;
+}
+
+.markdown-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+
+.markdown-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+.markdown-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+
+.markdown-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+
+.markdown-body .pl-mdr {
+  font-weight: 700;
+  color: #6f42c1;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-bottom: 8px!important;
+}
+
+.markdown-body .my-2 {
+  margin-top: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .pl-7 {
+  padding-left: 48px!important;
+}
+
+.markdown-body .pl-8 {
+  padding-left: 64px!important;
+}
+
+.markdown-body .pl-9 {
+  padding-left: 80px!important;
+}
+
+.markdown-body .pl-10 {
+  padding-left: 96px!important;
+}
+
+.markdown-body .pl-11 {
+  padding-left: 112px!important;
+}
+
+.markdown-body .pl-12 {
+  padding-left: 128px!important;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.markdown-body:after,
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  clear: both;
+}
+
+.markdown-body>:first-child {
+  margin-top: 0!important;
+}
+
+.markdown-body>:last-child {
+  margin-bottom: 0!important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body blockquote,
+.markdown-body details,
+.markdown-body dl,
+.markdown-body ol,
+.markdown-body p,
+.markdown-body pre,
+.markdown-body table,
+.markdown-body ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.markdown-body blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: .25em solid #dfe2e5;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  padding-bottom: .3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  font-size: .85em;
+  color: #6a737d;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ol ul,
+.markdown-body ul ol,
+.markdown-body ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: initial;
+  background-color: #fff;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: initial;
+  border: 0;
+}
+
+.markdown-body .commit-tease-sha {
+  display: inline-block;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 90%;
+  color: #444d56;
+}
+
+.markdown-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+
+.markdown-body .blob-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.markdown-body .blob-num {
+  width: 1%;
+  min-width: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(27,31,35,.3);
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .blob-num:hover {
+  color: rgba(27,31,35,.6);
+}
+
+.markdown-body .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.markdown-body .blob-code {
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+.markdown-body .blob-code-inner {
+  overflow: visible;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+  color: #24292e;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.markdown-body .pl-token.active,
+.markdown-body .pl-token:hover {
+  cursor: pointer;
+  background: #ffea7f;
+}
+
+.markdown-body .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  tab-size: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  tab-size: 2;
+}
+
+.markdown-body .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  tab-size: 3;
+}
+
+.markdown-body .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.markdown-body .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  tab-size: 5;
+}
+
+.markdown-body .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  tab-size: 6;
+}
+
+.markdown-body .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  tab-size: 7;
+}
+
+.markdown-body .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  tab-size: 8;
+}
+
+.markdown-body .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  tab-size: 9;
+}
+
+.markdown-body .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  tab-size: 10;
+}
+
+.markdown-body .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  tab-size: 11;
+}
+
+.markdown-body .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  tab-size: 12;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+</style><body class="markdown-body">
+  <h1 id="内容">内容</h1>
 <p>非イラストレータが初めてPCでイラストを描いた話
-http://qiita.com/igara/items/3a8dfad331652b632eff</p>
+<a href="http://qiita.com/igara/items/3a8dfad331652b632eff">http://qiita.com/igara/items/3a8dfad331652b632eff</a></p>
 <blockquote>
 <p>新しいデザインを作るということがないのでちょっと勉強がてらに絵を描いてみたという話になります。</p>
 </blockquote>
@@ -11,7 +1106,7 @@ http://qiita.com/igara/items/3a8dfad331652b632eff</p>
 <p><img src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2016-04-07T18:15:40+09:00-CSSで動くイラストを描いてみた（おまけでPostCSS導入のお話）/0-md.gif" alt="カエルの絵"></p>
 <p>実物として下記のリンクにあります。</p>
-<p>https://syonet.work/documents/styleguide/resources-assets-styleguide-css-symbol-myicon-icon-garasyo.html</p>
+<p><a href="https://syonet.work/documents/styleguide/resources-assets-styleguide-css-symbol-myicon-icon-garasyo.html">https://syonet.work/documents/styleguide/resources-assets-styleguide-css-symbol-myicon-icon-garasyo.html</a></p>
 <h1 id="絵の一部をパーツに置き換えて考える">絵の一部をパーツに置き換えて考える</h1>
 <p>下記の画像のようにパーツを構成します。</p>
 <p><img src="https://raw.githubusercontent.com/igara/qiita-export
@@ -23,187 +1118,187 @@ http://qiita.com/igara/items/3a8dfad331652b632eff</p>
 <code>overflow: hidden;</code>を用いてはみ出ないようにしていたり、
 三角形を作成するために<code>border</code>を用いたり無茶苦茶なことをやっていますが完成したものとして下記のものになります。</p>
 <h2 id="html">HTML</h2>
-<pre><code class="language-HTML">&lt;div class=&quot;myIconImage&quot;&gt;
-  &lt;div class=&quot;myIconImage-background-topTriangle&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;myIconImage-background-midddleTriangle&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;myIconImage-background-rightTriangle&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;myIconImage-character-head&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;myIconImage-character-lefteye&quot;&gt;
-    &lt;div class=&quot;myIconImage-character-lefteye-line&quot;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;myIconImage-character-righteye&quot;&gt;
-    &lt;div class=&quot;myIconImage-character-righteye-line&quot;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;myIconImage-character-leftnose&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;myIconImage-character-rightnose&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;myIconImage-character-body&quot;&gt;
-    &lt;div class=&quot;myIconImage-character-body-mouth&quot;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+<pre><code class="language-HTML">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage"</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-background-topTriangle"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-background-midddleTriangle"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-background-rightTriangle"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-head"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-lefteye"</span>&gt;
+    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-lefteye-line"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-righteye"</span>&gt;
+    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-righteye-line"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-leftnose"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-rightnose"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-body"</span>&gt;
+    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"myIconImage-character-body-mouth"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;/<span class="hljs-keyword">div</span>&gt;
+&lt;/<span class="hljs-keyword">div</span>&gt;</code></pre>
 <h2 id="css">CSS</h2>
-<pre><code class="language-CSS">:root{
-  --ratio: 3;
-  --route2: 1.41421356237;
+<pre><code class="language-CSS"><span class="hljs-selector-pseudo">:root</span>{
+  <span class="hljs-attribute">--ratio</span>: <span class="hljs-number">3</span>;
+  <span class="hljs-attribute">--route2</span>: <span class="hljs-number">1.41421356237</span>;
 }
-.myIconImage {
-  width: calc(100px * var(--ratio));
-  height: calc(100px * var(--ratio));
-  background-color: yellow;
-  position: relative;
-  overflow: hidden;
+<span class="hljs-selector-class">.myIconImage</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio));
+  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio));
+  <span class="hljs-attribute">background-color</span>: yellow;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">overflow</span>: hidden;
 }
-.myIconImage-background-topTriangle {
-  border-right: calc(100px * var(--ratio)) solid transparent;
-  border-bottom: calc(25px * var(--ratio)) solid transparent;
-  border-left: calc(100px * var(--ratio)) solid red;
-  position: absolute;
+<span class="hljs-selector-class">.myIconImage-background-topTriangle</span> {
+  <span class="hljs-attribute">border-right</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">25px</span> * var(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio)) solid red;
+  <span class="hljs-attribute">position</span>: absolute;
 }
-.myIconImage-background-midddleTriangle {
-  margin-top: calc(-25px * var(--ratio));
-  margin-left: calc(-100px * var(--route2) * var(--ratio) + 100px * var(--ratio));
-  border-top: calc(25px * var(--ratio)) solid transparent;
-  border-bottom: calc(25px * var(--ratio)) solid transparent;
-  border-right: calc(100px * var(--route2) * var(--ratio)) solid transparent;
-  border-left: calc(100px * var(--route2) * var(--ratio)) solid red;
-  transform: rotate(-45deg);
-  position: absolute;
+<span class="hljs-selector-class">.myIconImage-background-midddleTriangle</span> {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">25px</span> * var(--ratio));
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">100px</span> * var(--route2) * <span class="hljs-built_in">var</span>(--ratio) + <span class="hljs-number">100px</span> * <span class="hljs-built_in">var</span>(--ratio));
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">25px</span> * var(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">25px</span> * var(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-right</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--route2) * <span class="hljs-built_in">var</span>(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--route2) * <span class="hljs-built_in">var</span>(--ratio)) solid red;
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(-<span class="hljs-number">45deg</span>);
+  <span class="hljs-attribute">position</span>: absolute;
 }
-.myIconImage-background-rightTriangle {
-  margin-top: calc(-25px / 2 * var(--ratio));
-  margin-left: calc(-25px / 2 * var(--ratio));
-  border-top: calc(25px * var(--ratio)) solid transparent;
-  border-right: calc(100px * var(--ratio)) solid transparent;
-  border-left: calc(100px * var(--ratio)) solid red;
-  transform: rotate(-90deg);
-  position: absolute;
+<span class="hljs-selector-class">.myIconImage-background-rightTriangle</span> {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">25px</span> / <span class="hljs-number">2</span> * var(--ratio));
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">25px</span> / <span class="hljs-number">2</span> * var(--ratio));
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">25px</span> * var(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-right</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio)) solid red;
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(-<span class="hljs-number">90deg</span>);
+  <span class="hljs-attribute">position</span>: absolute;
 }
-.myIconImage-background-rightTriangle {
-  margin-top: calc(-25px / 2 * var(--ratio));
-  margin-left: calc(-25px / 2 * var(--ratio));
-  border-top: calc(25px * var(--ratio)) solid transparent;
-  border-right: calc(100px * var(--ratio)) solid transparent;
-  border-left: calc(100px * var(--ratio)) solid red;
-  transform: rotate(-90deg);
-  position: absolute;
+<span class="hljs-selector-class">.myIconImage-background-rightTriangle</span> {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">25px</span> / <span class="hljs-number">2</span> * var(--ratio));
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">25px</span> / <span class="hljs-number">2</span> * var(--ratio));
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">25px</span> * var(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-right</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio)) solid transparent;
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio)) solid red;
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(-<span class="hljs-number">90deg</span>);
+  <span class="hljs-attribute">position</span>: absolute;
 }
-.myIconImage-character-head {
-    margin-top: calc(25px * var(--ratio));
-    margin-left: calc(-25px * var(--ratio));
-    height: calc(100px * var(--ratio));
-    width: calc(100px * var(--ratio));
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border: calc(2px * var(--ratio)) solid black;
-    background: lime;
-    position: absolute;
+<span class="hljs-selector-class">.myIconImage-character-head</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">25px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">25px</span> * var(--ratio));
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio));
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio)) solid black;
+    <span class="hljs-attribute">background</span>: lime;
+    <span class="hljs-attribute">position</span>: absolute;
 }
-.myIconImage-character-lefteye {
-    margin-top: calc(18px * var(--ratio));
-    margin-left: calc(15px * var(--ratio));
-    height: calc(15px * var(--ratio));
-    width: calc(23px * var(--ratio));
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border: calc(2px * var(--ratio)) solid black;
-    background: white;
-    position: absolute;
-    transform: rotate(5deg);
-    overflow: hidden;
+<span class="hljs-selector-class">.myIconImage-character-lefteye</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">18px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">15px</span> * var(--ratio));
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">15px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">23px</span> * var(--ratio));
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio)) solid black;
+    <span class="hljs-attribute">background</span>: white;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">5deg</span>);
+    <span class="hljs-attribute">overflow</span>: hidden;
 }
-.myIconImage-character-lefteye-line {
-    margin-top: calc(6px * var(--ratio));
-    height: calc(2px * var(--ratio));
-    width: calc(25px * var(--ratio));
-    background: black;
-    position: absolute;
-    transform: rotate(-4deg);
+<span class="hljs-selector-class">.myIconImage-character-lefteye-line</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">6px</span> * var(--ratio));
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">25px</span> * var(--ratio));
+    <span class="hljs-attribute">background</span>: black;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(-<span class="hljs-number">4deg</span>);
 }
-.myIconImage-character-righteye {
-    margin-top: calc(50px * var(--ratio));
-    margin-left: calc(60px * var(--ratio));
-    height: calc(15px * var(--ratio));
-    width: calc(23px * var(--ratio));
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border: calc(2px * var(--ratio)) solid black;
-    background: white;
-    position: absolute;
-    transform: rotate(65deg);
-    overflow: hidden;
+<span class="hljs-selector-class">.myIconImage-character-righteye</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">50px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">60px</span> * var(--ratio));
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">15px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">23px</span> * var(--ratio));
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio)) solid black;
+    <span class="hljs-attribute">background</span>: white;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">65deg</span>);
+    <span class="hljs-attribute">overflow</span>: hidden;
 }
-.myIconImage-character-righteye-line {
-    margin-top: calc(7px * var(--ratio));
-    height: calc(2px * var(--ratio));
-    width: calc(25px * var(--ratio));
-    background: black;
-    position: absolute;
-    transform: rotate(4deg);
+<span class="hljs-selector-class">.myIconImage-character-righteye-line</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">7px</span> * var(--ratio));
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">25px</span> * var(--ratio));
+    <span class="hljs-attribute">background</span>: black;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">4deg</span>);
 }
-.myIconImage-character-leftnose {
-    margin-top: calc(50px * var(--ratio));
-    margin-left: calc(35px * var(--ratio));
-    height: calc(2px * var(--ratio));
-    width: calc(2px * var(--ratio));
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    background: black;
-    position: absolute;
+<span class="hljs-selector-class">.myIconImage-character-leftnose</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">50px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">35px</span> * var(--ratio));
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio));
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">background</span>: black;
+    <span class="hljs-attribute">position</span>: absolute;
 }
-.myIconImage-character-rightnose {
-    margin-top: calc(60px * var(--ratio));
-    margin-left: calc(45px * var(--ratio));
-    height: calc(2px * var(--ratio));
-    width: calc(2px * var(--ratio));
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    background: black;
-    position: absolute;
+<span class="hljs-selector-class">.myIconImage-character-rightnose</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">60px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">45px</span> * var(--ratio));
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio));
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">background</span>: black;
+    <span class="hljs-attribute">position</span>: absolute;
 }
-.myIconImage-character-body {
-    margin-top: calc(50px * var(--ratio));
-    margin-left: calc(-40px * var(--ratio));
-    height: calc(90px * var(--ratio));
-    width: calc(90px * var(--ratio));
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border: calc(2px * var(--ratio)) solid black;
-    background: white;
-    position: absolute;
-    overflow: hidden;
+<span class="hljs-selector-class">.myIconImage-character-body</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">50px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">40px</span> * var(--ratio));
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">90px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">90px</span> * var(--ratio));
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio)) solid black;
+    <span class="hljs-attribute">background</span>: white;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">overflow</span>: hidden;
 }
-.myIconImage-character-body-mouth {
-    height: calc(50px * var(--ratio));
-    width: calc(50px * var(--ratio));
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border: calc(2px * var(--ratio)) solid black;
-    background: red;
-    position: absolute;
-    transform: rotate(180deg);
-    animation-name: mouth-animation;
-    animation-duration: 7s;
-    animation-timing-function: ease;
-    animation-iteration-count: infinite;
+<span class="hljs-selector-class">.myIconImage-character-body-mouth</span> {
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">50px</span> * var(--ratio));
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">50px</span> * var(--ratio));
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">2px</span> * var(--ratio)) solid black;
+    <span class="hljs-attribute">background</span>: red;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">180deg</span>);
+    <span class="hljs-attribute">animation-name</span>: mouth-animation;
+    <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">7s</span>;
+    <span class="hljs-attribute">animation-timing-function</span>: ease;
+    <span class="hljs-attribute">animation-iteration-count</span>: infinite;
 }
-@keyframes mouth-animation {
+<span class="hljs-keyword">@keyframes</span> mouth-animation {
   0% {
-    margin-top: calc(-20px * var(--ratio));
-    margin-left: calc(50px * var(--ratio));
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">20px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">50px</span> * var(--ratio));
   }
   50% {
-    margin-top: calc(-100px * var(--ratio));
-    margin-left: calc(100px * var(--ratio));
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">100px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> * var(--ratio));
   }
   100% {
-    margin-top: calc(-20px * var(--ratio));
-    margin-left: calc(50px * var(--ratio));
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">calc</span>(-<span class="hljs-number">20px</span> * var(--ratio));
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">50px</span> * var(--ratio));
   }
 }</code></pre>
 <h1 id="postcssを導入">PostCSSを導入</h1>
@@ -226,181 +1321,183 @@ http://qiita.com/igara/items/3a8dfad331652b632eff</p>
 <h2 id="postcssを使用したコード">PostCSSを使用したコード</h2>
 <p>上記のコードとさほど違いはありません...
 変更点として、変数がCSSのカスタムプロパティからSassの変数に変更しています。</p>
-<pre><code class="language-sass">/* 100px * 100pxのアイコンを表示する為の比率 */
-$ratio: 3;
-/* ルート2の数値 */
-$route2: 1.41421356237;
+<pre><code class="language-sass"><span class="hljs-comment">/* 100px * 100pxのアイコンを表示する為の比率 */</span>
+<span class="hljs-variable">$ratio</span>: <span class="hljs-number">3</span>;
+<span class="hljs-comment">/* ルート2の数値 */</span>
+<span class="hljs-variable">$route2</span>: <span class="hljs-number">1.41421356237</span>;
 
-/* アイコンを表示する領域 */
-.myIconImage {
-  width: calc(100px * $ratio);
-  height: calc(100px * $ratio);
-  background-color: yellow;
-  position: relative;
-  overflow: hidden;
+<span class="hljs-comment">/* アイコンを表示する領域 */</span>
+<span class="hljs-selector-class">.myIconImage</span> {
+  <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>);
+  <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>);
+  <span class="hljs-attribute">background-color</span>: yellow;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">overflow</span>: hidden;
 }
-/* 上部に表示している赤い三角形 */
-.myIconImage-background-topTriangle {
-  border-right: calc(100px * $ratio) solid transparent;
-  border-bottom: calc(25px * $ratio) solid transparent;
-  border-left: calc(100px * $ratio) solid red;
-  position: absolute;
+<span class="hljs-comment">/* 上部に表示している赤い三角形 */</span>
+<span class="hljs-selector-class">.myIconImage-background-topTriangle</span> {
+  <span class="hljs-attribute">border-right</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>) solid transparent;
+  <span class="hljs-attribute">border-bottom</span>: calc(<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>) solid transparent;
+  <span class="hljs-attribute">border-left</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>) solid red;
+  <span class="hljs-attribute">position</span>: absolute;
 }
-/* 真ん中に表示している赤い三角形 */
-.myIconImage-background-midddleTriangle {
-  margin-top: calc(-25px * $ratio);
-  margin-left: calc(-100px * $route2 * $ratio + 100px * $ratio);
-  border-top: calc(25px * $ratio) solid transparent;
-  border-bottom: calc(25px * $ratio) solid transparent;
-  border-right: calc(100px * $route2 * $ratio) solid transparent;
-  border-left: calc(100px * $route2 * $ratio) solid red;
-  transform: rotate(-45deg);
-  position: absolute;
+<span class="hljs-comment">/* 真ん中に表示している赤い三角形 */</span>
+<span class="hljs-selector-class">.myIconImage-background-midddleTriangle</span> {
+  <span class="hljs-attribute">margin-top</span>: calc(-<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>);
+  <span class="hljs-attribute">margin-left</span>: calc(-<span class="hljs-number">100px</span> * <span class="hljs-variable">$route2</span> * <span class="hljs-variable">$ratio</span> + <span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>);
+  <span class="hljs-attribute">border-top</span>: calc(<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>) solid transparent;
+  <span class="hljs-attribute">border-bottom</span>: calc(<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>) solid transparent;
+  <span class="hljs-attribute">border-right</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$route2</span> * <span class="hljs-variable">$ratio</span>) solid transparent;
+  <span class="hljs-attribute">border-left</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$route2</span> * <span class="hljs-variable">$ratio</span>) solid red;
+  <span class="hljs-attribute">transform</span>: rotate(-<span class="hljs-number">45deg</span>);
+  <span class="hljs-attribute">position</span>: absolute;
 }
-/* 右端に表示している赤い三角形 */
-.myIconImage-background-rightTriangle {
-  margin-top: calc(-25px / 2 * $ratio);
-  margin-left: calc(-25px / 2 * $ratio);
-  border-top: calc(25px * $ratio) solid transparent;
-  border-right: calc(100px * $ratio) solid transparent;
-  border-left: calc(100px * $ratio) solid red;
-  transform: rotate(-90deg);
-  position: absolute;
+<span class="hljs-comment">/* 右端に表示している赤い三角形 */</span>
+<span class="hljs-selector-class">.myIconImage-background-rightTriangle</span> {
+  <span class="hljs-attribute">margin-top</span>: calc(-<span class="hljs-number">25px</span> / <span class="hljs-number">2</span> * <span class="hljs-variable">$ratio</span>);
+  <span class="hljs-attribute">margin-left</span>: calc(-<span class="hljs-number">25px</span> / <span class="hljs-number">2</span> * <span class="hljs-variable">$ratio</span>);
+  <span class="hljs-attribute">border-top</span>: calc(<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>) solid transparent;
+  <span class="hljs-attribute">border-right</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>) solid transparent;
+  <span class="hljs-attribute">border-left</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>) solid red;
+  <span class="hljs-attribute">transform</span>: rotate(-<span class="hljs-number">90deg</span>);
+  <span class="hljs-attribute">position</span>: absolute;
 }
-/* カエルの頭部分 */
-.myIconImage-character-head {
-    margin-top: calc(25px * $ratio);
-    margin-left: calc(-25px * $ratio);
-    height: calc(100px * $ratio);
-    width: calc(100px * $ratio);
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border: calc(2px * $ratio) solid black;
-    background: lime;
-    position: absolute;
+<span class="hljs-comment">/* カエルの頭部分 */</span>
+<span class="hljs-selector-class">.myIconImage-character-head</span> {
+    <span class="hljs-attribute">margin-top</span>: calc(<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(-<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">border</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>) solid black;
+    <span class="hljs-attribute">background</span>: lime;
+    <span class="hljs-attribute">position</span>: absolute;
 }
-/* アイコンの左側に表示している目 */
-.myIconImage-character-lefteye {
-    margin-top: calc(18px * $ratio);
-    margin-left: calc(15px * $ratio);
-    height: calc(15px * $ratio);
-    width: calc(23px * $ratio);
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border: calc(2px * $ratio) solid black;
-    background: white;
-    position: absolute;
-    transform: rotate(5deg);
-    overflow: hidden;
+<span class="hljs-comment">/* アイコンの左側に表示している目 */</span>
+<span class="hljs-selector-class">.myIconImage-character-lefteye</span> {
+    <span class="hljs-attribute">margin-top</span>: calc(<span class="hljs-number">18px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">15px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">15px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">23px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">border</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>) solid black;
+    <span class="hljs-attribute">background</span>: white;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">5deg</span>);
+    <span class="hljs-attribute">overflow</span>: hidden;
 }
-/* アイコンの左側に表示している目の線 */
-.myIconImage-character-lefteye-line {
-    margin-top: calc(6px * $ratio);
-    height: calc(2px * $ratio);
-    width: calc(25px * $ratio);
-    background: black;
-    position: absolute;
-    transform: rotate(-4deg);
+<span class="hljs-comment">/* アイコンの左側に表示している目の線 */</span>
+<span class="hljs-selector-class">.myIconImage-character-lefteye-line</span> {
+    <span class="hljs-attribute">margin-top</span>: calc(<span class="hljs-number">6px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">background</span>: black;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: rotate(-<span class="hljs-number">4deg</span>);
 }
-/* アイコンの右側に表示している目 */
-.myIconImage-character-righteye {
-    margin-top: calc(50px * $ratio);
-    margin-left: calc(60px * $ratio);
-    height: calc(15px * $ratio);
-    width: calc(23px * $ratio);
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border: calc(2px * $ratio) solid black;
-    background: white;
-    position: absolute;
-    transform: rotate(65deg);
-    overflow: hidden;
+<span class="hljs-comment">/* アイコンの右側に表示している目 */</span>
+<span class="hljs-selector-class">.myIconImage-character-righteye</span> {
+    <span class="hljs-attribute">margin-top</span>: calc(<span class="hljs-number">50px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">60px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">15px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">23px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">border</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>) solid black;
+    <span class="hljs-attribute">background</span>: white;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">65deg</span>);
+    <span class="hljs-attribute">overflow</span>: hidden;
 }
-/* アイコンの右側に表示している目の線 */
-.myIconImage-character-righteye-line {
-    margin-top: calc(7px * $ratio);
-    height: calc(2px * $ratio);
-    width: calc(25px * $ratio);
-    background: black;
-    position: absolute;
-    transform: rotate(4deg);
+<span class="hljs-comment">/* アイコンの右側に表示している目の線 */</span>
+<span class="hljs-selector-class">.myIconImage-character-righteye-line</span> {
+    <span class="hljs-attribute">margin-top</span>: calc(<span class="hljs-number">7px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">25px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">background</span>: black;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">4deg</span>);
 }
-/* アイコンの左側に表示している鼻 */
-.myIconImage-character-leftnose {
-    margin-top: calc(50px * $ratio);
-    margin-left: calc(35px * $ratio);
-    height: calc(2px * $ratio);
-    width: calc(2px * $ratio);
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    background: black;
-    position: absolute;
+<span class="hljs-comment">/* アイコンの左側に表示している鼻 */</span>
+<span class="hljs-selector-class">.myIconImage-character-leftnose</span> {
+    <span class="hljs-attribute">margin-top</span>: calc(<span class="hljs-number">50px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">35px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">background</span>: black;
+    <span class="hljs-attribute">position</span>: absolute;
 }
-/* アイコンの右側に表示している鼻 */
-.myIconImage-character-rightnose {
-    margin-top: calc(60px * $ratio);
-    margin-left: calc(45px * $ratio);
-    height: calc(2px * $ratio);
-    width: calc(2px * $ratio);
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    background: black;
-    position: absolute;
+<span class="hljs-comment">/* アイコンの右側に表示している鼻 */</span>
+<span class="hljs-selector-class">.myIconImage-character-rightnose</span> {
+    <span class="hljs-attribute">margin-top</span>: calc(<span class="hljs-number">60px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">45px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">background</span>: black;
+    <span class="hljs-attribute">position</span>: absolute;
 }
-/* カエルの胴体 */
-.myIconImage-character-body {
-    margin-top: calc(50px * $ratio);
-    margin-left: calc(-40px * $ratio);
-    height: calc(90px * $ratio);
-    width: calc(90px * $ratio);
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border: calc(2px * $ratio) solid black;
-    background: white;
-    position: absolute;
-    overflow: hidden;
+<span class="hljs-comment">/* カエルの胴体 */</span>
+<span class="hljs-selector-class">.myIconImage-character-body</span> {
+    <span class="hljs-attribute">margin-top</span>: calc(<span class="hljs-number">50px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(-<span class="hljs-number">40px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">90px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">90px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">border</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>) solid black;
+    <span class="hljs-attribute">background</span>: white;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">overflow</span>: hidden;
 }
-/* カエルの口 */
-.myIconImage-character-body-mouth {
-    height: calc(50px * $ratio);
-    width: calc(50px * $ratio);
-    border-radius: 100%;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border: calc(2px * $ratio) solid black;
-    background: red;
-    position: absolute;
-    transform: rotate(180deg);
-    animation-name: mouth-animation;
-    animation-duration: 7s;
-    animation-timing-function: ease;
-    animation-iteration-count: infinite;
+<span class="hljs-comment">/* カエルの口 */</span>
+<span class="hljs-selector-class">.myIconImage-character-body-mouth</span> {
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">50px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">50px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -moz-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    -webkit-<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">border</span>: calc(<span class="hljs-number">2px</span> * <span class="hljs-variable">$ratio</span>) solid black;
+    <span class="hljs-attribute">background</span>: red;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">180deg</span>);
+    <span class="hljs-attribute">animation-name</span>: mouth-animation;
+    <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">7s</span>;
+    <span class="hljs-attribute">animation-timing-function</span>: ease;
+    <span class="hljs-attribute">animation-iteration-count</span>: infinite;
 }
-/* 口のアニメーション */
-@keyframes mouth-animation {
+<span class="hljs-comment">/* 口のアニメーション */</span>
+<span class="hljs-keyword">@keyframes</span> mouth-animation {
   0% {
-    margin-top: calc(-20px * $ratio);
-    margin-left: calc(50px * $ratio);
+    <span class="hljs-attribute">margin-top</span>: calc(-<span class="hljs-number">20px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">50px</span> * <span class="hljs-variable">$ratio</span>);
   }
   50% {
-    margin-top: calc(-100px * $ratio);
-    margin-left: calc(100px * $ratio);
+    <span class="hljs-attribute">margin-top</span>: calc(-<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">100px</span> * <span class="hljs-variable">$ratio</span>);
   }
   100% {
-    margin-top: calc(-20px * $ratio);
-    margin-left: calc(50px * $ratio);
+    <span class="hljs-attribute">margin-top</span>: calc(-<span class="hljs-number">20px</span> * <span class="hljs-variable">$ratio</span>);
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">50px</span> * <span class="hljs-variable">$ratio</span>);
   }
 }</code></pre>
 <h1 id="参考ページ">参考ページ</h1>
 <p>なぜCSSのborderで三角形ができるのか、実際にコードを書いて調べてみた
-http://liginc.co.jp/web/html-css/html/164641
+<a href="http://liginc.co.jp/web/html-css/html/164641">http://liginc.co.jp/web/html-css/html/164641</a>
 次世代CSS登場！PostCSSの簡単な使い方
-http://designup.jp/postcss-how-to-use-438/
+<a href="http://designup.jp/postcss-how-to-use-438/">http://designup.jp/postcss-how-to-use-438/</a>
 PostCSSとcssnextで最新CSS仕様を先取り！
-https://html5experts.jp/t32k/17235/</p>
+<a href="https://html5experts.jp/t32k/17235/">https://html5experts.jp/t32k/17235/</a></p>
+
+</body>

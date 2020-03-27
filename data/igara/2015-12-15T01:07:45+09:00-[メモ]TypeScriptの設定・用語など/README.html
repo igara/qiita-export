@@ -1,4 +1,1099 @@
-<h1 id="typescript">TypeScript</h1>
+<style>
+/*
+
+Railscasts-like style (c) Visoft, Inc. (Damien White)
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #232323;
+  color: #e6e1dc;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #bc9458;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #c26230;
+}
+
+.hljs-string,
+.hljs-number,
+.hljs-regexp,
+.hljs-variable,
+.hljs-template-variable {
+  color: #a5c261;
+}
+
+.hljs-subst {
+  color: #519f50;
+}
+
+.hljs-tag,
+.hljs-name {
+  color: #e8bf6a;
+}
+
+.hljs-type {
+  color: #da4939;
+}
+
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-attr,
+.hljs-link {
+  color: #6d9cbe;
+}
+
+.hljs-params {
+  color: #d0d0ff;
+}
+
+.hljs-attribute {
+  color: #cda869;
+}
+
+.hljs-meta {
+  color: #9b859d;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #ffc66d;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-selector-class {
+  color: #9b703f;
+}
+
+.hljs-selector-id {
+  color: #8b98ab;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1:hover .anchor .octicon-link:before,
+.markdown-body h2:hover .anchor .octicon-link:before,
+.markdown-body h3:hover .anchor .octicon-link:before,
+.markdown-body h4:hover .anchor .octicon-link:before,
+.markdown-body h5:hover .anchor .octicon-link:before,
+.markdown-body h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'%3E%3C/path%3E%3C/svg%3E");
+}.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #24292e;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body details {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body a {
+  background-color: initial;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: initial;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+
+.markdown-body hr:after,
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol ol ol,
+.markdown-body ol ul ol,
+.markdown-body ul ol ol,
+.markdown-body ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body input::-webkit-inner-spin-button,
+.markdown-body input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.markdown-body :checked+.radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+
+.markdown-body .border {
+  border: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .border-0 {
+  border: 0!important;
+}
+
+.markdown-body .border-bottom {
+  border-bottom: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .rounded-1 {
+  border-radius: 3px!important;
+}
+
+.markdown-body .bg-white {
+  background-color: #fff!important;
+}
+
+.markdown-body .bg-gray-light {
+  background-color: #fafbfc!important;
+}
+
+.markdown-body .text-gray-light {
+  color: #6a737d!important;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-top: 8px!important;
+  margin-bottom: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+
+.markdown-body .pl-3,
+.markdown-body .px-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .px-3 {
+  padding-right: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .f6 {
+  font-size: 12px!important;
+}
+
+.markdown-body .lh-condensed {
+  line-height: 1.25!important;
+}
+
+.markdown-body .text-bold {
+  font-weight: 600!important;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.markdown-body .pl-smw,
+.markdown-body .pl-v {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+
+.markdown-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+
+.markdown-body .pl-c2:before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: 700;
+  color: #22863a;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: 700;
+  color: #005cc5;
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+
+.markdown-body .pl-mb {
+  font-weight: 700;
+  color: #24292e;
+}
+
+.markdown-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+
+.markdown-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+.markdown-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+
+.markdown-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+
+.markdown-body .pl-mdr {
+  font-weight: 700;
+  color: #6f42c1;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-bottom: 8px!important;
+}
+
+.markdown-body .my-2 {
+  margin-top: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .pl-7 {
+  padding-left: 48px!important;
+}
+
+.markdown-body .pl-8 {
+  padding-left: 64px!important;
+}
+
+.markdown-body .pl-9 {
+  padding-left: 80px!important;
+}
+
+.markdown-body .pl-10 {
+  padding-left: 96px!important;
+}
+
+.markdown-body .pl-11 {
+  padding-left: 112px!important;
+}
+
+.markdown-body .pl-12 {
+  padding-left: 128px!important;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.markdown-body:after,
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  clear: both;
+}
+
+.markdown-body>:first-child {
+  margin-top: 0!important;
+}
+
+.markdown-body>:last-child {
+  margin-bottom: 0!important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body blockquote,
+.markdown-body details,
+.markdown-body dl,
+.markdown-body ol,
+.markdown-body p,
+.markdown-body pre,
+.markdown-body table,
+.markdown-body ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.markdown-body blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: .25em solid #dfe2e5;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  padding-bottom: .3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  font-size: .85em;
+  color: #6a737d;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ol ul,
+.markdown-body ul ol,
+.markdown-body ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: initial;
+  background-color: #fff;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: initial;
+  border: 0;
+}
+
+.markdown-body .commit-tease-sha {
+  display: inline-block;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 90%;
+  color: #444d56;
+}
+
+.markdown-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+
+.markdown-body .blob-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.markdown-body .blob-num {
+  width: 1%;
+  min-width: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(27,31,35,.3);
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .blob-num:hover {
+  color: rgba(27,31,35,.6);
+}
+
+.markdown-body .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.markdown-body .blob-code {
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+.markdown-body .blob-code-inner {
+  overflow: visible;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+  color: #24292e;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.markdown-body .pl-token.active,
+.markdown-body .pl-token:hover {
+  cursor: pointer;
+  background: #ffea7f;
+}
+
+.markdown-body .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  tab-size: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  tab-size: 2;
+}
+
+.markdown-body .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  tab-size: 3;
+}
+
+.markdown-body .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.markdown-body .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  tab-size: 5;
+}
+
+.markdown-body .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  tab-size: 6;
+}
+
+.markdown-body .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  tab-size: 7;
+}
+
+.markdown-body .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  tab-size: 8;
+}
+
+.markdown-body .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  tab-size: 9;
+}
+
+.markdown-body .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  tab-size: 10;
+}
+
+.markdown-body .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  tab-size: 11;
+}
+
+.markdown-body .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  tab-size: 12;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+</style><body class="markdown-body">
+  <h1 id="typescript">TypeScript</h1>
 <p>MicroSoftによって開発されたAltJS。
 動的型付けの通常のJavaScriptに対し、静的型付けができるES6という立場である。
 TSDを用いれば既存のJavaScriptライブラリに型情報を加えることのでき、jQueryといったライブラリに対しても型情報を提供してくれる。</p>
@@ -7,11 +1102,11 @@ TSDを用いれば既存のJavaScriptライブラリに型情報を加えるこ�
 例のごとくlaravelのプロジェクト構成を前提に説明を行う。</p>
 <h2 id="npm-install">npm install</h2>
 <pre><code>
-$ npm install typescript --save-dev
-$ npm install tsd --save-dev
-$ npm install gulp --save-dev
-$ npm install gulp-shell --save-dev
-$ npm install gulp-tsconfig-update --save-dev
+$ npm install typescript --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
+$ npm install tsd --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
+$ npm install gulp --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
+$ npm install gulp-shell --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
+$ npm install gulp-tsconfig-<span class="hljs-keyword">update</span> --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
 </code></pre><h2 id="エディタ">エディタ</h2>
 <h3 id="visual-studio-code">Visual Studio Code</h3>
 <p><img src="https://raw.githubusercontent.com/igara/qiita-export
@@ -22,72 +1117,189 @@ gif画像の例ではimportされていたファイル名を変更して
 <h3 id="atom">Atom</h3>
 <p>あらゆるスニペッドが揃ってて何かと使用するAtom。ただAtomのプラグインとしてTypeScriptの開発をしている以上、ここはVSCに慣れるようにしよう。</p>
 <p>AtomのAPI仕様変更について過去このようなことがあった
-http://flabo.io/code/20150430/01-start-typescript-independently-of-windows/</p>
+<a href="http://flabo.io/code/20150430/01-start-typescript-independently-of-windows/">http://flabo.io/code/20150430/01-start-typescript-independently-of-windows/</a></p>
 <h3 id="公式のplayground">公式のPlayground</h3>
 <p>遊ぶ分には下記のサイトでも十分</p>
-<p>http://www.typescriptlang.org/Playground</p>
+<p><a href="http://www.typescriptlang.org/Playground">http://www.typescriptlang.org/Playground</a></p>
 <h1 id="設定">設定</h1>
 <h2 id="tscコマンド">tscコマンド</h2>
 <p>tsconfig.jsonに指定できるものが多くあるためちょくちょく記載する。
 デフォルト値とかおいおい書くこと</p>
-<p>|プロパティ|説明|
-|:-----------|:-----------|
-| --declaration | .tsファイルから.d.tsファイルを作成する。 |
-| --help | コンパイラのヘルプを表示 |
-| --version | tscのバージョンを表示 |
-| --module | CommonJSやAMDのモジュールの指定をしてビルドを行える |
-| --project | 対象のディレクトリを指定 |
-| --target | ECMAScriptのバージョンを指定 |
-| --watch | 常駐状態になり、projectで変更があったファイルを自動ビルドする |
-| --charset | ビルド後の文字コードを指定する |
-| --diagnostics | ビルドの結果を表示する |
-| --emitBOM | 出力ファイルの先頭にUTF- 8バイトオーダーマークを出力する |
-| --emitDecoratorMetadata[1] | ソースで装飾された型宣言のメタデータ出力する |
-| --inlineSourceMap | 別のファイルのソースと合わせて1つのファイルを出力する。 |
-| --inlineSources | 1つのファイル内のmapファイルと一緒にソースを出力する |
-| --isolatedModules | 無条件に未解決のファイルのインポートする |
-| --jsx | JSXのサポート &#39;React&#39; や &#39;Preserve&#39;をサポート |
-| --listFiles | |
-| --locale | |
-| --mapRoot | |
-| --moduleResolution[1] | |
-| --newLine | |
-| --noEmit | |
-| --noEmitOnError | |
-| --noEmitHelpers | |
-| --noImplicitAny | |
-| --noLib | デフォルトではライブラリファイル（ lib.d.ts ）が含まれていない |
-| --noResolve | |
-| --out | このオプションの仕様は推奨されていない。代わりに--outfileを使用すること。 |
-| --outDir | ディレクトリへの出力構造を保つ |
-| --outFile | |
-| --preserveConstEnums | 生成されたコード内の定数enum宣言を消去させない |
-| --removeComments | コンパイル後のソースファイル内の全てのコメントを削除します！ * |
-| --rootDir | |
-| --sourceMap | |
-| --sourceRoot | |
-| --stripInternal[1] | |
-| --suppressImplicitAnyIndexErrors | |
-| --noImplicitAny | |</p>
+<table>
+<thead>
+<tr>
+<th align="left">プロパティ</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">--declaration</td>
+<td align="left">.tsファイルから.d.tsファイルを作成する。</td>
+</tr>
+<tr>
+<td align="left">--help</td>
+<td align="left">コンパイラのヘルプを表示</td>
+</tr>
+<tr>
+<td align="left">--version</td>
+<td align="left">tscのバージョンを表示</td>
+</tr>
+<tr>
+<td align="left">--module</td>
+<td align="left">CommonJSやAMDのモジュールの指定をしてビルドを行える</td>
+</tr>
+<tr>
+<td align="left">--project</td>
+<td align="left">対象のディレクトリを指定</td>
+</tr>
+<tr>
+<td align="left">--target</td>
+<td align="left">ECMAScriptのバージョンを指定</td>
+</tr>
+<tr>
+<td align="left">--watch</td>
+<td align="left">常駐状態になり、projectで変更があったファイルを自動ビルドする</td>
+</tr>
+<tr>
+<td align="left">--charset</td>
+<td align="left">ビルド後の文字コードを指定する</td>
+</tr>
+<tr>
+<td align="left">--diagnostics</td>
+<td align="left">ビルドの結果を表示する</td>
+</tr>
+<tr>
+<td align="left">--emitBOM</td>
+<td align="left">出力ファイルの先頭にUTF- 8バイトオーダーマークを出力する</td>
+</tr>
+<tr>
+<td align="left">--emitDecoratorMetadata[1]</td>
+<td align="left">ソースで装飾された型宣言のメタデータ出力する</td>
+</tr>
+<tr>
+<td align="left">--inlineSourceMap</td>
+<td align="left">別のファイルのソースと合わせて1つのファイルを出力する。</td>
+</tr>
+<tr>
+<td align="left">--inlineSources</td>
+<td align="left">1つのファイル内のmapファイルと一緒にソースを出力する</td>
+</tr>
+<tr>
+<td align="left">--isolatedModules</td>
+<td align="left">無条件に未解決のファイルのインポートする</td>
+</tr>
+<tr>
+<td align="left">--jsx</td>
+<td align="left">JSXのサポート &#39;React&#39; や &#39;Preserve&#39;をサポート</td>
+</tr>
+<tr>
+<td align="left">--listFiles</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--locale</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--mapRoot</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--moduleResolution[1]</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--newLine</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--noEmit</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--noEmitOnError</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--noEmitHelpers</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--noImplicitAny</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--noLib</td>
+<td align="left">デフォルトではライブラリファイル（ lib.d.ts ）が含まれていない</td>
+</tr>
+<tr>
+<td align="left">--noResolve</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--out</td>
+<td align="left">このオプションの仕様は推奨されていない。代わりに--outfileを使用すること。</td>
+</tr>
+<tr>
+<td align="left">--outDir</td>
+<td align="left">ディレクトリへの出力構造を保つ</td>
+</tr>
+<tr>
+<td align="left">--outFile</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--preserveConstEnums</td>
+<td align="left">生成されたコード内の定数enum宣言を消去させない</td>
+</tr>
+<tr>
+<td align="left">--removeComments</td>
+<td align="left">コンパイル後のソースファイル内の全てのコメントを削除します！ *</td>
+</tr>
+<tr>
+<td align="left">--rootDir</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--sourceMap</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--sourceRoot</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--stripInternal[1]</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--suppressImplicitAnyIndexErrors</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">--noImplicitAny</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
 <h2 id="tsconfigjson">tsconfig.json</h2>
 <p>tsconfig.jsonとはtscビルドするときの設定ファイル
 tscコマンドのオプションをキーとして値を入れてあげれば tsc と打つだけで好みのビルドがされる。</p>
 <p>一旦下記で作成</p>
 <pre><code class="language-tsconfig.json">
 {
-    &quot;compilerOptions&quot;: {
-        &quot;module&quot;: &quot;commonjs&quot;,
-        &quot;project&quot;: &quot;./&quot;,
-        &quot;removeComments&quot;: true,
-        &quot;noImplicitAny&quot;: true,
-        &quot;noLib&quot; : false,
-        &quot;declaration&quot; : false,
-        &quot;preserveConstEnums&quot;: true,
-        &quot;experimentalDecorators&quot;: true,
-        &quot;emitDecoratorMetadata&quot;: true,
-        &quot;suppressImplicitAnyIndexErrors&quot;: true,
-        &quot;sourceMap&quot;: false,
-        &quot;target&quot;: &quot;ES3&quot;
+    <span class="hljs-attr">"compilerOptions"</span>: {
+        <span class="hljs-attr">"module"</span>: <span class="hljs-string">"commonjs"</span>,
+        <span class="hljs-attr">"project"</span>: <span class="hljs-string">"./"</span>,
+        <span class="hljs-attr">"removeComments"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"noImplicitAny"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"noLib"</span> : <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"declaration"</span> : <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"preserveConstEnums"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"experimentalDecorators"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"emitDecoratorMetadata"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"suppressImplicitAnyIndexErrors"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"sourceMap"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"target"</span>: <span class="hljs-string">"ES3"</span>
     }
 }
 </code></pre>
@@ -95,25 +1307,25 @@ tscコマンドのオプションをキーとして値を入れてあげれば t
 <p>*.d.tsファイルと呼ばれる型定義ファイルを管理するパッケージ
 TypeScriptで他のモジュールをインポート行いたいときに型定義ファイルを用いる</p>
 <pre><code class="language-型定義ファイルのインストール">
-./node_modules/.bin/tsd install jquery --save
+<span class="hljs-string">./node_modules/.bin/tsd</span> install jquery <span class="hljs-params">--save</span>
 </code></pre>
 <p>インストール後、tsd.jsonで管理されるようになる。</p>
 <pre><code class="language-tsd.jsonの例">
 {
-  &quot;version&quot;: &quot;v4&quot;,
-  &quot;repo&quot;: &quot;borisyankov/DefinitelyTyped&quot;,
-  &quot;ref&quot;: &quot;master&quot;,
-  &quot;path&quot;: &quot;typings&quot;,
-  &quot;bundle&quot;: &quot;typings/tsd.d.ts&quot;,
-  &quot;installed&quot;: {
-    &quot;angularjs/angular.d.ts&quot;: {
-      &quot;commit&quot;: &quot;5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff&quot;
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"v4"</span>,
+  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"borisyankov/DefinitelyTyped"</span>,
+  <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"master"</span>,
+  <span class="hljs-attr">"path"</span>: <span class="hljs-string">"typings"</span>,
+  <span class="hljs-attr">"bundle"</span>: <span class="hljs-string">"typings/tsd.d.ts"</span>,
+  <span class="hljs-attr">"installed"</span>: {
+    <span class="hljs-attr">"angularjs/angular.d.ts"</span>: {
+      <span class="hljs-attr">"commit"</span>: <span class="hljs-string">"5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff"</span>
     },
-    &quot;jquery/jquery.d.ts&quot;: {
-      &quot;commit&quot;: &quot;5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff&quot;
+    <span class="hljs-attr">"jquery/jquery.d.ts"</span>: {
+      <span class="hljs-attr">"commit"</span>: <span class="hljs-string">"5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff"</span>
     },
-    &quot;angular2/angular2.d.ts&quot;: {
-      &quot;commit&quot;: &quot;8ea42cd8bb11863ed6f242d67c502288ebc45a7b&quot;
+    <span class="hljs-attr">"angular2/angular2.d.ts"</span>: {
+      <span class="hljs-attr">"commit"</span>: <span class="hljs-string">"8ea42cd8bb11863ed6f242d67c502288ebc45a7b"</span>
     }
   }
 }
@@ -123,221 +1335,221 @@ TypeScriptで他のモジュールをインポート行いたいときに型定�
 <p>tsconfig.jsonに対し、ビルド行いたいtsファイルの追加を行うパッケージ</p>
 <p>下記のページを見てtscとgulp-typescriptやgulp-tscなどのパッケージとの依存をなくすためにtsconfigでビルド対象を管理させるのは良いことだと感じられる。</p>
 <p>gulp.srcのglobからtsconfig.jsonのfilesを更新するプラグインを作った
-http://qiita.com/laco0416/items/a51b7534ddc4aec63875
+<a href="http://qiita.com/laco0416/items/a51b7534ddc4aec63875">http://qiita.com/laco0416/items/a51b7534ddc4aec63875</a>
 TypeScript の開発環境構築と周辺ツールの紹介
-https://html5experts.jp/vvakame/17004/</p>
+<a href="https://html5experts.jp/vvakame/17004/">https://html5experts.jp/vvakame/17004/</a></p>
 <p>tsconfigが正常に設定させる利点としてVisual Studio Codeで開発がしやすくなるとのこと</p>
 <h2 id="gulpの設定">gulpの設定</h2>
 <p>TypeScriptのビルドをタスクランさせる設定を記載する。</p>
 <pre><code class="language-gulpfile.json">
-var gulp = require(&#39;gulp&#39;);
+<span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
 
-gulp.task(&#39;tsbuild&#39;, function() {
-    var shell = require(&#39;gulp-shell&#39;);
-    // tsファイルのビルド
-    gulp.src(&#39;&#39;).pipe(shell(&#39;./node_modules/.bin/tsc&#39;));
+gulp.task(<span class="hljs-string">'tsbuild'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> shell = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-shell'</span>);
+    <span class="hljs-comment">// tsファイルのビルド</span>
+    gulp.src(<span class="hljs-string">''</span>).pipe(shell(<span class="hljs-string">'./node_modules/.bin/tsc'</span>));
 
-    /* resources/assets/ts/docs/下に存在する、ビルドで作成されたjsファイルを
-       public/js/docs/下にディレクトリ構造ごとコピーする */
-    gulp.src(&#39;resources/assets/ts/docs/**/*.js&#39;)
-        .pipe(gulp.dest(&#39;public/js/docs/&#39;)); 
+    <span class="hljs-comment">/* resources/assets/ts/docs/下に存在する、ビルドで作成されたjsファイルを
+       public/js/docs/下にディレクトリ構造ごとコピーする */</span>
+    gulp.src(<span class="hljs-string">'resources/assets/ts/docs/**/*.js'</span>)
+        .pipe(gulp.dest(<span class="hljs-string">'public/js/docs/'</span>)); 
 });
 
-gulp.task(&#39;tsconfig&#39;, function() {
-    var tsConfig = require(&#39;gulp-tsconfig-update&#39;);
+gulp.task(<span class="hljs-string">'tsconfig'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> tsConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-tsconfig-update'</span>);
 
-    // ビルド対象のファイルを指定する
+    <span class="hljs-comment">// ビルド対象のファイルを指定する</span>
     gulp.src(
-        &#39;resources/assets/ts/**/*.ts&#39;).pipe(tsConfig());
+        <span class="hljs-string">'resources/assets/ts/**/*.ts'</span>).pipe(tsConfig());
 });
 </code></pre>
 <p>先にtsconfigの更新を行う</p>
 <pre><code>
-$ ./node_modules/.bin/gulp tsconfig
+$ ./node_modules/.<span class="hljs-keyword">bin/gulp </span>tsconfig
 </code></pre><p>するとtsconfig.jsonが下記のようになる。</p>
 <pre><code class="language-tsconfig.json">
 {
-    &quot;compilerOptions&quot;: {
-        &quot;module&quot;: &quot;commonjs&quot;,
-        &quot;project&quot;: &quot;./&quot;,
-        &quot;removeComments&quot;: true,
-        &quot;noImplicitAny&quot;: true,
-        &quot;noLib&quot; : false,
-        &quot;declaration&quot; : false,
-        &quot;preserveConstEnums&quot;: true,
-        &quot;experimentalDecorators&quot;: true,
-        &quot;emitDecoratorMetadata&quot;: true,
-        &quot;suppressImplicitAnyIndexErrors&quot;: true,
-        &quot;sourceMap&quot;: false,
-        &quot;target&quot;: &quot;ES3&quot;
+    <span class="hljs-attr">"compilerOptions"</span>: {
+        <span class="hljs-attr">"module"</span>: <span class="hljs-string">"commonjs"</span>,
+        <span class="hljs-attr">"project"</span>: <span class="hljs-string">"./"</span>,
+        <span class="hljs-attr">"removeComments"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"noImplicitAny"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"noLib"</span> : <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"declaration"</span> : <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"preserveConstEnums"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"experimentalDecorators"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"emitDecoratorMetadata"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"suppressImplicitAnyIndexErrors"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"sourceMap"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"target"</span>: <span class="hljs-string">"ES3"</span>
     },
-    &quot;files&quot;: [
-        &quot;resources/assets/ts/docs/screen/common/home_component.ts&quot;,
-        &quot;resources/assets/ts/docs/screen/common/tabbar_template.ts&quot;,
-        &quot;resources/assets/ts/docs/screen/common/controller/home_controller.ts&quot;
+    <span class="hljs-attr">"files"</span>: [
+        <span class="hljs-string">"resources/assets/ts/docs/screen/common/home_component.ts"</span>,
+        <span class="hljs-string">"resources/assets/ts/docs/screen/common/tabbar_template.ts"</span>,
+        <span class="hljs-string">"resources/assets/ts/docs/screen/common/controller/home_controller.ts"</span>
     ]
 }
 </code></pre>
 <p>tsファイルのビルド</p>
 <pre><code>
-$ ./node_modules/.bin/gulp tsbuild
+$ ./node_modules/.<span class="hljs-keyword">bin/gulp </span>tsbuild
 </code></pre><p><img src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2015-12-15T01:07:45+09:00-[メモ]TypeScriptの設定・用語など/1-md.png" alt="スクリーンショット 2015-12-18 2.18.24.png"></p>
 <p>public下にjsが作成された。</p>
 <h1 id="typescriptの書き方">TypeScriptの書き方</h1>
 <p>ES6の書き方がほぼほぼだがまずは書く</p>
 <p>公式でお試しにコードがかけるのがあるので遊んでみよう
-http://www.typescriptlang.org/Playground</p>
+<a href="http://www.typescriptlang.org/Playground">http://www.typescriptlang.org/Playground</a></p>
 <p>開いたときに挨拶するためのクラスがPlayground上に表示されるので既存のコードを元に説明を行う</p>
 <h2 id="クラス構文">クラス構文</h2>
 <p>ES6をばりばり使うなら絶対使いたい構文
 オブジェクト指向な書き方っぽい</p>
 <pre><code>
-class Greeter {
-    greeting: string;
+<span class="hljs-keyword">class</span> Greeter {
+    greeting: <span class="hljs-built_in">string</span>;
 
-    // インスタンス時に呼ばれるメソッド
-    constructor(message: string) {
-        this.greeting = message;
+    <span class="hljs-comment">// インスタンス時に呼ばれるメソッド</span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">this</span>.greeting = message;
     }
 
     greet() {
-        return &quot;Hello, &quot; + this.greeting;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, "</span> + <span class="hljs-keyword">this</span>.greeting;
     }
 }
 
-// クラスのインスタンス化
-var greeter = new Greeter(&quot;world&quot;);
+<span class="hljs-comment">// クラスのインスタンス化</span>
+<span class="hljs-keyword">var</span> greeter = <span class="hljs-keyword">new</span> Greeter(<span class="hljs-string">"world"</span>);
 
-// ボタンを作る
-var button = document.createElement(&#39;button&#39;);
-button.textContent = &quot;Say Hello&quot;;
-button.onclick = function() {
-    // ボタンをクリックしたときの処理
+<span class="hljs-comment">// ボタンを作る</span>
+<span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+button.textContent = <span class="hljs-string">"Say Hello"</span>;
+button.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ボタンをクリックしたときの処理</span>
     alert(greeter.greet());
 }
 
-document.body.appendChild(button);
+<span class="hljs-built_in">document</span>.body.appendChild(button);
 </code></pre><h2 id="const">const</h2>
 <p>var以外の変数の1つとしてconstが追加
 これを使用することで変数の値が書き換わることのない変数宣言ができる。</p>
 <pre><code>
-class Greeter {
-    greeting: string;
+<span class="hljs-keyword">class</span> Greeter {
+    greeting: <span class="hljs-built_in">string</span>;
 
-    // インスタンス時に呼ばれるメソッド
-    constructor(message: string) {
-        this.greeting = message;
+    <span class="hljs-comment">// インスタンス時に呼ばれるメソッド</span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">this</span>.greeting = message;
     }
 
-    hello:string = &#39;hello&#39;;
+    hello:<span class="hljs-built_in">string</span> = <span class="hljs-string">'hello'</span>;
 
     greet() {
-        const hello = &#39;hello&#39;;
-        // 下記のコメントはconstに対して値変更を行おうとしているため使用できない
-        // hello = this.hello + this.greeting;
-        this.hello = hello + this.greeting;
-        return this.hello + this.greeting;
+        <span class="hljs-keyword">const</span> hello = <span class="hljs-string">'hello'</span>;
+        <span class="hljs-comment">// 下記のコメントはconstに対して値変更を行おうとしているため使用できない</span>
+        <span class="hljs-comment">// hello = this.hello + this.greeting;</span>
+        <span class="hljs-keyword">this</span>.hello = hello + <span class="hljs-keyword">this</span>.greeting;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hello + <span class="hljs-keyword">this</span>.greeting;
     }
 }
 
-// クラスのインスタンス化
-var greeter = new Greeter(&quot;world&quot;);
+<span class="hljs-comment">// クラスのインスタンス化</span>
+<span class="hljs-keyword">var</span> greeter = <span class="hljs-keyword">new</span> Greeter(<span class="hljs-string">"world"</span>);
 
-// ボタンを作る
-var button = document.createElement(&#39;button&#39;);
-button.textContent = &quot;Say Hello&quot;;
-button.onclick = function() {
-    // ボタンをクリックしたときの処理
+<span class="hljs-comment">// ボタンを作る</span>
+<span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+button.textContent = <span class="hljs-string">"Say Hello"</span>;
+button.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ボタンをクリックしたときの処理</span>
     alert(greeter.greet());
 }
 
-document.body.appendChild(button);
+<span class="hljs-built_in">document</span>.body.appendChild(button);
 </code></pre><h2 id="let">let</h2>
 <p>letを使用するとブロックの中と外で同じ変数名でもスコープを分けてくる。
 今まで通り、varを使用することができるのでブロック内で変数を変更するコードはvarで宣言させてあげよう。</p>
-<pre><code>class Greeter {
-    greeting: string;
+<pre><code><span class="hljs-keyword">class</span> Greeter {
+    greeting: <span class="hljs-built_in">string</span>;
 
-    // インスタンス時に呼ばれるメソッド
-    constructor(message: string) {
-        this.greeting = message;
+    <span class="hljs-comment">// インスタンス時に呼ばれるメソッド</span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">this</span>.greeting = message;
     }
 
-    hello:string = &#39;hello&#39;;
+    hello:<span class="hljs-built_in">string</span> = <span class="hljs-string">'hello'</span>;
 
     greet() {
-        // ifの外では&#39;hello&#39;として扱う
-        let hello = &#39;hello&#39;;
-        if (true) {
-            // ifの中でのhello変数は&#39;hello2&#39;として扱う
-            let hello = &#39;hello2&#39;;
+        <span class="hljs-comment">// ifの外では'hello'として扱う</span>
+        <span class="hljs-keyword">let</span> hello = <span class="hljs-string">'hello'</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+            <span class="hljs-comment">// ifの中でのhello変数は'hello2'として扱う</span>
+            <span class="hljs-keyword">let</span> hello = <span class="hljs-string">'hello2'</span>;
             alert(hello);
         }
-        this.hello = hello + this.greeting;
-        return this.hello;
+        <span class="hljs-keyword">this</span>.hello = hello + <span class="hljs-keyword">this</span>.greeting;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hello;
     }
 }
 
-// クラスのインスタンス化
-var greeter = new Greeter(&quot;world&quot;);
+<span class="hljs-comment">// クラスのインスタンス化</span>
+<span class="hljs-keyword">var</span> greeter = <span class="hljs-keyword">new</span> Greeter(<span class="hljs-string">"world"</span>);
 
-// ボタンを作る
-var button = document.createElement(&#39;button&#39;);
-button.textContent = &quot;Say Hello&quot;;
-button.onclick = function() {
-    // ボタンをクリックしたときの処理
+<span class="hljs-comment">// ボタンを作る</span>
+<span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+button.textContent = <span class="hljs-string">"Say Hello"</span>;
+button.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ボタンをクリックしたときの処理</span>
     alert(greeter.greet());
 }
 
-document.body.appendChild(button);
+<span class="hljs-built_in">document</span>.body.appendChild(button);
 </code></pre><h2 id="アロー">アロー</h2>
 <p>ES6でもおなじみ
 コールバック・無名関数に値渡して行うやり方をアローで行える。</p>
 <pre><code>
-let greet:string[] = [&#39;hello&#39;, &#39;bye&#39;];
-greet.forEach(args =&gt; alert(args));
+<span class="hljs-keyword">let</span> greet:<span class="hljs-built_in">string</span><span class="hljs-literal">[]</span> = <span class="hljs-literal">['<span class="hljs-identifier">hello</span>', '<span class="hljs-identifier">bye</span>']</span>;
+greet.for<span class="hljs-constructor">Each(<span class="hljs-params">args</span> =&gt; <span class="hljs-params">alert</span>(<span class="hljs-params">args</span>)</span>);
 </code></pre><p>短い（確信）
 今までのjsで書くとこんな感じになる。</p>
 <pre><code>
-var greet = [&#39;hello&#39;, &#39;bye&#39;];
-greet.forEach(function (args) {
-    return alert(args);
+<span class="hljs-keyword">var</span> greet = [<span class="hljs-string">'hello'</span>, <span class="hljs-string">'bye'</span>];
+greet.<span class="hljs-keyword">forEach</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> </span>{
+    <span class="hljs-keyword">return</span> alert(args);
 });
 </code></pre><pre><code>
-class Greeter {
-    greeting: string;
+<span class="hljs-keyword">class</span> Greeter {
+    greeting: <span class="hljs-built_in">string</span>;
 
-    // インスタンス時に呼ばれるメソッド
-    constructor(message: string) {
-        this.greeting = message;
+    <span class="hljs-comment">// インスタンス時に呼ばれるメソッド</span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">this</span>.greeting = message;
     }
 
-    hello:string = &#39;hello&#39;;
+    hello:<span class="hljs-built_in">string</span> = <span class="hljs-string">'hello'</span>;
 
     greet() {
-        // 配列の中身はstring
-        let greet:string[] = [&#39;hello&#39;, &#39;bye&#39;];
-        // さりげなくアロー使って無名関数の記述を省略させる
-        greet.forEach(args =&gt; alert(args));
+        <span class="hljs-comment">// 配列の中身はstring</span>
+        <span class="hljs-keyword">let</span> greet:<span class="hljs-built_in">string</span>[] = [<span class="hljs-string">'hello'</span>, <span class="hljs-string">'bye'</span>];
+        <span class="hljs-comment">// さりげなくアロー使って無名関数の記述を省略させる</span>
+        greet.forEach(<span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> alert(args));
 
-        this.greeting = greet + this.greeting;
-        return this.greeting;
+        <span class="hljs-keyword">this</span>.greeting = greet + <span class="hljs-keyword">this</span>.greeting;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.greeting;
     }
 }
 
-// クラスのインスタンス化
-var greeter = new Greeter(&quot;world&quot;);
+<span class="hljs-comment">// クラスのインスタンス化</span>
+<span class="hljs-keyword">var</span> greeter = <span class="hljs-keyword">new</span> Greeter(<span class="hljs-string">"world"</span>);
 
-// ボタンを作る
-var button = document.createElement(&#39;button&#39;);
-button.textContent = &quot;Say Hello&quot;;
-button.onclick = function() {
-    // ボタンをクリックしたときの処理
+<span class="hljs-comment">// ボタンを作る</span>
+<span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+button.textContent = <span class="hljs-string">"Say Hello"</span>;
+button.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ボタンをクリックしたときの処理</span>
     alert(greeter.greet());
 }
 
-document.body.appendChild(button);
+<span class="hljs-built_in">document</span>.body.appendChild(button);
 </code></pre><h2 id="型宣言">型宣言</h2>
 <p>ES6とTypeScriptで圧倒的に違う点として型宣言周り</p>
 <h3 id="暗黙的な型宣言（型推論）">暗黙的な型宣言（型推論）</h3>
@@ -345,120 +1557,141 @@ document.body.appendChild(button);
 let hello = &#39;hello&#39;;
 とした箇所が暗黙的にstring型扱いされてしまっているためnumberが入らない例</p>
 <pre><code>
-class Greeter {
-    greeting: string;
+<span class="hljs-keyword">class</span> Greeter {
+    greeting: <span class="hljs-built_in">string</span>;
 
-    // インスタンス時に呼ばれるメソッド
-    constructor(message: string) {
-        this.greeting = message;
+    <span class="hljs-comment">// インスタンス時に呼ばれるメソッド</span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">this</span>.greeting = message;
     }
 
-    hello:string = &#39;hello&#39;;
+    hello:<span class="hljs-built_in">string</span> = <span class="hljs-string">'hello'</span>;
 
     greet() {
-        let hello = &#39;hello&#39;;
-        /* 暗黙的型宣言を行われているので数値型を入れようとすると
-           エラー出力される */
-        // hello = 1;
-        this.hello = hello + this.greeting;
-        return this.hello;
+        <span class="hljs-keyword">let</span> hello = <span class="hljs-string">'hello'</span>;
+        <span class="hljs-comment">/* 暗黙的型宣言を行われているので数値型を入れようとすると
+           エラー出力される */</span>
+        <span class="hljs-comment">// hello = 1;</span>
+        <span class="hljs-keyword">this</span>.hello = hello + <span class="hljs-keyword">this</span>.greeting;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hello;
     }
 }
 
-// クラスのインスタンス化
-var greeter = new Greeter(&quot;world&quot;);
+<span class="hljs-comment">// クラスのインスタンス化</span>
+<span class="hljs-keyword">var</span> greeter = <span class="hljs-keyword">new</span> Greeter(<span class="hljs-string">"world"</span>);
 
-// ボタンを作る
-var button = document.createElement(&#39;button&#39;);
-button.textContent = &quot;Say Hello&quot;;
-button.onclick = function() {
-    // ボタンをクリックしたときの処理
+<span class="hljs-comment">// ボタンを作る</span>
+<span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+button.textContent = <span class="hljs-string">"Say Hello"</span>;
+button.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ボタンをクリックしたときの処理</span>
     alert(greeter.greet());
 }
 
-document.body.appendChild(button);
+<span class="hljs-built_in">document</span>.body.appendChild(button);
 </code></pre><p>たまにライブラリの型宣言ファイルのインポートをしたときに変に想定されてない型を用いようとしエラーが出る場合がある。
 解決方法としてこれで良いのか置いといて別の型を扱う場合は
 anyを用いることで回避できる。</p>
 <pre><code>
-class Greeter {
-    greeting: string;
+<span class="hljs-keyword">class</span> Greeter {
+    greeting: <span class="hljs-built_in">string</span>;
 
-    // インスタンス時に呼ばれるメソッド
-    constructor(message: string) {
-        this.greeting = message;
+    <span class="hljs-comment">// インスタンス時に呼ばれるメソッド</span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">this</span>.greeting = message;
     }
 
-    hello:any = &#39;hello&#39;;
+    hello:<span class="hljs-built_in">any</span> = <span class="hljs-string">'hello'</span>;
 
     greet() {
-        let hello:any = &#39;hello&#39;;
-        /* anyとしているため数値型を用いることができる */
-        hello = 1;
-        this.hello = hello + this.greeting;
-        return this.hello;
+        <span class="hljs-keyword">let</span> hello:<span class="hljs-built_in">any</span> = <span class="hljs-string">'hello'</span>;
+        <span class="hljs-comment">/* anyとしているため数値型を用いることができる */</span>
+        hello = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">this</span>.hello = hello + <span class="hljs-keyword">this</span>.greeting;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hello;
     }
 }
 
-// クラスのインスタンス化
-var greeter = new Greeter(&quot;world&quot;);
+<span class="hljs-comment">// クラスのインスタンス化</span>
+<span class="hljs-keyword">var</span> greeter = <span class="hljs-keyword">new</span> Greeter(<span class="hljs-string">"world"</span>);
 
-// ボタンを作る
-var button = document.createElement(&#39;button&#39;);
-button.textContent = &quot;Say Hello&quot;;
-button.onclick = function() {
-    // ボタンをクリックしたときの処理
+<span class="hljs-comment">// ボタンを作る</span>
+<span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+button.textContent = <span class="hljs-string">"Say Hello"</span>;
+button.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ボタンをクリックしたときの処理</span>
     alert(greeter.greet());
 }
 
-document.body.appendChild(button);
+<span class="hljs-built_in">document</span>.body.appendChild(button);
 </code></pre><h3 id="保証されている型">保証されている型</h3>
 <h4 id="プリミティブ型">プリミティブ型</h4>
-<p>| 型 |説明|
-|:-----------|:-----------|
-| number | 数値を扱う型 |
-| boolean | ブール値を扱う型 |
-| string | 文字列値を扱う型 |
-| void | 関数が値を返さないことを表す型 |
-| any | 全ての型の上位にある型 |</p>
+<table>
+<thead>
+<tr>
+<th align="left">型</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">number</td>
+<td align="left">数値を扱う型</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">ブール値を扱う型</td>
+</tr>
+<tr>
+<td align="left">string</td>
+<td align="left">文字列値を扱う型</td>
+</tr>
+<tr>
+<td align="left">void</td>
+<td align="left">関数が値を返さないことを表す型</td>
+</tr>
+<tr>
+<td align="left">any</td>
+<td align="left">全ての型の上位にある型</td>
+</tr>
+</tbody></table>
 <h4 id="配列">配列</h4>
 <p>型を宣言して配列を作成すると指定した型以外を用いることができなくできる。
 型推論で数値型、文字列型が混在するときはanyになるが
 あらかじめ入れる物の型が決まってしまっている場合は型を指定してしまった方が良い</p>
 <pre><code>
-class Greeter {
-    greeting: string;
+<span class="hljs-keyword">class</span> Greeter {
+    greeting: <span class="hljs-built_in">string</span>;
 
-    // インスタンス時に呼ばれるメソッド
-    constructor(message: string) {
-        this.greeting = message;
+    <span class="hljs-comment">// インスタンス時に呼ばれるメソッド</span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">this</span>.greeting = message;
     }
 
-    hello:string = &#39;hello&#39;;
+    hello:<span class="hljs-built_in">string</span> = <span class="hljs-string">'hello'</span>;
 
     greet() {
-        // 配列の中身はstring
-        let greet:string[] = [&#39;hello&#39;, &#39;bye&#39;];
-        // さりげなくアロー使って無名関数の記述を省略させる
-        greet.forEach(args =&gt; alert(args));
+        <span class="hljs-comment">// 配列の中身はstring</span>
+        <span class="hljs-keyword">let</span> greet:<span class="hljs-built_in">string</span>[] = [<span class="hljs-string">'hello'</span>, <span class="hljs-string">'bye'</span>];
+        <span class="hljs-comment">// さりげなくアロー使って無名関数の記述を省略させる</span>
+        greet.forEach(<span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> alert(args));
 
-        this.greeting = greet + this.greeting;
-        return this.greeting;
+        <span class="hljs-keyword">this</span>.greeting = greet + <span class="hljs-keyword">this</span>.greeting;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.greeting;
     }
 }
 
-// クラスのインスタンス化
-var greeter = new Greeter(&quot;world&quot;);
+<span class="hljs-comment">// クラスのインスタンス化</span>
+<span class="hljs-keyword">var</span> greeter = <span class="hljs-keyword">new</span> Greeter(<span class="hljs-string">"world"</span>);
 
-// ボタンを作る
-var button = document.createElement(&#39;button&#39;);
-button.textContent = &quot;Say Hello&quot;;
-button.onclick = function() {
-    // ボタンをクリックしたときの処理
+<span class="hljs-comment">// ボタンを作る</span>
+<span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+button.textContent = <span class="hljs-string">"Say Hello"</span>;
+button.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ボタンをクリックしたときの処理</span>
     alert(greeter.greet());
 }
 
-document.body.appendChild(button);
+<span class="hljs-built_in">document</span>.body.appendChild(button);
 </code></pre><h4 id="オプショナル">オプショナル</h4>
 <p>TypeScriptは宣言と呼び出しに厳しい言語
 関数の宣言に引数がある場合、引数を与えなければならないが
@@ -466,35 +1699,36 @@ document.body.appendChild(button);
 <p>下記はコンストラクタを無理やりオプショナルにさせた実行例
 基本的にオプショナルを扱うのはやめよう</p>
 <pre><code>
-class Greeter {
-    greeting: string;
+<span class="hljs-keyword">class</span> Greeter {
+    greeting: <span class="hljs-built_in">string</span>;
 
-    // インスタンス時に呼ばれるメソッド
-    constructor(message?: string) {
-        this.greeting = message;
+    <span class="hljs-comment">// インスタンス時に呼ばれるメソッド</span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">message?: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-keyword">this</span>.greeting = message;
     }
 
-    hello:string = &#39;hello&#39;;
+    hello:<span class="hljs-built_in">string</span> = <span class="hljs-string">'hello'</span>;
 
     greet() {
-        let greet:string[] = [&#39;hello&#39;, &#39;bye&#39;];
-        greet.forEach(args =&gt; alert(args));
+        <span class="hljs-keyword">let</span> greet:<span class="hljs-built_in">string</span>[] = [<span class="hljs-string">'hello'</span>, <span class="hljs-string">'bye'</span>];
+        greet.forEach(<span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> alert(args));
 
-        this.greeting = greet + this.greeting;
-        return this.greeting;
+        <span class="hljs-keyword">this</span>.greeting = greet + <span class="hljs-keyword">this</span>.greeting;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.greeting;
     }
 }
 
-// クラスのインスタンス化
-var greeter = new Greeter();
+<span class="hljs-comment">// クラスのインスタンス化</span>
+<span class="hljs-keyword">var</span> greeter = <span class="hljs-keyword">new</span> Greeter();
 
-// ボタンを作る
-var button = document.createElement(&#39;button&#39;);
-button.textContent = &quot;Say Hello&quot;;
-button.onclick = function() {
-    // ボタンをクリックしたときの処理
+<span class="hljs-comment">// ボタンを作る</span>
+<span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+button.textContent = <span class="hljs-string">"Say Hello"</span>;
+button.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ボタンをクリックしたときの処理</span>
     alert(greeter.greet());
 }
 
-document.body.appendChild(button);
+<span class="hljs-built_in">document</span>.body.appendChild(button);
 </code></pre>
+</body>

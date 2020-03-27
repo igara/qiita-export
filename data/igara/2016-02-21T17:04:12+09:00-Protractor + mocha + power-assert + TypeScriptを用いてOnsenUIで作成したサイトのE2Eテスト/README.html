@@ -1,14 +1,1109 @@
-<h1 id="概要">概要</h1>
+<style>
+/*
+
+Railscasts-like style (c) Visoft, Inc. (Damien White)
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #232323;
+  color: #e6e1dc;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #bc9458;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #c26230;
+}
+
+.hljs-string,
+.hljs-number,
+.hljs-regexp,
+.hljs-variable,
+.hljs-template-variable {
+  color: #a5c261;
+}
+
+.hljs-subst {
+  color: #519f50;
+}
+
+.hljs-tag,
+.hljs-name {
+  color: #e8bf6a;
+}
+
+.hljs-type {
+  color: #da4939;
+}
+
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-attr,
+.hljs-link {
+  color: #6d9cbe;
+}
+
+.hljs-params {
+  color: #d0d0ff;
+}
+
+.hljs-attribute {
+  color: #cda869;
+}
+
+.hljs-meta {
+  color: #9b859d;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #ffc66d;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-selector-class {
+  color: #9b703f;
+}
+
+.hljs-selector-id {
+  color: #8b98ab;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1:hover .anchor .octicon-link:before,
+.markdown-body h2:hover .anchor .octicon-link:before,
+.markdown-body h3:hover .anchor .octicon-link:before,
+.markdown-body h4:hover .anchor .octicon-link:before,
+.markdown-body h5:hover .anchor .octicon-link:before,
+.markdown-body h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'%3E%3C/path%3E%3C/svg%3E");
+}.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #24292e;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body details {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body a {
+  background-color: initial;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: initial;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+
+.markdown-body hr:after,
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol ol ol,
+.markdown-body ol ul ol,
+.markdown-body ul ol ol,
+.markdown-body ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body input::-webkit-inner-spin-button,
+.markdown-body input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.markdown-body :checked+.radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+
+.markdown-body .border {
+  border: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .border-0 {
+  border: 0!important;
+}
+
+.markdown-body .border-bottom {
+  border-bottom: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .rounded-1 {
+  border-radius: 3px!important;
+}
+
+.markdown-body .bg-white {
+  background-color: #fff!important;
+}
+
+.markdown-body .bg-gray-light {
+  background-color: #fafbfc!important;
+}
+
+.markdown-body .text-gray-light {
+  color: #6a737d!important;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-top: 8px!important;
+  margin-bottom: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+
+.markdown-body .pl-3,
+.markdown-body .px-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .px-3 {
+  padding-right: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .f6 {
+  font-size: 12px!important;
+}
+
+.markdown-body .lh-condensed {
+  line-height: 1.25!important;
+}
+
+.markdown-body .text-bold {
+  font-weight: 600!important;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.markdown-body .pl-smw,
+.markdown-body .pl-v {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+
+.markdown-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+
+.markdown-body .pl-c2:before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: 700;
+  color: #22863a;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: 700;
+  color: #005cc5;
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+
+.markdown-body .pl-mb {
+  font-weight: 700;
+  color: #24292e;
+}
+
+.markdown-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+
+.markdown-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+.markdown-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+
+.markdown-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+
+.markdown-body .pl-mdr {
+  font-weight: 700;
+  color: #6f42c1;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-bottom: 8px!important;
+}
+
+.markdown-body .my-2 {
+  margin-top: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .pl-7 {
+  padding-left: 48px!important;
+}
+
+.markdown-body .pl-8 {
+  padding-left: 64px!important;
+}
+
+.markdown-body .pl-9 {
+  padding-left: 80px!important;
+}
+
+.markdown-body .pl-10 {
+  padding-left: 96px!important;
+}
+
+.markdown-body .pl-11 {
+  padding-left: 112px!important;
+}
+
+.markdown-body .pl-12 {
+  padding-left: 128px!important;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.markdown-body:after,
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  clear: both;
+}
+
+.markdown-body>:first-child {
+  margin-top: 0!important;
+}
+
+.markdown-body>:last-child {
+  margin-bottom: 0!important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body blockquote,
+.markdown-body details,
+.markdown-body dl,
+.markdown-body ol,
+.markdown-body p,
+.markdown-body pre,
+.markdown-body table,
+.markdown-body ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.markdown-body blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: .25em solid #dfe2e5;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  padding-bottom: .3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  font-size: .85em;
+  color: #6a737d;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ol ul,
+.markdown-body ul ol,
+.markdown-body ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: initial;
+  background-color: #fff;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: initial;
+  border: 0;
+}
+
+.markdown-body .commit-tease-sha {
+  display: inline-block;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 90%;
+  color: #444d56;
+}
+
+.markdown-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+
+.markdown-body .blob-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.markdown-body .blob-num {
+  width: 1%;
+  min-width: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(27,31,35,.3);
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .blob-num:hover {
+  color: rgba(27,31,35,.6);
+}
+
+.markdown-body .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.markdown-body .blob-code {
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+.markdown-body .blob-code-inner {
+  overflow: visible;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+  color: #24292e;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.markdown-body .pl-token.active,
+.markdown-body .pl-token:hover {
+  cursor: pointer;
+  background: #ffea7f;
+}
+
+.markdown-body .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  tab-size: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  tab-size: 2;
+}
+
+.markdown-body .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  tab-size: 3;
+}
+
+.markdown-body .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.markdown-body .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  tab-size: 5;
+}
+
+.markdown-body .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  tab-size: 6;
+}
+
+.markdown-body .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  tab-size: 7;
+}
+
+.markdown-body .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  tab-size: 8;
+}
+
+.markdown-body .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  tab-size: 9;
+}
+
+.markdown-body .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  tab-size: 10;
+}
+
+.markdown-body .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  tab-size: 11;
+}
+
+.markdown-body .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  tab-size: 12;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+</style><body class="markdown-body">
+  <h1 id="概要">概要</h1>
 <blockquote>
 <p>『こういったサイトを作ってみたかったんだよ!』
 OnsenUIでスマホアプリみたいなサイトを作ってみる より
-http://qiita.com/igara/items/92d0b58c4df21141429a</p>
+<a href="http://qiita.com/igara/items/92d0b58c4df21141429a">http://qiita.com/igara/items/92d0b58c4df21141429a</a></p>
 </blockquote>
 <p>サイトでもアプリのように動きのあるものを扱っていたとき、
 これどうやってテストコード化できるのだろうと疑問に思ったため
 やってみたという記事です。</p>
 <p>ソースは下記のレポジトリにあります。
-https://github.com/igara/syonet/</p>
+<a href="https://github.com/igara/syonet/">https://github.com/igara/syonet/</a></p>
 <h1 id="使ってみたもの">使ってみたもの</h1>
 <ul>
 <li><p><a href="http://www.protractortest.org/#/">Protractor</a>
@@ -36,40 +1131,40 @@ AltJS
 <li>npmパッケージインストール</li>
 </ul>
 <pre><code class="language-package.json">{
-  &quot;version&quot;: &quot;0.0.1&quot;,
-  &quot;private&quot;: true,
-  &quot;devDependencies&quot;: {
-    &quot;angular&quot;: &quot;^1.5.0&quot;,
-    &quot;mocha&quot;: &quot;^2.4.5&quot;,
-    &quot;onsenui&quot;: &quot;^2.0.0-beta&quot;,
-    &quot;power-assert&quot;: &quot;^1.2.0&quot;,
-    &quot;protractor&quot;: &quot;^3.1.1&quot;,
-    &quot;typescript&quot;: &quot;^1.8.0&quot;,
-    &quot;typings&quot;: &quot;^0.6.7&quot;
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+  <span class="hljs-attr">"private"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"devDependencies"</span>: {
+    <span class="hljs-attr">"angular"</span>: <span class="hljs-string">"^1.5.0"</span>,
+    <span class="hljs-attr">"mocha"</span>: <span class="hljs-string">"^2.4.5"</span>,
+    <span class="hljs-attr">"onsenui"</span>: <span class="hljs-string">"^2.0.0-beta"</span>,
+    <span class="hljs-attr">"power-assert"</span>: <span class="hljs-string">"^1.2.0"</span>,
+    <span class="hljs-attr">"protractor"</span>: <span class="hljs-string">"^3.1.1"</span>,
+    <span class="hljs-attr">"typescript"</span>: <span class="hljs-string">"^1.8.0"</span>,
+    <span class="hljs-attr">"typings"</span>: <span class="hljs-string">"^0.6.7"</span>
   }
 }</code></pre>
-<pre><code>npm install</code></pre><ul>
+<pre><code>npm <span class="hljs-keyword">install</span></code></pre><ul>
 <li>d.tsインストール</li>
 </ul>
 <p>AngularとjQueryで
 var $: JQueryStatic;の宣言が被ってしまうので
 独自でjQueryのd.tsファイルを加工しています。</p>
 <pre><code class="language-typings.json">{
-  &quot;ambientDependencies&quot;: {
-    &quot;angular&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/angularjs/angular.d.ts#17ef40452039d19e06dc2a3815ea898c505860fa&quot;,
-    &quot;angular-protractor&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/angular-protractor/angular-protractor.d.ts#17fa1e5f269189f7f8e0f53f8c443e6c2eac562c&quot;,
-    &quot;empower&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/empower/empower.d.ts#aeb7701fbef3b7fc7261d67c025c823666ab98ea&quot;,
-    &quot;jquery&quot;: &quot;github:igara/DefinitelyTyped/jquery/jquery.d.ts#144ca38f83058b29f2b7b38c28e931a0139aa022&quot;,
-    &quot;mocha&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/mocha/mocha.d.ts#d6dd320291705694ba8e1a79497a908e9f5e6617&quot;,
-    &quot;node&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#263705d313346e093d95cb62cef6fed848e46978&quot;,
-    &quot;onsenui&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/onsenui/onsenui.d.ts#76352a94c6e4a51e7f382aebaf0b63d9ac06ae12&quot;,
-    &quot;power-assert&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/power-assert/power-assert.d.ts#695da95a2405a9d6aae11944174227e1e7716e37&quot;,
-    &quot;power-assert-formatter&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/power-assert-formatter/power-assert-formatter.d.ts#aeb7701fbef3b7fc7261d67c025c823666ab98ea&quot;,
-    &quot;selenium-webdriver&quot;: &quot;github:DefinitelyTyped/DefinitelyTyped/selenium-webdriver/selenium-webdriver.d.ts#a83677ed13add14c2ab06c7325d182d0ba2784ea&quot;
+  <span class="hljs-attr">"ambientDependencies"</span>: {
+    <span class="hljs-attr">"angular"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/angularjs/angular.d.ts#17ef40452039d19e06dc2a3815ea898c505860fa"</span>,
+    <span class="hljs-attr">"angular-protractor"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/angular-protractor/angular-protractor.d.ts#17fa1e5f269189f7f8e0f53f8c443e6c2eac562c"</span>,
+    <span class="hljs-attr">"empower"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/empower/empower.d.ts#aeb7701fbef3b7fc7261d67c025c823666ab98ea"</span>,
+    <span class="hljs-attr">"jquery"</span>: <span class="hljs-string">"github:igara/DefinitelyTyped/jquery/jquery.d.ts#144ca38f83058b29f2b7b38c28e931a0139aa022"</span>,
+    <span class="hljs-attr">"mocha"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/mocha/mocha.d.ts#d6dd320291705694ba8e1a79497a908e9f5e6617"</span>,
+    <span class="hljs-attr">"node"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#263705d313346e093d95cb62cef6fed848e46978"</span>,
+    <span class="hljs-attr">"onsenui"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/onsenui/onsenui.d.ts#76352a94c6e4a51e7f382aebaf0b63d9ac06ae12"</span>,
+    <span class="hljs-attr">"power-assert"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/power-assert/power-assert.d.ts#695da95a2405a9d6aae11944174227e1e7716e37"</span>,
+    <span class="hljs-attr">"power-assert-formatter"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/power-assert-formatter/power-assert-formatter.d.ts#aeb7701fbef3b7fc7261d67c025c823666ab98ea"</span>,
+    <span class="hljs-attr">"selenium-webdriver"</span>: <span class="hljs-string">"github:DefinitelyTyped/DefinitelyTyped/selenium-webdriver/selenium-webdriver.d.ts#a83677ed13add14c2ab06c7325d182d0ba2784ea"</span>
   }
 }
 </code></pre>
-<pre><code>typings install</code></pre><h1 id="設定">設定</h1>
+<pre><code>typings <span class="hljs-keyword">install</span></code></pre><h1 id="設定">設定</h1>
 <ul>
 <li>Protractorの設定</li>
 </ul>
@@ -77,19 +1172,19 @@ var $: JQueryStatic;の宣言が被ってしまうので
 <a href="https://github.com/angular/protractor/blob/master/docs/referenceConf.js">referenceConf.js</a>に記載されています。</p>
 <p><a href="https://github.com/igara/syonet/blob/master/e2echrome.js">e2echrome.js</a></p>
 <pre><code class="language-e2echrome.js">exports.config = {
-  seleniumAddress: &#39;http://127.0.0.1:4444/wd/hub&#39;,
-  framework: &#39;mocha&#39;, // mochaを使用する
-  mochaOpts: {        // mochaの設定
-    ui: &#39;bdd&#39;,        // テスト記述方法をビヘイビアで行う。tddも可能
-    reporter: &#39;dot&#39;,  // テスト結果出力方法。詳しくはhttps://mochajs.org/#reporters
-    slow: 3000,
-    enableTimeouts: false     // テスト中にタイムアウトさせるかの設定
+  seleniumAddress: <span class="hljs-symbol">'http</span>:<span class="hljs-comment">//127.0.0.1:4444/wd/hub',</span>
+  framework: <span class="hljs-symbol">'mocha</span>', <span class="hljs-comment">// mochaを使用する</span>
+  mochaOpts: {        <span class="hljs-comment">// mochaの設定</span>
+    ui: <span class="hljs-symbol">'bdd</span>',        <span class="hljs-comment">// テスト記述方法をビヘイビアで行う。tddも可能</span>
+    reporter: <span class="hljs-symbol">'dot</span>',  <span class="hljs-comment">// テスト結果出力方法。詳しくはhttps://mochajs.org/#reporters</span>
+    slow: <span class="hljs-number">3000</span>,
+    enableTimeouts: <span class="hljs-literal">false</span>     <span class="hljs-comment">// テスト中にタイムアウトさせるかの設定</span>
   },
-  specs: [&#39;tests/**/*.js&#39;],    // テスト対象ファイル
+  specs: [<span class="hljs-symbol">'tests</span><span class="hljs-comment">/**/</span>*.js'],    <span class="hljs-comment">// テスト対象ファイル</span>
   capabilities: {
-    &#39;browserName&#39;: &#39;chrome&#39;    // 使用ブラウザ
+    <span class="hljs-symbol">'browserName</span>': <span class="hljs-symbol">'chrome</span>'    <span class="hljs-comment">// 使用ブラウザ</span>
   },
-  baseUrl: &#39;http://127.0.0.1:8000/&#39;
+  baseUrl: <span class="hljs-symbol">'http</span>:<span class="hljs-comment">//127.0.0.1:8000/'</span>
 };</code></pre>
 <h1 id="テストコード">テストコード</h1>
 <h2 id="slidingmenuviewの表示・非表示のテスト例">SlidingMenuViewの表示・非表示のテスト例</h2>
@@ -102,35 +1197,35 @@ var $: JQueryStatic;の宣言が被ってしまうので
 <p>下記は、スワイプ処理のやり方としてマウスのイベントを用いて再現しようとしています。
 「マウス動かす→マウスクリックを押す→マウスを動かす→マウスクリックを離す」
 といった動きになります。</p>
-<pre><code>browser.actions()
-       .mouseMove(body, {x:browserSize.width / 2, y:browserSize.height / 2})
-       .mouseDown()
-       .mouseMove(body, {x:browserSize.width, y:browserSize.height / 2})
-       .mouseUp()
-       .perform();</code></pre><ul>
+<pre><code>browser.actions<span class="hljs-literal">()</span>
+       .mouse<span class="hljs-constructor">Move(<span class="hljs-params">body</span>, {<span class="hljs-params">x</span>:<span class="hljs-params">browserSize</span>.<span class="hljs-params">width</span> <span class="hljs-operator">/</span> 2, <span class="hljs-params">y</span>:<span class="hljs-params">browserSize</span>.<span class="hljs-params">height</span> <span class="hljs-operator">/</span> 2})</span>
+       .mouse<span class="hljs-constructor">Down()</span>
+       .mouse<span class="hljs-constructor">Move(<span class="hljs-params">body</span>, {<span class="hljs-params">x</span>:<span class="hljs-params">browserSize</span>.<span class="hljs-params">width</span>, <span class="hljs-params">y</span>:<span class="hljs-params">browserSize</span>.<span class="hljs-params">height</span> <span class="hljs-operator">/</span> 2})</span>
+       .mouse<span class="hljs-constructor">Up()</span>
+       .perform<span class="hljs-literal">()</span>;</code></pre><ul>
 <li>SlidingMenuの表示確認どうする?</li>
 </ul>
 <p>SlidingMenuには<a href="http://ja.onsen.io/reference/ons-sliding-menu.html#method-isMenuOpened">isMenuOpened()</a>というJavaScriptの関数を用いることでSlidingMenuの表示確認を行うことができます。</p>
 <p>ブラウザ内のJavaScriptの実行を行った結果を取得するために
 <a href="https://angular.github.io/protractor/#/api?view=webdriver.WebDriver.prototype.executeAsyncScript">executeAsyncScript</a>を用いてassertさせるやり方で確認をしています。</p>
-<pre><code>// ブラウザ内のJavaScriptを実行させる
-browser.executeAsyncScript(function() {
-    var callback = arguments[arguments.length - 1];
+<pre><code><span class="hljs-comment">// ブラウザ内のJavaScriptを実行させる</span>
+browser.executeAsyncScript(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> callback = <span class="hljs-built_in">arguments</span>[<span class="hljs-built_in">arguments</span>.length - <span class="hljs-number">1</span>];
     callback(menu.isMenuOpened());
-}).then(function(isMenu) {
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">isMenu</span>) </span>{
     assert.default(
-        isMenu === true,
-        &#39;error:サイドメニューが開かれていない&#39;);
-    // スリープさせる
+        isMenu === <span class="hljs-literal">true</span>,
+        <span class="hljs-string">'error:サイドメニューが開かれていない'</span>);
+    <span class="hljs-comment">// スリープさせる</span>
     browser.sleep(sleepTime);
-    // スクリーンショットを取る
-    browser.takeScreenshot().then(function(data) {
+    <span class="hljs-comment">// スクリーンショットを取る</span>
+    browser.takeScreenshot().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
         fs.writeFile(
-            &#39;screenshot/syonetwork/OpenedSideMenu.png&#39;,
-            data.replace(/^data:image\/png;base64,/,&#39;&#39;), 
-            &#39;base64&#39;,
-            function(error) {
-                if(error) throw error;
+            <span class="hljs-string">'screenshot/syonetwork/OpenedSideMenu.png'</span>,
+            data.replace(<span class="hljs-regexp">/^data:image\/png;base64,/</span>,<span class="hljs-string">''</span>), 
+            <span class="hljs-string">'base64'</span>,
+            <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+                <span class="hljs-keyword">if</span>(error) <span class="hljs-keyword">throw</span> error;
             }
         );
     });
@@ -145,15 +1240,17 @@ TypeScriptを使っている場合、menuって型なんだっけ?となるの�
 Javaのインストールと下記を実行</p>
 <p>WebDriver起動までにすること</p>
 <pre><code>
-node_modules/protractor/bin/webdriver-manager update
-node_modules/protractor/bin/webdriver-manager start 
+node_modules/protractor/bin/webdriver-manager <span class="hljs-keyword">update</span>
+node_modules/protractor/<span class="hljs-keyword">bin</span>/webdriver-manager <span class="hljs-keyword">start</span> 
 </code></pre><p>テストの実行</p>
 <pre><code>
-node_modules/.bin/protractor e2echrome.js
+<span class="hljs-symbol">node_modules</span>/.<span class="hljs-keyword">bin/protractor </span>e2echrome.js
 </code></pre><h1 id="参考資料">参考資料</h1>
 <p>Protractorの小ネタ
-http://qiita.com/zoetro/items/6a82e066a8bb147c407a
+<a href="http://qiita.com/zoetro/items/6a82e066a8bb147c407a">http://qiita.com/zoetro/items/6a82e066a8bb147c407a</a>
 AngularJS用テストフレームワーク「Protractor」チュートリアル日本語訳
-http://qiita.com/weed/items/30098f7be2f753580f63
+<a href="http://qiita.com/weed/items/30098f7be2f753580f63">http://qiita.com/weed/items/30098f7be2f753580f63</a>
 Protractor で起動したブラウザで任意の JavaScirpt コードを実行する
-http://qiita.com/naoiwata/items/b389c27d7b19b6fa634d</p>
+<a href="http://qiita.com/naoiwata/items/b389c27d7b19b6fa634d">http://qiita.com/naoiwata/items/b389c27d7b19b6fa634d</a></p>
+
+</body>

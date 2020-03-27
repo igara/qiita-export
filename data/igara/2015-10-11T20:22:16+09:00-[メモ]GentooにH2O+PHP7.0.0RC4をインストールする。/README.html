@@ -1,152 +1,1249 @@
-<h1 id="gentooをvmから起動する。">GentooをVMから起動する。</h1>
+<style>
+/*
+
+Railscasts-like style (c) Visoft, Inc. (Damien White)
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #232323;
+  color: #e6e1dc;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #bc9458;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #c26230;
+}
+
+.hljs-string,
+.hljs-number,
+.hljs-regexp,
+.hljs-variable,
+.hljs-template-variable {
+  color: #a5c261;
+}
+
+.hljs-subst {
+  color: #519f50;
+}
+
+.hljs-tag,
+.hljs-name {
+  color: #e8bf6a;
+}
+
+.hljs-type {
+  color: #da4939;
+}
+
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-attr,
+.hljs-link {
+  color: #6d9cbe;
+}
+
+.hljs-params {
+  color: #d0d0ff;
+}
+
+.hljs-attribute {
+  color: #cda869;
+}
+
+.hljs-meta {
+  color: #9b859d;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #ffc66d;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-selector-class {
+  color: #9b703f;
+}
+
+.hljs-selector-id {
+  color: #8b98ab;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1:hover .anchor .octicon-link:before,
+.markdown-body h2:hover .anchor .octicon-link:before,
+.markdown-body h3:hover .anchor .octicon-link:before,
+.markdown-body h4:hover .anchor .octicon-link:before,
+.markdown-body h5:hover .anchor .octicon-link:before,
+.markdown-body h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'%3E%3C/path%3E%3C/svg%3E");
+}.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #24292e;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body details {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body a {
+  background-color: initial;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: initial;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+
+.markdown-body hr:after,
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol ol ol,
+.markdown-body ol ul ol,
+.markdown-body ul ol ol,
+.markdown-body ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body input::-webkit-inner-spin-button,
+.markdown-body input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.markdown-body :checked+.radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+
+.markdown-body .border {
+  border: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .border-0 {
+  border: 0!important;
+}
+
+.markdown-body .border-bottom {
+  border-bottom: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .rounded-1 {
+  border-radius: 3px!important;
+}
+
+.markdown-body .bg-white {
+  background-color: #fff!important;
+}
+
+.markdown-body .bg-gray-light {
+  background-color: #fafbfc!important;
+}
+
+.markdown-body .text-gray-light {
+  color: #6a737d!important;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-top: 8px!important;
+  margin-bottom: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+
+.markdown-body .pl-3,
+.markdown-body .px-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .px-3 {
+  padding-right: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .f6 {
+  font-size: 12px!important;
+}
+
+.markdown-body .lh-condensed {
+  line-height: 1.25!important;
+}
+
+.markdown-body .text-bold {
+  font-weight: 600!important;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.markdown-body .pl-smw,
+.markdown-body .pl-v {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+
+.markdown-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+
+.markdown-body .pl-c2:before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: 700;
+  color: #22863a;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: 700;
+  color: #005cc5;
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+
+.markdown-body .pl-mb {
+  font-weight: 700;
+  color: #24292e;
+}
+
+.markdown-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+
+.markdown-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+.markdown-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+
+.markdown-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+
+.markdown-body .pl-mdr {
+  font-weight: 700;
+  color: #6f42c1;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-bottom: 8px!important;
+}
+
+.markdown-body .my-2 {
+  margin-top: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .pl-7 {
+  padding-left: 48px!important;
+}
+
+.markdown-body .pl-8 {
+  padding-left: 64px!important;
+}
+
+.markdown-body .pl-9 {
+  padding-left: 80px!important;
+}
+
+.markdown-body .pl-10 {
+  padding-left: 96px!important;
+}
+
+.markdown-body .pl-11 {
+  padding-left: 112px!important;
+}
+
+.markdown-body .pl-12 {
+  padding-left: 128px!important;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.markdown-body:after,
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  clear: both;
+}
+
+.markdown-body>:first-child {
+  margin-top: 0!important;
+}
+
+.markdown-body>:last-child {
+  margin-bottom: 0!important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body blockquote,
+.markdown-body details,
+.markdown-body dl,
+.markdown-body ol,
+.markdown-body p,
+.markdown-body pre,
+.markdown-body table,
+.markdown-body ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.markdown-body blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: .25em solid #dfe2e5;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  padding-bottom: .3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  font-size: .85em;
+  color: #6a737d;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ol ul,
+.markdown-body ul ol,
+.markdown-body ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: initial;
+  background-color: #fff;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: initial;
+  border: 0;
+}
+
+.markdown-body .commit-tease-sha {
+  display: inline-block;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 90%;
+  color: #444d56;
+}
+
+.markdown-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+
+.markdown-body .blob-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.markdown-body .blob-num {
+  width: 1%;
+  min-width: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(27,31,35,.3);
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .blob-num:hover {
+  color: rgba(27,31,35,.6);
+}
+
+.markdown-body .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.markdown-body .blob-code {
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+.markdown-body .blob-code-inner {
+  overflow: visible;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  font-size: 12px;
+  color: #24292e;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.markdown-body .pl-token.active,
+.markdown-body .pl-token:hover {
+  cursor: pointer;
+  background: #ffea7f;
+}
+
+.markdown-body .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  tab-size: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  tab-size: 2;
+}
+
+.markdown-body .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  tab-size: 3;
+}
+
+.markdown-body .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.markdown-body .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  tab-size: 5;
+}
+
+.markdown-body .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  tab-size: 6;
+}
+
+.markdown-body .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  tab-size: 7;
+}
+
+.markdown-body .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  tab-size: 8;
+}
+
+.markdown-body .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  tab-size: 9;
+}
+
+.markdown-body .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  tab-size: 10;
+}
+
+.markdown-body .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  tab-size: 11;
+}
+
+.markdown-body .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  tab-size: 12;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+</style><body class="markdown-body">
+  <h1 id="gentooをvmから起動する。">GentooをVMから起動する。</h1>
 <p>下記からVMを作成する。
-http://qiita.com/igara/items/989ea37805f0db85b2f2</p>
+<a href="http://qiita.com/igara/items/989ea37805f0db85b2f2">http://qiita.com/igara/items/989ea37805f0db85b2f2</a></p>
 <p>VMのネットワークをブリッジにして実行</p>
 <h1 id="h2oをインストールする前の準備">H2Oをインストールする前の準備</h1>
 <p>Gentooにsshで接続したら下記コマンドたちを実行する。</p>
 <h2 id="gitをインストール">Gitをインストール</h2>
-<pre><code>$ sudo emerge git</code></pre><h2 id="libyamlをインストール">libyamlをインストール</h2>
-<pre><code>$ sudo emerge libyaml</code></pre><h1 id="h2oのインストール">H2Oのインストール</h1>
+<pre><code><span class="hljs-variable">$ </span>sudo emerge git</code></pre><h2 id="libyamlをインストール">libyamlをインストール</h2>
+<pre><code><span class="hljs-variable">$ </span>sudo emerge libyaml</code></pre><h1 id="h2oのインストール">H2Oのインストール</h1>
 <p>下記を参考
-https://h2o.examp1e.net/install.html</p>
-<pre><code># H2Oをダウンロード
-$ wget https://github.com/h2o/h2o/archive/v1.5.0.tar.gz
-# 解凍
-$ tar zxf v1.5.0.tar.gz
+<a href="https://h2o.examp1e.net/install.html">https://h2o.examp1e.net/install.html</a></p>
+<pre><code><span class="hljs-comment"># H2Oをダウンロード</span>
+<span class="hljs-variable">$ </span>wget <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/h</span>2o/h2o/archive/v1.<span class="hljs-number">5.0</span>.tar.gz
+<span class="hljs-comment"># 解凍</span>
+<span class="hljs-variable">$ </span>tar zxf v1.<span class="hljs-number">5.0</span>.tar.gz
 
-# 解凍して作成したディレクトリに移動する
-$ cd h2o-1.5.0/
-# -DWITH_BUNDLED_SSLフラグというのがあるのだそうだ
-$ cmake -DWITH_BUNDLED_SSL=on .
+<span class="hljs-comment"># 解凍して作成したディレクトリに移動する</span>
+<span class="hljs-variable">$ </span>cd h2o<span class="hljs-number">-1.5</span>.0/
+<span class="hljs-comment"># -DWITH_BUNDLED_SSLフラグというのがあるのだそうだ</span>
+<span class="hljs-variable">$ </span>cmake -DWITH_BUNDLED_SSL=on .
 
-# build
-$ cmake .
-$ make h2o
-$ sudo make install</code></pre><h1 id="h2oの設定ファイル作成">H2Oの設定ファイル作成</h1>
-<pre><code class="language-h2o.conf">user: vagrant
+<span class="hljs-comment"># build</span>
+<span class="hljs-variable">$ </span>cmake .
+<span class="hljs-variable">$ </span>make h2o
+<span class="hljs-variable">$ </span>sudo make install</code></pre><h1 id="h2oの設定ファイル作成">H2Oの設定ファイル作成</h1>
+<pre><code class="language-h2o.conf"><span class="hljs-attribute">user</span>: vagrant
 
-listen: 80
+<span class="http"><span class="hljs-attribute">listen</span>: 80
 
-hosts:
- &quot;example.com&quot;:
-   paths:
-    /:
-     file.dir: /home/vagrant/public_html
+<span class="yaml"><span class="hljs-attr">hosts:</span>
+ <span class="hljs-attr">"example.com":</span>
+   <span class="hljs-attr">paths:</span>
+    <span class="hljs-string">/:</span>
+     <span class="hljs-attr">file.dir:</span> <span class="hljs-string">/home/vagrant/public_html</span>
 
-file.custom-handler:
- extension: .php
- fastcgi.connect:
-  host: 127.0.0.1
-  port: 9000
-  type: tcp
+<span class="hljs-attr">file.custom-handler:</span>
+ <span class="hljs-attr">extension:</span> <span class="hljs-string">.php</span>
+ <span class="hljs-attr">fastcgi.connect:</span>
+  <span class="hljs-attr">host:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>
+  <span class="hljs-attr">port:</span> <span class="hljs-number">9000</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">tcp</span>
 
-access-log: /home/vagrant/access-log
-error-log: /home/vagrant/error-log
-pid-file: /home/vagrant/pid-file</code></pre>
+<span class="hljs-attr">access-log:</span> <span class="hljs-string">/home/vagrant/access-log</span>
+<span class="hljs-attr">error-log:</span> <span class="hljs-string">/home/vagrant/error-log</span>
+<span class="hljs-attr">pid-file:</span> <span class="hljs-string">/home/vagrant/pid-file</span></span></span></code></pre>
 <h1 id="public_htmlの作成とindexhtmlの作成">public_htmlの作成とindex.htmlの作成</h1>
 <pre><code># public_htmlというディレクトリを作成する
-$ mkdir /home/vagrant/public_html</code></pre><p>public_htmlにindex.htmlとindex.phpを作成する</p>
+$ <span class="hljs-built_in">mkdir</span> /<span class="hljs-built_in">home</span>/vagrant/public_html</code></pre><p>public_htmlにindex.htmlとindex.phpを作成する</p>
 <pre><code class="language-index.html">Hello H2O!</code></pre>
-<pre><code class="language-index.php">&lt;?PHP
-    phpinfo();</code></pre>
+<pre><code class="language-index.php">&lt;?<span class="hljs-function">PHP
+    <span class="hljs-title">phpinfo</span><span class="hljs-params">()</span></span>;</code></pre>
 <h1 id="h2oの起動と終了">H2Oの起動と終了</h1>
-<pre><code># 起動
+<pre><code><span class="hljs-comment"># 起動</span>
 $ sudo h2o -m daemon -c h2o.conf
-# 終了
-$ sudo kill -TERM `cat /home/vagrant/pid-file`</code></pre><h1 id="phpを使えるようにする">PHPを使えるようにする</h1>
+<span class="hljs-comment"># 終了</span>
+$ sudo kill -TERM <span class="hljs-string">`cat /home/vagrant/pid-file`</span></code></pre><h1 id="phpを使えるようにする">PHPを使えるようにする</h1>
 <h2 id="phpenvのインストール">phpenvのインストール</h2>
 <p>これは
-https://blog.sus-happy.net/201506/h2o_php7/#php7-boot
+<a href="https://blog.sus-happy.net/201506/h2o_php7/#php7-boot">https://blog.sus-happy.net/201506/h2o_php7/#php7-boot</a>
 を参照に</p>
-<pre><code>$ git clone https://github.com/CHH/phpenv.git
-$ cd phpenv/bin/
-$ sh phpenv-install.sh</code></pre><pre><code class="language-~/.bashrc">export PATH=&quot;/home/vagrant/.phpenv/bin:$PATH&quot;
-eval &quot;$(phpenv init -)&quot;</code></pre>
-<pre><code>$ source ~/.bashrc</code></pre><h2 id="php-buildのインストール">php-buildのインストール</h2>
+<pre><code><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">clone</span> https://github.com/CHH/phpenv.git</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> phpenv/bin/</span>
+<span class="hljs-meta">$</span><span class="bash"> sh phpenv-install.sh</span></code></pre><pre><code class="language-~/.bashrc"><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">PATH</span>=<span class="hljs-string">"/home/vagrant/.phpenv/bin:<span class="hljs-variable">$PATH</span>"</span>
+eval <span class="hljs-string">"<span class="hljs-variable">$(phpenv init -)</span>"</span></code></pre>
+<pre><code><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">source</span> ~/.bashrc</span></code></pre><h2 id="php-buildのインストール">php-buildのインストール</h2>
 <p>これも
-https://blog.sus-happy.net/201506/h2o_php7/#php7-boot
+<a href="https://blog.sus-happy.net/201506/h2o_php7/#php7-boot">https://blog.sus-happy.net/201506/h2o_php7/#php7-boot</a>
 を参照に</p>
-<pre><code>$ git clone https://github.com/CHH/php-build.git
-$ cd php-build/
-$ sudo sh install.sh</code></pre><h2 id="php7インストール">PHP7インストール</h2>
+<pre><code><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">clone</span> https://github.com/CHH/php-build.git</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> php-build/</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo sh install.sh</span></code></pre><h2 id="php7インストール">PHP7インストール</h2>
 <pre><code>$ php-build --definitions
-5.2.17
+<span class="hljs-number">5.2</span><span class="hljs-number">.17</span>
 ↑
 省略
 ↓
-5.6.14
-5.6snapshot
-7.0.0alpha1
-7.0.0alpha2
-7.0.0beta1
-7.0.0beta2
-7.0.0beta3
-7.0.0RC1
-7.0.0RC2
-7.0.0RC3
-7.0.0RC4
-7.0snapshot
+<span class="hljs-number">5.6</span><span class="hljs-number">.14</span>
+<span class="hljs-number">5.6</span>snapshot
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>alpha1
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>alpha2
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>beta1
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>beta2
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>beta3
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>RC1
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>RC2
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>RC3
+<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>RC4
+<span class="hljs-number">7.0</span>snapshot
 master</code></pre><p>PHPに必要なライブラリを入れる</p>
-<pre><code># libjpegをインストール
-$ wget http://www.ijg.org/files/jpegsrc.v9a.tar.gz
-$ tar xzf jpegsrc.v9a.tar.gz
-$ ./configure --enable-shared
-$ make
-$ make install
-
-# libpngをインストール
-$ wget http://prdownloads.sourceforge.net/libpng/libpng-1.6.18.tar.gz
-$ tar xzf libpng-1.6.18.tar.gz
-$ cd libpng-1.6.18
-$ ./configure --enable-shared
-$ make
-$ sudo make install
-
-$ cd
-
-# まだ足りないのがあるかも
-USE=&quot;tidy&quot; emerge php
-USE=&quot;fpm&quot; emerge php
+<pre><code><span class="hljs-meta">#</span><span class="bash"> libjpegをインストール</span>
+<span class="hljs-meta">$</span><span class="bash"> wget http://www.ijg.org/files/jpegsrc.v9a.tar.gz</span>
+<span class="hljs-meta">$</span><span class="bash"> tar xzf jpegsrc.v9a.tar.gz</span>
+<span class="hljs-meta">$</span><span class="bash"> ./configure --<span class="hljs-built_in">enable</span>-shared</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+<span class="hljs-meta">$</span><span class="bash"> make install</span>
+<span class="hljs-meta">
+#</span><span class="bash"> libpngをインストール</span>
+<span class="hljs-meta">$</span><span class="bash"> wget http://prdownloads.sourceforge.net/libpng/libpng-1.6.18.tar.gz</span>
+<span class="hljs-meta">$</span><span class="bash"> tar xzf libpng-1.6.18.tar.gz</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> libpng-1.6.18</span>
+<span class="hljs-meta">$</span><span class="bash"> ./configure --<span class="hljs-built_in">enable</span>-shared</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo make install</span>
+<span class="hljs-meta">
+$</span><span class="bash"> <span class="hljs-built_in">cd</span></span>
+<span class="hljs-meta">
+#</span><span class="bash"> まだ足りないのがあるかも</span>
+USE="tidy" emerge php
+USE="fpm" emerge php
 </code></pre><p>7.0.0RC4をビルド</p>
-<pre><code>$ sudo php-build 7.0.0RC4 ~/.phpenv/versions/7.0.0RC4</code></pre><p>インストールしたことがあるPHPバージョン確認</p>
-<pre><code>$ phpenv versions
-$ php-fpm -v
-# 現在のバージョンを確認する</code></pre><p>PHPバージョンを切り替える</p>
-<pre><code>$ phpenv global 7.0.0RC4
-$ php-fpm -v
-# 現在のバージョンを確認する</code></pre><p>PHP Config</p>
-<pre><code># php-fpm.confを更新
-$ cp ~/.phpenv/versions/7.0.0RC4/etc/php-fpm.conf.default ~/.phpenv/versions/7.0.0RC4/etc/php-fpm.conf
-# php-fpm.d/www.confも更新
-cp ~/.phpenv/versions/7.0.0RC4/etc/php-fpm.d/www.conf.default ~/.phpenv/versions/7.0.0RC4/etc/php-fpm.d/www.conf 
+<pre><code>$ sudo php-build <span class="hljs-number">7.0</span><span class="hljs-number">.0</span>RC4 ~/.phpenv/versions/<span class="hljs-number">7.0</span><span class="hljs-number">.0</span>RC4</code></pre><p>インストールしたことがあるPHPバージョン確認</p>
+<pre><code><span class="hljs-variable">$ </span>phpenv versions
+<span class="hljs-variable">$ </span>php-fpm -v
+<span class="hljs-comment"># 現在のバージョンを確認する</span></code></pre><p>PHPバージョンを切り替える</p>
+<pre><code><span class="hljs-variable">$ </span>phpenv global <span class="hljs-number">7.0</span>.0RC4
+<span class="hljs-variable">$ </span>php-fpm -v
+<span class="hljs-comment"># 現在のバージョンを確認する</span></code></pre><p>PHP Config</p>
+<pre><code><span class="hljs-comment"># php-fpm.confを更新</span>
+$ cp ~<span class="hljs-regexp">/.phpenv/versions</span><span class="hljs-regexp">/7.0.0RC4/etc</span><span class="hljs-regexp">/php-fpm.conf.default ~/</span>.phpenv/versions/<span class="hljs-number">7.0</span>.<span class="hljs-number">0</span>RC4/etc/php-fpm.conf
+<span class="hljs-comment"># php-fpm.d/www.confも更新</span>
+cp ~<span class="hljs-regexp">/.phpenv/versions</span><span class="hljs-regexp">/7.0.0RC4/etc</span><span class="hljs-regexp">/php-fpm.d/www</span>.conf.default ~<span class="hljs-regexp">/.phpenv/versions</span><span class="hljs-regexp">/7.0.0RC4/etc</span><span class="hljs-regexp">/php-fpm.d/www</span>.conf 
 
-# php-fpmを実行
-~/.phpenv/versions/7.0.0RC4/sbin/php-fpm &amp;
-# エラーが出なければ問題無し</code></pre><p>H2Oを起動してindex.htmlとindex.phpを見てみる</p>
+<span class="hljs-comment"># php-fpmを実行</span>
+~<span class="hljs-regexp">/.phpenv/versions</span><span class="hljs-regexp">/7.0.0RC4/sbin</span><span class="hljs-regexp">/php-fpm &amp;
+# エラーが出なければ問題無し</span></code></pre><p>H2Oを起動してindex.htmlとindex.phpを見てみる</p>
 <p><img src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2015-10-11T20:22:16+09:00-[メモ]GentooにH2O+PHP7.0.0RC4をインストールする。/0-md.png" alt="スクリーンショット 2015-10-12 23.01.28.png"></p>
 <h1 id="laravelのプロジェクトを作成する">laravelのプロジェクトを作成する</h1>
-<pre><code># composerのインストール
-$ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-$ composer global require &quot;laravel/installer=~1.1&quot;
-$ laravel new slack_rack_php</code></pre><p>h2oのpathsをlaravelのpublicフォルダに変更させる</p>
-<pre><code class="language-h2o.conf">user: vagrant
+<pre><code><span class="hljs-comment"># composerのインストール</span>
+$ curl -<span class="hljs-variable">sS</span> <span class="hljs-keyword">https</span>://getcomposer.org/installer | sudo php <span class="hljs-comment">-- --install-dir=/usr/local/bin --filename=composer</span>
+$ composer <span class="hljs-built_in">global</span> <span class="hljs-built_in">require</span> <span class="hljs-string">"laravel/installer=~1.1"</span>
+$ laravel <span class="hljs-built_in">new</span> slack_rack_php</code></pre><p>h2oのpathsをlaravelのpublicフォルダに変更させる</p>
+<pre><code class="language-h2o.conf"><span class="hljs-attribute">user</span>: vagrant
 
-listen: 80
+<span class="http"><span class="hljs-attribute">listen</span>: 80
 
-hosts:
- &quot;example.com&quot;:
-   paths:
-    /:
-     file.dir: /home/vagrant/slack_rack_php/public
+<span class="yaml"><span class="hljs-attr">hosts:</span>
+ <span class="hljs-attr">"example.com":</span>
+   <span class="hljs-attr">paths:</span>
+    <span class="hljs-string">/:</span>
+     <span class="hljs-attr">file.dir:</span> <span class="hljs-string">/home/vagrant/slack_rack_php/public</span>
 
-file.custom-handler:
- extension: .php
- fastcgi.connect:
-  host: 127.0.0.1
-  port: 9000
-  type: tcp
+<span class="hljs-attr">file.custom-handler:</span>
+ <span class="hljs-attr">extension:</span> <span class="hljs-string">.php</span>
+ <span class="hljs-attr">fastcgi.connect:</span>
+  <span class="hljs-attr">host:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>
+  <span class="hljs-attr">port:</span> <span class="hljs-number">9000</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">tcp</span>
 
-access-log: /home/vagrant/access-log
-error-log: /home/vagrant/error-log
-pid-file: /home/vagrant/pid-file</code></pre>
+<span class="hljs-attr">access-log:</span> <span class="hljs-string">/home/vagrant/access-log</span>
+<span class="hljs-attr">error-log:</span> <span class="hljs-string">/home/vagrant/error-log</span>
+<span class="hljs-attr">pid-file:</span> <span class="hljs-string">/home/vagrant/pid-file</span></span></span></code></pre>
+
+</body>
