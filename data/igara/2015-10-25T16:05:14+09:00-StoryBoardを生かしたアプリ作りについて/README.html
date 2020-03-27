@@ -1,0 +1,32 @@
+<h4 id="概要">概要</h4>
+<p>StoryBoardを用いることで画面遷移がコードで実装しなくても楽に行うことができるようになったが、
+StoryBoardを一部分割したい、1つのStoryBoardで多数のViewControllerを用いて処理の分割したい
+といった内容について投稿してみる。</p>
+<h4 id="container-view-controller">Container View Controller</h4>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-25T16:05:14+09:00-StoryBoardを生かしたアプリ作りについて/0-md.png" alt="スクリーンショット 2015-10-25 15.45.02.png"></p>
+<p>iOS5から使えるようになった機能
+StoryBoard上のViewControllerに子のViewControllerを配置することができる。
+よくやることとして
+UITableViewの処理をUITableViewControllerのサブクラスに置いてあげて、
+StroyBoard上のUITableViewControllerのクラスをサブクラス指定してあげて、
+ContainerViewControllerにSegueさせるということをやっている。
+TabelViewの中身が静的な物であればStoryBoard上に直接書くというのも考えてもいいと思う。
+ViewControllerの肥大化を防ぐことにも繋がるのではなかろうか。</p>
+<p>この時のクラス構成としてはこうなった。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-25T16:05:14+09:00-StoryBoardを生かしたアプリ作りについて/1-md.png" alt="スクリーンショット 2015-10-25 15.49.11.png">
+<img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-25T16:05:14+09:00-StoryBoardを生かしたアプリ作りについて/2-md.png" alt="スクリーンショット 2015-10-25 15.49.43.png"></p>
+<h4 id="storyboard-reference">StoryBoard Reference</h4>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-25T16:05:14+09:00-StoryBoardを生かしたアプリ作りについて/3-md.png" alt="スクリーンショット 2015-10-25 16.02.38.png"></p>
+<p>この機能はXcode7から用いることができるようになった機能
+StoryBoardの特徴として
+1つのStoryBoardで画面構成を作成することができるが
+多人数の開発だと競合を多発させる場面が出るだろう。
+できるだけ競合を防ぐためにもStoryBoardは細かく作っていきたい。
+個人的には1つのStoryBoardで1つだけの画面を作っていきたい派である。
+ちょっと前ではStoryBoardを分割するためにコード上でStoryBoard上のViewControllerを呼び出してpushさせるということをやっていたがそれをInterfaceBuilder上でできるのはすごい。</p>
+<p>上の図ではChannelListと記載されたセルをタップした時に
+別のStroyBoardを呼ぶようになっている。</p>

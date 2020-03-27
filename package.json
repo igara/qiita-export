@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "test": "jest",
-    "export": "ts-node -r tsconfig-paths/register index.ts"
+    "export": "ts-node -r tsconfig-paths/register index.ts",
+    "html": "ts-node -r tsconfig-paths/register html.ts"
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,12 @@
   "homepage": "https://github.com/igara/qiita-export#readme",
   "dependencies": {
     "isomorphic-unfetch": "3.0.0",
+    "marked": "0.8.2",
     "request-promise": "4.2.5"
   },
   "devDependencies": {
     "@types/jest": "25.1.4",
+    "@types/marked": "0.7.3",
     "@types/node": "12.12.31",
     "@types/request-promise": "4.1.46",
     "@typescript-eslint/eslint-plugin": "2.25.0",

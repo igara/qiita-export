@@ -1,0 +1,282 @@
+<h1 id="この記事の内容について">この記事の内容について</h1>
+<p>前回UnityでSwiftで書いたiOSのネイティブコードを使う方法について記載しました。</p>
+<ul>
+<li><a href="http://qiita.com/igara/items/68b4d3efd53c118339b3">UnityのネイティブコードをSwiftで書こうとした時にはまったこと</a></li>
+</ul>
+<p>（実際やってみるとUnityでビルドする度にXcode上の設定が戻ってしまって辛い問題が...）</p>
+<p>その後Androidのネイティブコードも書いてみてiOSとAndroidのプロジェクト構成に違いが出たなぁということでメモ書きです。</p>
+<h1 id="対象のプロジェクトの簡単な説明">対象のプロジェクトの簡単な説明</h1>
+<ul>
+<li><p><a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55">Bariiiii</a>
+Assets、ProjectSettingsは
+Unityプロジェクトで使用されるものです。</p>
+<ul>
+<li><a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin">CreateBariiiiiAndroidNativePlugin</a><br>このプロジェクトはAndroid Studioで作成されており、<br>このプロジェクトでビルドで作成されたjarファイルやaarファイルをGradlew経由で<a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/Android">/Assets/Plugins/Android</a>にimportさせます。</li>
+<li><a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiIOSNativePlugin">CreateBariiiiiIOSNativePlugin</a><br>このプロジェクトはXcodeで作成されますが、<br>対象のネイティブコードはUnity管理のディレクトリ<a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii">/Assets/Plugins/iOS/</a>に直接配置します。この構成を実現させるにはXcodeプロジェクト上のファイルと実ファイルの参照がちゃんとリンクさせる必要があります。</li>
+</ul>
+</li>
+</ul>
+<h2 id="補足：そもそもunityによるiosとandroidのビルドの違い">補足：そもそもUnityによるiOSとAndroidのビルドの違い</h2>
+<ul>
+<li><p>iOS
+一旦Xcodeのプロジェクトが作成されて
+Xcode経由でiOS端末にアプリインストールします。</p>
+</li>
+<li><p>Android
+Unityの設定でAndroid SDKのパス設定が正常ならば
+Unityのビルドで直接Android端末にアプリインストールします。</p>
+</li>
+</ul>
+<h1 id="androidのプロジェクト">Androidのプロジェクト</h1>
+<h2 id="ネイティブコードの配置先">ネイティブコードの配置先</h2>
+<p>Layout XML、コードなどはよくあるAndroidプロジェクトの配置と同じです。</p>
+<h2 id="androidmanifestxml">AndroidManifest.xml</h2>
+<p>使用したいAndroidプロジェクトのActivityや必要な権限（permission）はUnityプロジェクト側のAndroidManifest.xmlに記載します。
+理由としてはUnityビルド中に他のaarファイルの中にあるAndroidManifest.xmlがマージを行いコンフリクトを起こす原因になるからです。</p>
+<ul>
+<li>Androidプロジェクト側<br><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/AndroidManifest.xml">AndroidManifest.xml</a></li>
+</ul>
+<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/app/src/main/AndroidManifest.xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;work.syonet.bariiiii&quot;&gt;
+
+    &lt;application
+        android:allowBackup=&quot;true&quot;
+        android:icon=&quot;@mipmap/ic_launcher&quot;
+        android:supportsRtl=&quot;true&quot;
+        android:theme=&quot;@style/AppTheme&quot;&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;</code></pre>
+<ul>
+<li>Unityプロジェクト側<br><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/Android/AndroidManifest.xml">AndroidManifest.xml</a></li>
+</ul>
+<pre><code class="language-/Assets/Plugins/Android/AndroidManifest.xml">&lt;manifest
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;uses-sdk android:minSdkVersion=&quot;14&quot; android:targetSdkVersion=&quot;23&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot;/&gt;
+    &lt;uses-feature android:name=&quot;android.hardware.camera&quot;/&gt;
+    &lt;uses-feature android:name=&quot;android.hardware.camera.autofocus&quot;/&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+    &lt;application
+        android:theme=&quot;@style/UnityThemeSelector&quot;
+        android:icon=&quot;@drawable/app_icon&quot;
+        android:label=&quot;@string/app_name&quot;&gt;
+        &lt;activity
+            android:name=&quot;com.unity3d.player.UnityPlayerNativeActivity&quot;
+            android:configChanges=&quot;fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen&quot;&gt;
+            &lt;meta-data android:name=&quot;android.app.lib_name&quot; android:value=&quot;unity&quot; /&gt;
+            &lt;meta-data android:name=&quot;unityplayer.ForwardNativeEventsToDalvik&quot; android:value=&quot;true&quot; /&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;activity android:name=&quot;work.syonet.bariiiii.BarcodeScanAndroidActivity&quot;
+            android:label=&quot;@string/app_name&quot;
+            android:configChanges=&quot;keyboard|keyboardHidden|orientation&quot;
+            android:exported=&quot;true&quot;
+            android:permission=&quot;android.permission.INTERNET&quot;&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
+</code></pre>
+<h2 id="buildgradle">build.gradle</h2>
+<ul>
+<li>Androidプロジェクト直下のbuild.gradle<br><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/build.gradle">build.gradle</a></li>
+</ul>
+<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/build.gradle">// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = &#39;1.0.3&#39;
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:2.1.0&#39;
+        classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;
+        classpath &quot;org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version&quot;
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+</code></pre>
+<p>ちょっとkotlin使いたかったのでその設定ぐらいしかしていません  </p>
+<ul>
+<li>Androidプロジェクト直下のapp/build.gradle<br><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/build.gradle">build.gradle</a>  </li>
+</ul>
+<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/app/build.gradle">apply plugin: &#39;com.android.library&#39;
+apply plugin: &#39;kotlin-android&#39;
+apply plugin: &#39;kotlin-android-extensions&#39;
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;24.0.2&quot;
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName &quot;1.0&quot;
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += &#39;src/main/kotlin&#39;
+    }
+}
+
+// UnityのAndroidプラグインフォルダに移動させる
+task copyLibs &lt;&lt; {
+    configurations.compile.each { lib -&gt;
+        if (lib.path.startsWith(&quot;${projectDir}/libs&quot;)) {
+            // libs内のものはコピー対象外
+            return
+        }
+        copy {
+            from lib.path
+            into &#39;../../Assets/Plugins/Android&#39;
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: [&#39;*.jar&#39;], dir: &#39;libs&#39;)
+    testCompile &#39;junit:junit:4.12&#39;
+    compile &quot;org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version&quot;
+    compile &#39;com.google.android.gms:play-services-vision:9.4.0&#39;
+    // Unityのプラグイン一覧には含めない
+    provided files(&#39;/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Development/Classes/classes.jar&#39;)
+}
+
+// このプロジェクトをaar化させる
+task exportAar(type: Copy, dependsOn: assembleRelease) {
+    from(&#39;build/outputs/aar/&#39;)
+    into(&#39;../../Assets/Plugins/Android/&#39;)
+    include(&#39;app-release.aar&#39;)
+    rename(&#39;app-release.aar&#39;, &#39;bariiiii.aar&#39;)
+}
+
+
+android.libraryVariants.all { variant -&gt;
+    variant.outputs.each { output -&gt;
+        output.packageLibrary.exclude(&#39;libs/classes.jar&#39;)
+    }
+}</code></pre>
+<p>このbuild.gradleファイルで注目する点として  </p>
+<ul>
+<li>apply plugin: &#39;com.android.library&#39;<br>com.android.applicationから変更</li>
+<li>task copyLibs<br>Google Play ServicesなどAndroidプロジェクトで使用していた<br>ライブラリをUnity管理下にするためのバッチ</li>
+<li>task exportAar<br>今回作成したAndroidプロジェクトをaarファイル化しUnity管理下にするバッチ<br>aarファイル化させた理由としてはAndroidプロジェクト内にあるLayout XMLやstring.xmlなどもまとめてくれるからです。</li>
+<li>provided files(&#39;/Applications/Unity/〜〜〜〜<br>Androidプロジェクト内のコードでUnityで提供されているUnitySendMessageを使用したかったからです。<br>使用していた箇所として<a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/java/work/syonet/bariiiii/BarcodeCameraFragment.kt">これ</a>になります。<br>provided filesを入れないとtask copyLibsを実行した時にUnityのクラスファイルを二重に入れることになり、ビルドが通らなくなります。</li>
+</ul>
+<h3 id="ビルド実行">ビルド実行</h3>
+<pre><code>gradlew app:copyLibs &amp;&amp; gradlew app:exportAar</code></pre><h2 id="androidバージョンの指定の統一">Androidバージョンの指定の統一</h2>
+<p>build.gradlewやAndroidManifest.xml、UnityEditor上で指定されているminSdkVersionやtargetSdkVersionはバラツキがないように設定</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-09-22T22:01:36+09:00-Unity上で扱うネイティブコードのプロジェクト管理・ビルドとかのメモ/0-md.png" alt="スクリーンショット 2016-09-22 21.02.59.png"></p>
+<h2 id="cからandroidプロジェクトのコードを動かすようにする">C#からAndroidプロジェクトのコードを動かすようにする</h2>
+<p>ここのやり方は公式や他のQiitaの記事でも書いてあったりしますので詳しい説明は割愛します。
+ActivityLauncher.javaというkotlinじゃなくてJavaのファイルにした理由ですが特にありません。
+強いて理由とすればC#とJavaって書き方似てるなぁという愉悦に浸るぐらいの程度のものです。</p>
+<p><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Screen/BarcodeScanScreen/Component/CameraRawImageComponent.cs">CameraRawImageComponent.cs</a></p>
+<pre><code class="language-CameraRawImageComponent.cs">AndroidJavaClass unityPlayer = new AndroidJavaClass(&quot;com.unity3d.player.UnityPlayer&quot;); 
+        AndroidJavaObject currentUnityActivity = unityPlayer.GetStatic&lt;AndroidJavaObject&gt;(&quot;currentActivity&quot;); 
+
+        AndroidJavaClass plugin = new AndroidJavaClass(&quot;work.syonet.bariiiii.ActivityLauncher&quot;); 
+        plugin.CallStatic(&quot;launchActivity&quot;, &quot;work.syonet.bariiiii.BarcodeScanAndroidActivity&quot;, currentUnityActivity );</code></pre>
+<p><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/java/work/syonet/bariiiii/ActivityLauncher.java">ActivityLauncher.java</a></p>
+<pre><code class="language-ActivityLauncher.java">package work.syonet.bariiiii;
+
+import android.app.Activity;
+import android.content.Intent;
+
+/**
+ * C#のコードからAndroidのアクティビティにつなげるクラス
+ */
+public class ActivityLauncher {
+
+    /**
+     * AndroidのアクティビティにIntentを発行する
+     * @param type 起動したいアクティビティ
+     * @param m_activity Unity自身のアクティビティ
+     */
+    public static void launchActivity(String type, final Activity m_activity) {
+        Intent i = new Intent();
+        i.setAction(Intent.ACTION_MAIN);
+        i.setClassName(m_activity, type);
+
+        // 画面遷移を行う
+        m_activity.startActivity(i);
+    }
+}</code></pre>
+<h1 id="iosのプロジェクト">iOSのプロジェクト</h1>
+<h2 id="ネイティブコードの配置先-1">ネイティブコードの配置先</h2>
+<p>この記事の冒頭にもありましたが/Assets/Plugins/iOS/下に配置します。</p>
+<blockquote>
+<p>このプロジェクトはXcodeで作成されますが、<br>対象のネイティブコードはUnity管理のディレクトリ<a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii">/Assets/Plugins/iOS/</a>に直接配置します。この構成を実現させるにはXcodeプロジェクト上のファイルと実ファイルの参照がちゃんとリンクさせる必要があります。</p>
+</blockquote>
+<p>iOSにもLayoutを構成するxibファイルやstoryboardなどInterface Builderで作成したもの達がありますがUnity上でも呼び出すことが可能で特別なIBの設定なども必要ありません。</p>
+<h3 id="実ファイルとxcodeプロジェクトをリンクさせる方法">実ファイルとXcodeプロジェクトをリンクさせる方法</h3>
+<p>まず/Assets/Plugins/iOS/下に空のクラスファイルを作成します。
+あとはFinderからファイルをXcode上にドラッグアンドドロップしましょう。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-09-22T22:01:36+09:00-Unity上で扱うネイティブコードのプロジェクト管理・ビルドとかのメモ/1-md.png" alt="スクリーンショット 2016-09-22 21.20.35.png"></p>
+<p>これでリンクされるようになります。</p>
+<h2 id="cからiosプロジェクトのコードを動かすようにする">C#からiOSプロジェクトのコードを動かすようにする</h2>
+<p>ここのやり方もAndroid同様に公式や他のQiitaの記事でも書いてあったりしますので詳しい説明は割愛です。</p>
+<p><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.cs">BarcodeScanIOS.cs</a></p>
+<pre><code class="language-/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.cs">    [DllImport(&quot;__Internal&quot;)]
+    private static extern void barcordScanInit_ ();
+
+    public static void barcordScanInit () {
+        if (Application.platform != RuntimePlatform.OSXEditor) {
+            barcordScanInit_ ();
+        }
+    }</code></pre>
+<p><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.mm">BarcodeScanIOS.mm</a></p>
+<pre><code class="language-/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.mm">#pragma mark called by C#
+/**
+ * MARK:Unity上で扱うViewController
+ */
+extern UIViewController *UnityGetGLViewController();
+
+extern &quot;C&quot; {
+    void barcordScanInit_();
+}
+
+/**
+ * MARK:C#からBarcodeIOSのクラスを呼び出す
+ */
+void barcordScanInit_() {
+
+    UINib *nib = [UINib nibWithNibName:@&quot;BarcodeScanIOSScreen&quot; bundle:nil];
+    BarcodeScanIOS *barcode = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    [UnityGetGLViewController() presentViewController:barcode animated:YES completion:nil];
+}</code></pre>
+<h1 id="今後（今">今後（今</h1>
+<p>Unityプロジェクトとネイティブコードプロジェクトのビルドを楽にできるようなツールを作成中
+https://github.com/igara/Bariiiii/tree/master/BuildTool
+もっとiOSのビルドが楽になるようなものを作っていきたいです。</p>
+<h1 id="参考リンク">参考リンク</h1>
+<ul>
+<li>公式<ul>
+<li><a href="https://docs.unity3d.com/ja/current/Manual/PluginsForAndroid.html">Unity - マニュアル_ Android 用のプラグインをビルド</a></li>
+<li><a href="https://docs.unity3d.com/ja/current/Manual/PluginsForIOS.html">Unity - マニュアル_ iOS 用のプラグインをビルド</a></li>
+</ul>
+</li>
+<li>UnityとAndroidネイティブの連携：UnityからネイティブのActivityを呼び出す[part1] _ 未知の路<br>http://redfreshet.com/2015/08/24/unity_android_link_3/</li>
+<li>【Unity】こんなAndroidネイティブプラグインをつくっちゃいけない！【特に広告SDK】 - Qiita<br>http://qiita.com/RyotaMurohoshi/items/3b95daeb8eaa6b487a20</li>
+</ul>

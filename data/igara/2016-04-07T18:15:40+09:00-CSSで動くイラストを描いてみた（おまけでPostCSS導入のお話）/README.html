@@ -1,0 +1,406 @@
+<h1 id="内容">内容</h1>
+<p>非イラストレータが初めてPCでイラストを描いた話
+http://qiita.com/igara/items/3a8dfad331652b632eff</p>
+<blockquote>
+<p>新しいデザインを作るということがないのでちょっと勉強がてらに絵を描いてみたという話になります。</p>
+</blockquote>
+<p>前回描いた絵からの教訓で簡単なイラストだったら画像を使わずにCSSで表示可能なのでは？と思った為実践してみたというお話になります。</p>
+<p>記事の前半ではCSSの内容について、後半ではPostCSSの導入について記載させていただきます。</p>
+<h1 id="絵">絵</h1>
+<p>こんなものができあがってしまった</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-04-07T18:15:40+09:00-CSSで動くイラストを描いてみた（おまけでPostCSS導入のお話）/0-md.gif" alt="カエルの絵"></p>
+<p>実物として下記のリンクにあります。</p>
+<p>https://syonet.work/documents/styleguide/resources-assets-styleguide-css-symbol-myicon-icon-garasyo.html</p>
+<h1 id="絵の一部をパーツに置き換えて考える">絵の一部をパーツに置き換えて考える</h1>
+<p>下記の画像のようにパーツを構成します。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-04-07T18:15:40+09:00-CSSで動くイラストを描いてみた（おまけでPostCSS導入のお話）/1-md.png" alt="スクリーンショット 2016-04-07 17.40.10.png"></p>
+<p>それぞれの図形は複雑ではないです。</p>
+<h1 id="コード内容">コード内容</h1>
+<p>パーツ化したものをHTML、CSS化にしてみた内容になります。
+背景の赤い部分など実際は黄色い背景より大きいのですが、
+<code>overflow: hidden;</code>を用いてはみ出ないようにしていたり、
+三角形を作成するために<code>border</code>を用いたり無茶苦茶なことをやっていますが完成したものとして下記のものになります。</p>
+<h2 id="html">HTML</h2>
+<pre><code class="language-HTML">&lt;div class=&quot;myIconImage&quot;&gt;
+  &lt;div class=&quot;myIconImage-background-topTriangle&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;myIconImage-background-midddleTriangle&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;myIconImage-background-rightTriangle&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;myIconImage-character-head&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;myIconImage-character-lefteye&quot;&gt;
+    &lt;div class=&quot;myIconImage-character-lefteye-line&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;myIconImage-character-righteye&quot;&gt;
+    &lt;div class=&quot;myIconImage-character-righteye-line&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;myIconImage-character-leftnose&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;myIconImage-character-rightnose&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;myIconImage-character-body&quot;&gt;
+    &lt;div class=&quot;myIconImage-character-body-mouth&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h2 id="css">CSS</h2>
+<pre><code class="language-CSS">:root{
+  --ratio: 3;
+  --route2: 1.41421356237;
+}
+.myIconImage {
+  width: calc(100px * var(--ratio));
+  height: calc(100px * var(--ratio));
+  background-color: yellow;
+  position: relative;
+  overflow: hidden;
+}
+.myIconImage-background-topTriangle {
+  border-right: calc(100px * var(--ratio)) solid transparent;
+  border-bottom: calc(25px * var(--ratio)) solid transparent;
+  border-left: calc(100px * var(--ratio)) solid red;
+  position: absolute;
+}
+.myIconImage-background-midddleTriangle {
+  margin-top: calc(-25px * var(--ratio));
+  margin-left: calc(-100px * var(--route2) * var(--ratio) + 100px * var(--ratio));
+  border-top: calc(25px * var(--ratio)) solid transparent;
+  border-bottom: calc(25px * var(--ratio)) solid transparent;
+  border-right: calc(100px * var(--route2) * var(--ratio)) solid transparent;
+  border-left: calc(100px * var(--route2) * var(--ratio)) solid red;
+  transform: rotate(-45deg);
+  position: absolute;
+}
+.myIconImage-background-rightTriangle {
+  margin-top: calc(-25px / 2 * var(--ratio));
+  margin-left: calc(-25px / 2 * var(--ratio));
+  border-top: calc(25px * var(--ratio)) solid transparent;
+  border-right: calc(100px * var(--ratio)) solid transparent;
+  border-left: calc(100px * var(--ratio)) solid red;
+  transform: rotate(-90deg);
+  position: absolute;
+}
+.myIconImage-background-rightTriangle {
+  margin-top: calc(-25px / 2 * var(--ratio));
+  margin-left: calc(-25px / 2 * var(--ratio));
+  border-top: calc(25px * var(--ratio)) solid transparent;
+  border-right: calc(100px * var(--ratio)) solid transparent;
+  border-left: calc(100px * var(--ratio)) solid red;
+  transform: rotate(-90deg);
+  position: absolute;
+}
+.myIconImage-character-head {
+    margin-top: calc(25px * var(--ratio));
+    margin-left: calc(-25px * var(--ratio));
+    height: calc(100px * var(--ratio));
+    width: calc(100px * var(--ratio));
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border: calc(2px * var(--ratio)) solid black;
+    background: lime;
+    position: absolute;
+}
+.myIconImage-character-lefteye {
+    margin-top: calc(18px * var(--ratio));
+    margin-left: calc(15px * var(--ratio));
+    height: calc(15px * var(--ratio));
+    width: calc(23px * var(--ratio));
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: calc(2px * var(--ratio)) solid black;
+    background: white;
+    position: absolute;
+    transform: rotate(5deg);
+    overflow: hidden;
+}
+.myIconImage-character-lefteye-line {
+    margin-top: calc(6px * var(--ratio));
+    height: calc(2px * var(--ratio));
+    width: calc(25px * var(--ratio));
+    background: black;
+    position: absolute;
+    transform: rotate(-4deg);
+}
+.myIconImage-character-righteye {
+    margin-top: calc(50px * var(--ratio));
+    margin-left: calc(60px * var(--ratio));
+    height: calc(15px * var(--ratio));
+    width: calc(23px * var(--ratio));
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: calc(2px * var(--ratio)) solid black;
+    background: white;
+    position: absolute;
+    transform: rotate(65deg);
+    overflow: hidden;
+}
+.myIconImage-character-righteye-line {
+    margin-top: calc(7px * var(--ratio));
+    height: calc(2px * var(--ratio));
+    width: calc(25px * var(--ratio));
+    background: black;
+    position: absolute;
+    transform: rotate(4deg);
+}
+.myIconImage-character-leftnose {
+    margin-top: calc(50px * var(--ratio));
+    margin-left: calc(35px * var(--ratio));
+    height: calc(2px * var(--ratio));
+    width: calc(2px * var(--ratio));
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    background: black;
+    position: absolute;
+}
+.myIconImage-character-rightnose {
+    margin-top: calc(60px * var(--ratio));
+    margin-left: calc(45px * var(--ratio));
+    height: calc(2px * var(--ratio));
+    width: calc(2px * var(--ratio));
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    background: black;
+    position: absolute;
+}
+.myIconImage-character-body {
+    margin-top: calc(50px * var(--ratio));
+    margin-left: calc(-40px * var(--ratio));
+    height: calc(90px * var(--ratio));
+    width: calc(90px * var(--ratio));
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border: calc(2px * var(--ratio)) solid black;
+    background: white;
+    position: absolute;
+    overflow: hidden;
+}
+.myIconImage-character-body-mouth {
+    height: calc(50px * var(--ratio));
+    width: calc(50px * var(--ratio));
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border: calc(2px * var(--ratio)) solid black;
+    background: red;
+    position: absolute;
+    transform: rotate(180deg);
+    animation-name: mouth-animation;
+    animation-duration: 7s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+@keyframes mouth-animation {
+  0% {
+    margin-top: calc(-20px * var(--ratio));
+    margin-left: calc(50px * var(--ratio));
+  }
+  50% {
+    margin-top: calc(-100px * var(--ratio));
+    margin-left: calc(100px * var(--ratio));
+  }
+  100% {
+    margin-top: calc(-20px * var(--ratio));
+    margin-left: calc(50px * var(--ratio));
+  }
+}</code></pre>
+<h1 id="postcssを導入">PostCSSを導入</h1>
+<p>Sassを使ったことがありませんが先にPostCSSを入門してみました。</p>
+<h2 id="postcssについて">PostCSSについて</h2>
+<p><a href="http://postcss.org/">PostCSS</a></p>
+<p>Sassと同様にトランスパイルが必要なAltCSS
+プラグインが充実しており、必要に応じたトランスパイルの方法が行える。
+ビルドの速度が速いらしい</p>
+<h2 id="使用したプラグインについて">使用したプラグインについて</h2>
+<p><a href="https://github.com/postcss/autoprefixer">Autoprefixer</a></p>
+<p>コンパイルする前のソースを元にprefixを自動作成してくれるもの</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-04-07T18:15:40+09:00-CSSで動くイラストを描いてみた（おまけでPostCSS導入のお話）/2-md.png" alt="スクリーンショット 2016-04-07 18.00.41.png"></p>
+<p><a href="https://github.com/jonathantneal/precss">PreCSS</a></p>
+<p>PostCSSを使いながらSass記法が使えるもの
+今回はroute2やraito（比率）の変数の使用に用いた</p>
+<p><a href="http://cssnano.co/">cssnano</a></p>
+<p>トランスパイル後のCSSをminify化してくれる</p>
+<h2 id="postcssを使用したコード">PostCSSを使用したコード</h2>
+<p>上記のコードとさほど違いはありません...
+変更点として、変数がCSSのカスタムプロパティからSassの変数に変更しています。</p>
+<pre><code class="language-sass">/* 100px * 100pxのアイコンを表示する為の比率 */
+$ratio: 3;
+/* ルート2の数値 */
+$route2: 1.41421356237;
+
+/* アイコンを表示する領域 */
+.myIconImage {
+  width: calc(100px * $ratio);
+  height: calc(100px * $ratio);
+  background-color: yellow;
+  position: relative;
+  overflow: hidden;
+}
+/* 上部に表示している赤い三角形 */
+.myIconImage-background-topTriangle {
+  border-right: calc(100px * $ratio) solid transparent;
+  border-bottom: calc(25px * $ratio) solid transparent;
+  border-left: calc(100px * $ratio) solid red;
+  position: absolute;
+}
+/* 真ん中に表示している赤い三角形 */
+.myIconImage-background-midddleTriangle {
+  margin-top: calc(-25px * $ratio);
+  margin-left: calc(-100px * $route2 * $ratio + 100px * $ratio);
+  border-top: calc(25px * $ratio) solid transparent;
+  border-bottom: calc(25px * $ratio) solid transparent;
+  border-right: calc(100px * $route2 * $ratio) solid transparent;
+  border-left: calc(100px * $route2 * $ratio) solid red;
+  transform: rotate(-45deg);
+  position: absolute;
+}
+/* 右端に表示している赤い三角形 */
+.myIconImage-background-rightTriangle {
+  margin-top: calc(-25px / 2 * $ratio);
+  margin-left: calc(-25px / 2 * $ratio);
+  border-top: calc(25px * $ratio) solid transparent;
+  border-right: calc(100px * $ratio) solid transparent;
+  border-left: calc(100px * $ratio) solid red;
+  transform: rotate(-90deg);
+  position: absolute;
+}
+/* カエルの頭部分 */
+.myIconImage-character-head {
+    margin-top: calc(25px * $ratio);
+    margin-left: calc(-25px * $ratio);
+    height: calc(100px * $ratio);
+    width: calc(100px * $ratio);
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border: calc(2px * $ratio) solid black;
+    background: lime;
+    position: absolute;
+}
+/* アイコンの左側に表示している目 */
+.myIconImage-character-lefteye {
+    margin-top: calc(18px * $ratio);
+    margin-left: calc(15px * $ratio);
+    height: calc(15px * $ratio);
+    width: calc(23px * $ratio);
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: calc(2px * $ratio) solid black;
+    background: white;
+    position: absolute;
+    transform: rotate(5deg);
+    overflow: hidden;
+}
+/* アイコンの左側に表示している目の線 */
+.myIconImage-character-lefteye-line {
+    margin-top: calc(6px * $ratio);
+    height: calc(2px * $ratio);
+    width: calc(25px * $ratio);
+    background: black;
+    position: absolute;
+    transform: rotate(-4deg);
+}
+/* アイコンの右側に表示している目 */
+.myIconImage-character-righteye {
+    margin-top: calc(50px * $ratio);
+    margin-left: calc(60px * $ratio);
+    height: calc(15px * $ratio);
+    width: calc(23px * $ratio);
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: calc(2px * $ratio) solid black;
+    background: white;
+    position: absolute;
+    transform: rotate(65deg);
+    overflow: hidden;
+}
+/* アイコンの右側に表示している目の線 */
+.myIconImage-character-righteye-line {
+    margin-top: calc(7px * $ratio);
+    height: calc(2px * $ratio);
+    width: calc(25px * $ratio);
+    background: black;
+    position: absolute;
+    transform: rotate(4deg);
+}
+/* アイコンの左側に表示している鼻 */
+.myIconImage-character-leftnose {
+    margin-top: calc(50px * $ratio);
+    margin-left: calc(35px * $ratio);
+    height: calc(2px * $ratio);
+    width: calc(2px * $ratio);
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    background: black;
+    position: absolute;
+}
+/* アイコンの右側に表示している鼻 */
+.myIconImage-character-rightnose {
+    margin-top: calc(60px * $ratio);
+    margin-left: calc(45px * $ratio);
+    height: calc(2px * $ratio);
+    width: calc(2px * $ratio);
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    background: black;
+    position: absolute;
+}
+/* カエルの胴体 */
+.myIconImage-character-body {
+    margin-top: calc(50px * $ratio);
+    margin-left: calc(-40px * $ratio);
+    height: calc(90px * $ratio);
+    width: calc(90px * $ratio);
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border: calc(2px * $ratio) solid black;
+    background: white;
+    position: absolute;
+    overflow: hidden;
+}
+/* カエルの口 */
+.myIconImage-character-body-mouth {
+    height: calc(50px * $ratio);
+    width: calc(50px * $ratio);
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border: calc(2px * $ratio) solid black;
+    background: red;
+    position: absolute;
+    transform: rotate(180deg);
+    animation-name: mouth-animation;
+    animation-duration: 7s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+/* 口のアニメーション */
+@keyframes mouth-animation {
+  0% {
+    margin-top: calc(-20px * $ratio);
+    margin-left: calc(50px * $ratio);
+  }
+  50% {
+    margin-top: calc(-100px * $ratio);
+    margin-left: calc(100px * $ratio);
+  }
+  100% {
+    margin-top: calc(-20px * $ratio);
+    margin-left: calc(50px * $ratio);
+  }
+}</code></pre>
+<h1 id="参考ページ">参考ページ</h1>
+<p>なぜCSSのborderで三角形ができるのか、実際にコードを書いて調べてみた
+http://liginc.co.jp/web/html-css/html/164641
+次世代CSS登場！PostCSSの簡単な使い方
+http://designup.jp/postcss-how-to-use-438/
+PostCSSとcssnextで最新CSS仕様を先取り！
+https://html5experts.jp/t32k/17235/</p>

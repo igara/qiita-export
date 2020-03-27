@@ -1,0 +1,15 @@
+<h1 id="前回使ったvm">前回使ったVM</h1>
+<p>http://qiita.com/igara/items/1b7cd8e714844440795d</p>
+<p>VirtualBoxのメニューより
+デバイス-&gt;共有フォルダー設定</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-17T09:18:17+09:00-[メモ]VirtualBoxで作成したGentooからホストのフォルダを共有させる/0-md.png" alt="スクリーンショット 2015-10-17 9.13.03.png">
+実際存在する共有したいフォルダを選択</p>
+<h1 id="マウント">マウント</h1>
+<p>GentooのVMを起動する</p>
+<pre><code># マウント対象の共有のフォルダがあるか見る
+$ ls /media
+  sf_slack_rack_web
+# マウント
+$ sudo mount -t vboxsf slack_rack_web /home/vagrant/web
+# ゲストでwebフォルダを事前に作成する必要がある</code></pre>

@@ -1,0 +1,99 @@
+<h1 id="はじめに">はじめに</h1>
+<p>個人サイトをやり始めてどういったページにアクセス集中するかなど
+アクセス状態を可視化できたらいいなと思ったので実践してみたという話です。</p>
+<h1 id="どういったふうに可視化できたのか">どういったふうに可視化できたのか</h1>
+<p>Kibanaの設定をデフォルトのままという前提で話を進めていきます。</p>
+<h2 id="アクセスカウントが「見える」ようになった">アクセスカウントが「見える」ようになった</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-03-19T21:39:29+09:00-H2OのアクセスログをKibana + Elasticsearch + Fluentdで可視化する/0-md.png" alt="スクリーンショット 2016-03-19 20.21.26.png"></p>
+<p>上記の図はKibanaのSample Dashboardから確認できたものです。
+fluentdの設定でリアルタイムにアクセスログからアクセスカウントが見れるようになりました。
+fluentdの設定によってはSSHしようとしているカウントも取れそうです。</p>
+<h2 id="アクセスした時間が可視化された">アクセスした時間が可視化された</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-03-19T21:39:29+09:00-H2OのアクセスログをKibana + Elasticsearch + Fluentdで可視化する/1-md.png" alt="スクリーンショット 2016-03-19 20.30.15.png"></p>
+<p>こちらはLogstash Dashboardから確認できるものになります。
+ViewのIntervalから表示されている日時の領域幅を狭めたり、広くしたりできます。</p>
+<h2 id="アクセスしたユーザ情報が可視化された">アクセスしたユーザ情報が可視化された</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-03-19T21:39:29+09:00-H2OのアクセスログをKibana + Elasticsearch + Fluentdで可視化する/2-md.png" alt="スクリーンショット 2016-03-19 20.35.16.png"></p>
+<p>こちらもLogstash Dashboardから確認できるものになります。
+ホスト名であったりユーザエージェントなどがグラフ化します。</p>
+<h1 id="使用したソフトウェアと環境構築">使用したソフトウェアと環境構築</h1>
+<ul>
+<li><a href="https://www.elastic.co/products/kibana">Kibana</a></li>
+</ul>
+<p>JSONデータを解析してグラフを作成するソフトウェア
+使い道がいろいろありそうだ。</p>
+<p>インストール</p>
+<pre><code>$ curl -L -O https://download.elasticsearch.org/kibana/kibana/kibana-3.1.0.tar.gz
+$ tar zxvf kibana-3.1.0.tar.gz</code></pre><p>KibanaでElasticsearchの情報を見たいため
+解凍したディレクトリ内にある設定ファイルの変更を行う</p>
+<pre><code class="language-config.js">elasticsearch: &quot;http://localhost:9200&quot;,</code></pre>
+<p>KibanaはWebによるGUIなのでWebサーバの起動が必要。
+解凍したディレクトリをDocumentRoot指定してサーバ起動を行うこと。</p>
+<p>Webサーバ(H2O)の設定</p>
+<pre><code class="language-kibanahttp.conf">hosts:
+ &quot;example.com&quot;:
+    listen: 10090
+    paths:
+        /:
+         file.dir: /root/kibana-3.1.0
+
+access-log: /root/kibanaaccess-log
+error-log: /root/kibanaerror-log
+pid-file: /root/kibanapid-file
+</code></pre>
+<p>iptablesのポート指定を忘れずに</p>
+<ul>
+<li><a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a></li>
+</ul>
+<p>RESTful APIを提供してくれるソフトウェア
+今回ならばアクセスログをJSONにしてKibanaで見れるようにする繋ぎ役をしている。
+なお、ElasticsearchはJavaを必要とする。</p>
+<p>インストール
+yumのレポジトリを追加を行う</p>
+<pre><code class="language-/etc/yum.repos.d/elasticsearch.repo">[elasticsearch-1.1]
+name=Elasticsearch repository for 1.1.x packages
+baseurl=http://packages.elasticsearch.org/elasticsearch/1.1/centos
+gpgcheck=1
+gpgkey=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+enabled=1</code></pre>
+<pre><code>yum install elasticsearch</code></pre><p>Elasticsearchの起動</p>
+<pre><code>service elasticsearch start</code></pre><ul>
+<li><a href="http://www.fluentd.org/">Fluentd</a></li>
+</ul>
+<p>あらゆるイベント・変更を見て情報を転送するソフトウェア
+ログの情報をElasticsearchに反映するために使用している。
+fluentdは様々なプラグインが提供されており gem で取得できる。
+gemを使用するためRubyインストールすることが必須になる。</p>
+<p>インストール</p>
+<pre><code>$ curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh | sh
+# fluentdのプラグインをインストール
+$ td-agent-gem install fluent-plugin-elasticsearch</code></pre><p>インストール後、fluentdの設定ファイルを編集する
+設定ファイルのオプションについては後日記載</p>
+<pre><code class="language-/etc/td-agent/td-agent.conf">&lt;source&gt;
+  type tail    
+  format apache    # H2Oのアクセスログがapacheと似ていたためapacheで設定
+  path /root/access.log    # H2Oで出力されているアクセスログファイル
+  pos_file /var/log/td-agent/access.pos
+  tag h2o.access
+&lt;/source&gt;
+
+&lt;match h2o.access&gt;
+  type elasticsearch
+  host localhost
+  port 9200    # デフォルトではElasticsearchが9200で起動している
+  type_name h2o_access
+  logstash_format true
+&lt;/match&gt;
+</code></pre>
+<p>Fluentd起動</p>
+<pre><code>service td-agent start</code></pre><p>もしtd-agent startが失敗する場合は
+/var/log/td-agent/td-agent.log
+を参照すること</p>
+<h1 id="参考サイト">参考サイト</h1>
+<ul>
+<li><a href="http://j-caw.co.jp/blog/?p=1380">CentOS 6.5 (Vagrant)に fluentd + elasticsearch + kibana をセットアップする | もふもふ技術部</a></li>
+<li><a href="http://qiita.com/oikyn/items/f3e624b3cfd03b5cdb87">fluentd × Elasticsearch × kibanaによるアクセスログ解析</a></li>
+</ul>

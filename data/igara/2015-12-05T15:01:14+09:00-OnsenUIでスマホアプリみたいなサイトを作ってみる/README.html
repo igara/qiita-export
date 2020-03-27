@@ -1,0 +1,286 @@
+<h1 id="onsenuiとは">OnsenUIとは</h1>
+<p>モバイル向けに作られたHTML5フレームワーク
+クラウドIDEのmonacaでも用いられており、Webでもネイティブアプリでも使えるハイブリットなアプリ作りに貢献しているようだ。
+http://docs.monaca.mobi/2.9/ja/onsenui/</p>
+<h1 id="こういったサイトを作ってみたかったんだよ">こういったサイトを作ってみたかったんだよ!</h1>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-12-05T15:01:14+09:00-OnsenUIでスマホアプリみたいなサイトを作ってみる/0-md.gif" alt="タイトルなし.gif"></p>
+<p>タブバーとスワイプでサイドナビゲーションが表示されるサイト</p>
+<h1 id="作成方法など">作成方法など</h1>
+<p>laravelで作成されたプロジェクトを対象に説明</p>
+<h2 id="npm-install">npm install</h2>
+<p>nodejsインストールされている前提で説明
+下記を実行してライブラリをダウンロード</p>
+<pre><code>
+npm install gulp --save-dev
+npm install angular --save-dev
+npm install onsenui --save-dev
+</code></pre><h2 id="gulp-task">gulp task</h2>
+<pre><code class="language-gulpfile.js">
+var gulp = require(&#39;gulp&#39;);
+
+gulp.task(&#39;import&#39;, function() {
+
+    // onsenUIをpublic下に設置する。
+    var onsenUIPath = &#39;node_modules/onsenui&#39;;
+    gulp.src(onsenUIPath + &#39;/css/**&#39;)
+        .pipe(gulp.dest(&#39;public/css/lib/onsenui&#39;));
+    gulp.src(onsenUIPath + &#39;/js/**&#39;)
+        .pipe(gulp.dest(&#39;public/js/lib/onsenui&#39;));
+
+    // AngularJSをpublic下に設置する。
+    var angularJSPath = &#39;node_modules/angular&#39;;
+    gulp.src(angularJSPath + &#39;/angular.min.js&#39;)
+        .pipe(gulp.dest(&#39;public/js/lib/angular&#39;));
+    gulp.src(angularJSPath + &#39;/angular-csp.css&#39;)
+        .pipe(gulp.dest(&#39;public/css/lib/angular&#39;));
+
+}
+</code></pre>
+<p>gulpのタスクを実行する。</p>
+<pre><code>
+# プロジェクトのディレクトリ配下にいるときに下記実行
+./node_modules/.bin/gulp import
+</code></pre><p>これでpublic下にcss,jsファイルが移動されるはず。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-12-05T15:01:14+09:00-OnsenUIでスマホアプリみたいなサイトを作ってみる/1-md.png" alt="スクリーンショット 2015-12-05 14.39.33.png"></p>
+<h2 id="プロジェクトのresources下を編集">プロジェクトのresources下を編集</h2>
+<p>使うのは
+laravelでデフォルトで作成されているwelcome.blade.phpと
+新規で作成したwelcome/common/***.brade.php</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-12-05T15:01:14+09:00-OnsenUIでスマホアプリみたいなサイトを作ってみる/2-md.png" alt="スクリーンショット 2015-12-05 14.09.38.png"></p>
+<h3 id="welcomebladephpの編集">welcome.blade.phpの編集</h3>
+<pre><code class="language-welcome.blade.php">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link href=&quot;../css/lib/onsenui/onsenui.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;../css/lib/onsenui/onsen-css-components-dark-theme.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../js/lib/systemjs/system.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../js/lib/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../js/lib/onsenui/onsenui.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        ons.bootstrap();
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+@include(&#39;welcome.common.header&#39;)
+@include(&#39;welcome.common.menu&#39;)
+@include(&#39;welcome.common.footer&#39;)
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="ファイルの新規作成">ファイルの新規作成</h3>
+<h4 id="画面下のタブを構成するテンプレートを作成する">画面下のタブを構成するテンプレートを作成する</h4>
+<pre><code class="language-footer.blade.php">
+&lt;!-- フッター --&gt;
+&lt;ons-template id=&quot;tabbar.html&quot;&gt;
+    &lt;ons-tabbar var=&quot;tabbar&quot;&gt;
+        &lt;ons-tab page=&quot;home.html&quot; label=&quot;Home&quot; icon=&quot;ion-home&quot; active=&quot;true&quot;&gt;&lt;/ons-tab&gt;
+      &lt;ons-tab page=&quot;comments.html&quot; label=&quot;Comments&quot; icon=&quot;ion-chatbox-working&quot;&gt;&lt;/ons-tab&gt;
+      &lt;ons-tab page=&quot;tags.html&quot; label=&quot;Tags&quot; icon=&quot;ion-ios-pricetag&quot;&gt;&lt;/ons-tab&gt;
+      &lt;ons-tab page=&quot;settings.html&quot; label=&quot;Settings&quot; icon=&quot;ion-ios-cog&quot;&gt;
+    &lt;/ons-tab&gt;
+  &lt;/ons-tabbar&gt;
+&lt;/ons-template&gt;
+&lt;!-- /フッター --&gt;
+</code></pre>
+<h4 id="各メニューのページ内容を表示するテンプレートを作成する">各メニューのページ内容を表示するテンプレートを作成する</h4>
+<pre><code class="language-menu.blade.php">
+&lt;ons-sliding-menu var=&quot;menu&quot; menu-page=&quot;menu.html&quot; main-page=&quot;tabbar.html&quot; side=&quot;left&quot; type=&quot;push&quot; max-slide-distance=&quot;200px&quot;&gt;
+&lt;/ons-sliding-menu&gt;
+
+&lt;!-- サイドメニュー --&gt;
+&lt;ons-template id=&quot;menu.html&quot;&gt;
+  &lt;ons-list&gt;
+    &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(0), menu.closeMenu()&quot;&gt;
+      Home
+    &lt;/ons-list-item&gt;
+    &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(1), menu.closeMenu()&quot;&gt;
+      Comments
+    &lt;/ons-list-item&gt;
+    &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(2), menu.closeMenu()&quot;&gt;
+      Tags
+    &lt;/ons-list-item&gt;
+    &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(3), menu.closeMenu()&quot;&gt;
+      Settings
+    &lt;/ons-list-item&gt;
+  &lt;/ons-list&gt;
+&lt;/ons-template&gt;
+&lt;!-- /サイドメニュー --&gt;
+
+&lt;!-- メニューのコンテンツ内容 --&gt;
+&lt;ons-template id=&quot;home.html&quot;&gt;
+  &lt;ons-page&gt;
+    &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
+      Home
+    &lt;/p&gt;
+  &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+
+&lt;ons-template id=&quot;comments.html&quot;&gt;
+  &lt;ons-page&gt;
+    &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
+      Comments
+    &lt;/p&gt;
+  &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+
+&lt;ons-template id=&quot;tags.html&quot;&gt;
+  &lt;ons-page&gt;
+    &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
+      Tags
+    &lt;/p&gt;
+  &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+
+&lt;ons-template id=&quot;settings.html&quot;&gt;
+  &lt;ons-page&gt;
+    &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
+      Setting
+    &lt;/p&gt;
+  &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+&lt;!-- /メニューのコンテンツ内容 --&gt;
+</code></pre>
+<h4 id="ヘッダー部">ヘッダー部</h4>
+<pre><code class="language-header.blade.php">&lt;!-- ヘッダー --&gt;
+&lt;ons-template id=&quot;header.html&quot;&gt;
+    &lt;ons-toolbar&gt;
+        &lt;div class=&quot;left&quot;&gt;
+            &lt;!-- サイドメニューを表示する三表示 --&gt;
+            &lt;ons-toolbar-button ng-click=&quot;menu.toggleMenu()&quot;&gt;
+                &lt;ons-icon icon=&quot;bars&quot;&gt;&lt;/ons-icon&gt;
+            &lt;/ons-toolbar-button&gt;
+        &lt;/div&gt;
+        &lt;!-- タイトル --&gt;
+        &lt;div class=&quot;center&quot;&gt;SyoNet&lt;/div&gt;
+    &lt;/ons-toolbar&gt;
+    &lt;!-- フッターを呼び出す --&gt;
+    &lt;ng-include src=&quot;&#39;tabbar.html&#39;&quot;&gt;&lt;/ng-include&gt;
+&lt;/ons-template&gt;
+&lt;!-- /ヘッダー --&gt;
+</code></pre>
+<p>これでサイドナビゲーションとタブバーの実装ができる</p>
+<h1 id="所感">所感</h1>
+<p>今回はサーバ側で各コンテンツのテンプレートを全て静的に取得したが、
+せっかくAngularJS使っているのならば「ng-include」を用いてボタンタップ時にhtmlの内容を動的に取得しに行くのもいいなと感じた。
+初期で表示する部分はサーバで作成し、タップ後の処理はクライアントに任せてしまうのが良さそう。</p>
+<p>次世代バージョンでOnsenUI2やAngular2とかでているがどちらもalpha版、beta版である。
+OnsenUIの一部コンポーネントはAngularを用いなくても使えるようだがサイドナビゲーションなどはangularを用いらないといけないようである。
+http://onsen.io/2/reference/javascript.html</p>
+<p>2015/12/5時点
+OnsenUI2ではまだサイドナビゲーションが使えない模様
+https://github.com/OnsenUI/OnsenUI/issues/1038</p>
+<p>2015/12/25時点
+OnsenUI2でサイドナビゲーションが使えるようになった！</p>
+<h1 id="全てhtmlで管理させる">全てHTMLで管理させる</h1>
+<p>ほぼほぼ上記で書いていたことと同じになるが</p>
+<p>ディレクトリ構造として</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-12-05T15:01:14+09:00-OnsenUIでスマホアプリみたいなサイトを作ってみる/3-md.png" alt="スクリーンショット 2015-12-06 16.27.21.png"></p>
+<pre><code class="language-public/docs/screen/top/design/design.html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;link href=&quot;../../../../css/lib/onsenui/onsenui.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+        &lt;link href=&quot;../../../../css/lib/onsenui/onsen-css-components-dark-theme.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;../../../../js/lib/systemjs/system.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;../../../../js/lib/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;../../../../js/lib/onsenui/onsenui.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            ons.bootstrap();
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;ng-include src=&quot;&#39;../../common/design/design_menu.html&#39;&quot;&gt;&lt;/ng-include&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="language-public/docs/screen/common/design/design_footer.html">
+&lt;!-- フッター --&gt;
+&lt;ons-tabbar var=&quot;tabbar&quot;&gt;
+    &lt;ons-tab page=&quot;home.html&quot; label=&quot;Home&quot; icon=&quot;ion-home&quot; active=&quot;true&quot;&gt;&lt;/ons-tab&gt;
+    &lt;ons-tab page=&quot;comments.html&quot; label=&quot;Comments&quot; icon=&quot;ion-chatbox-working&quot;&gt;&lt;/ons-tab&gt;
+    &lt;ons-tab page=&quot;tags.html&quot; label=&quot;Tags&quot; icon=&quot;ion-ios-pricetag&quot;&gt;&lt;/ons-tab&gt;
+    &lt;ons-tab page=&quot;settings.html&quot; label=&quot;Settings&quot; icon=&quot;ion-ios-cog&quot;&gt;
+    &lt;/ons-tab&gt;
+&lt;/ons-tabbar&gt;
+&lt;!-- /フッター --&gt;
+</code></pre>
+<pre><code class="language-public/docs/screen/common/design/design_menu.html">
+&lt;ons-sliding-menu var=&quot;menu&quot; menu-page=&quot;menu.html&quot; main-page=&quot;../../common/design/design_header.html&quot; side=&quot;left&quot; type=&quot;push&quot; max-slide-distance=&quot;200px&quot;&gt;
+&lt;/ons-sliding-menu&gt;
+
+&lt;!-- サイドメニュー --&gt;
+&lt;ons-template id=&quot;menu.html&quot;&gt;
+    &lt;ons-list&gt;
+        &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(0), menu.closeMenu()&quot;&gt;
+            Home
+        &lt;/ons-list-item&gt;
+        &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(1), menu.closeMenu()&quot;&gt;
+            Comments
+        &lt;/ons-list-item&gt;
+        &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(2), menu.closeMenu()&quot;&gt;
+            Tags
+        &lt;/ons-list-item&gt;
+        &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(3), menu.closeMenu()&quot;&gt;
+            Settings
+        &lt;/ons-list-item&gt;
+    &lt;/ons-list&gt;
+&lt;/ons-template&gt;
+&lt;!-- /サイドメニュー --&gt;
+
+&lt;!-- メニューのコンテンツ内容 --&gt;
+&lt;ons-template id=&quot;home.html&quot;&gt;
+    &lt;ons-page&gt;
+        &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
+            Home
+        &lt;/p&gt;
+    &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+
+&lt;ons-template id=&quot;comments.html&quot;&gt;
+    &lt;ons-page&gt;
+        &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
+            Comments
+        &lt;/p&gt;
+    &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+
+&lt;ons-template id=&quot;tags.html&quot;&gt;
+    &lt;ons-page&gt;
+        &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
+            Tags
+        &lt;/p&gt;
+    &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+
+&lt;ons-template id=&quot;settings.html&quot;&gt;
+    &lt;ons-page&gt;
+        &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
+            Setting
+        &lt;/p&gt;
+    &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+&lt;!-- /メニューのコンテンツ内容 --&gt;
+</code></pre>
+<pre><code class="language-public/docs/screen/common/design/design_header.html">
+&lt;!-- ヘッダー --&gt;
+&lt;ons-toolbar&gt;
+    &lt;div class=&quot;left&quot;&gt;
+        &lt;!-- サイドメニューを表示する三表示 --&gt;
+        &lt;ons-toolbar-button ng-click=&quot;menu.toggleMenu()&quot;&gt;
+            &lt;ons-icon icon=&quot;bars&quot;&gt;&lt;/ons-icon&gt;
+        &lt;/ons-toolbar-button&gt;
+    &lt;/div&gt;
+    &lt;!-- タイトル --&gt;
+    &lt;div class=&quot;center&quot;&gt;SyoNet&lt;/div&gt;
+&lt;/ons-toolbar&gt;
+&lt;!-- /ヘッダー --&gt;
+
+&lt;!-- フッターを呼び出す --&gt;
+&lt;ng-include src=&quot;&#39;../../common/design/design_footer.html&#39;&quot;&gt;&lt;/ng-include&gt;
+</code></pre>
+<p>たまに描画ができないときがある</p>

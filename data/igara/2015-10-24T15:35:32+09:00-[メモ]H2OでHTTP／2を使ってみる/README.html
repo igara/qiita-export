@@ -1,0 +1,73 @@
+<h3 id="前提">前提</h3>
+<p>H2Oインストール済みであること
+http://qiita.com/igara/items/1b7cd8e714844440795d</p>
+<p>opensslをインストール済みであること</p>
+<h3 id="オレオレ認証書を作成する">オレオレ認証書を作成する</h3>
+<pre><code>
+$ openssl genrsa 2048 &gt; server.key
+$ openssl req -new -key server.key &gt; server.csr
+$ openssl x509 -days 3650 -req -signkey server.key &lt; server.csr &gt; server.crt
+</code></pre><p>設定はお好きに</p>
+<h3 id="h2oのコンフィグを作成">H2Oのコンフィグを作成</h3>
+<p>http通信用に作成</p>
+<pre><code class="language-h2o.conf">
+hosts:
+ &quot;example.com&quot;:
+    listen:
+     port: 8000
+    paths:
+        /:
+         file.dir: /home/vagrant/web/slack_rack_php/public
+         redirect:
+           url: /index.php/
+           internal: YES
+           status: 307
+
+file.custom-handler:
+ extension: .php
+ fastcgi.connect:
+  host: 127.0.0.1
+  port: 9000
+  type: tcp
+
+access-log: /home/vagrant/access-log
+error-log: /home/vagrant/error-log
+pid-file: /home/vagrant/pid-file
+</code></pre>
+<p>リバースプロキシとSSLの設定されたコンフィグ</p>
+<pre><code class="language-proxy.conf">
+listen:
+ port: 8080
+ ssl:
+  certificate-file: /home/vagrant/server.crt
+  key-file: /home/vagrant/server.key
+hosts:
+  default:
+    paths:
+      /:
+        proxy.reverse.url: http://127.0.0.1:8000/
+
+access-log: /home/vagrant/accessre-log
+error-log: /home/vagrant/errorre-log
+pid-file: /home/vagrant/pidre-file
+</code></pre>
+<h3 id="h2oの起動">H2Oの起動</h3>
+<pre><code>
+sudo h2o -m daemon -c h2o.conf
+sudo h2o -m daemon -c proxy.conf
+</code></pre><h3 id="http1とhttp2の比較">HTTP/1とHTTP/2の比較</h3>
+<p>画像をいっぱい読み込むページを作成してみてちょっと比較を行ってみた。</p>
+<p>こんなの</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-24T15:35:32+09:00-[メモ]H2OでHTTP／2を使ってみる/0-md.png" alt="スクリーンショット 2015-10-24 15.23.23.png"></p>
+<p>Chromeのプラグインで「HTTP/2 and SPDY indicator」もしくは
+firefoxだと「SPDY indicator」というのを入れると
+URLの隣に青いイナズマが表示され、
+HTTP/2を用いられているサイトだとわかる。</p>
+<h4 id="http1">HTTP/1</h4>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-24T15:35:32+09:00-[メモ]H2OでHTTP／2を使ってみる/1-md.png" alt="スクリーンショット 2015-10-24 15.30.11.png"></p>
+<h4 id="http2">HTTP/2</h4>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-24T15:35:32+09:00-[メモ]H2OでHTTP／2を使ってみる/2-md.png" alt="スクリーンショット 2015-10-24 15.32.30.png"></p>
+<p>HTTP/2は並列的に画像のダウンロードされているんですね。</p>

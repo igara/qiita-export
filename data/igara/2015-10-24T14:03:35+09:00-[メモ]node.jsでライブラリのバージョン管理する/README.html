@@ -1,0 +1,82 @@
+<h3 id="packagejsonにて外部ライブラリを管理する">package.jsonにて外部ライブラリを管理する</h3>
+<p>macを使っている場合にちょっとハマったので記載</p>
+<p>下記で終わりっと思っていたら...</p>
+<pre><code>brew install npm
+npm install</code></pre><p>なんかこんなのでてくる</p>
+<pre><code>module.js:333
+    throw err;
+          ^
+Error: Cannot find module &#39;child-process-close&#39;
+    at Function.Module._resolveFilename (module.js:331:15)
+    at Function.Module._load (module.js:273:25)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at /usr/local/lib/node_modules/npm/lib/npm.js:15:1
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/npm/lib/npm.js:520:3)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)</code></pre><h3 id="解決方法">解決方法</h3>
+<p>毎度のことだがぐぐってみる
+http://spot-bill.com/wordpress/?p=92</p>
+<pre><code>wget http://npmjs.org/install.sh
+sudo sh ./install.sh</code></pre><p>で解決</p>
+<h3 id="おすすめの解決方法">おすすめの解決方法</h3>
+<p>brewからではなくnodebrewを用いてnodejsをインストールする。</p>
+<pre><code>
+$ curl -L git.io/nodebrew | perl - setup
+</code></pre><pre><code class="language-.bashrc">
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+</code></pre>
+<pre><code>
+$ source .bashrc
+$ nodebrew install v4.2.1
+$ nodebrew use v4.2.1
+$ node -v
+  v4.2.1
+</code></pre><h3 id="laravelのpackagejsonにライブラリを追加する">laravelのpackage.jsonにライブラリを追加する</h3>
+<p>こっからが本題。</p>
+<p>ライブラリをダウンロードしてプロジェクトに追加するのも良いが
+せっかくlaravelのプロジェクトを作成した時にpackage.jsonというので
+バージョン管理がされているのでこれを使おう。</p>
+<p>laravelプロジェクト作成当時に記載されていたpackage.json</p>
+<pre><code class="language-package.json">
+{
+  &quot;private&quot;: true,
+  &quot;devDependencies&quot;: {
+    &quot;gulp&quot;: &quot;^3.8.8&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;laravel-elixir&quot;: &quot;^3.0.0&quot;,
+    &quot;bootstrap-sass&quot;: &quot;^3.0.0&quot;
+  }
+}
+</code></pre>
+<p>このまま</p>
+<pre><code>
+npm install
+</code></pre><p>でpackage.jsonのライブラリが追加されるわけだが
+仮に新しいバージョンのライブラリを入れたい時は</p>
+<pre><code>
+npm install --save-dev laravel-elixir
+</code></pre><p>とすることで新しいバージョンの情報がpackage.jsonに更新される。</p>
+<h3 id="個人的に使いたい物を入れてみる">個人的に使いたい物を入れてみる</h3>
+<pre><code>
+npm install --save-dev angular2
+npm install --save-dev mocha
+npm install --save-dev phantomjs
+</code></pre><p>結果として今使おうとしているライブラリの一覧ができた。</p>
+<pre><code class="language-package.json">
+{
+  &quot;private&quot;: true,
+  &quot;devDependencies&quot;: {
+    &quot;angular2&quot;: &quot;^2.0.0-alpha.45&quot;,
+    &quot;gulp&quot;: &quot;^3.8.8&quot;,
+    &quot;mocha&quot;: &quot;^2.3.3&quot;,
+    &quot;phantomjs&quot;: &quot;^1.9.18&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;laravel-elixir&quot;: &quot;^3.0.0&quot;,
+    &quot;bootstrap-sass&quot;: &quot;^3.0.0&quot;
+  }
+}</code></pre>

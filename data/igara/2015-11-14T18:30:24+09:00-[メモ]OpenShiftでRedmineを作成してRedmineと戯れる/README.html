@@ -1,0 +1,117 @@
+<h3 id="openshiftのアカウントを作成する">OpenShiftのアカウントを作成する</h3>
+<p>下記サイトから登録
+https://www.openshift.com/</p>
+<h3 id="アプリケーションredmineのプロジェクトの追加を行う">アプリケーション(Redmineのプロジェクト)の追加を行う</h3>
+<p>ログイン後の下記URLからアプリケーションの追加を行う
+https://openshift.redhat.com/app/console/applications</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-11-14T18:30:24+09:00-[メモ]OpenShiftでRedmineを作成してRedmineと戯れる/0-md.png" alt="スクリーンショット 2015-11-14 16.43.11.png"></p>
+<p>Add Application...をクリック</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-11-14T18:30:24+09:00-[メモ]OpenShiftでRedmineを作成してRedmineと戯れる/1-md.png" alt="スクリーンショット 2015-11-14 16.44.35.png"></p>
+<p>redmineで検索してみると候補に上がってくる。</p>
+<p>設定画面の説明は割愛
+Createをクリックするとビルドが始まるのでしばらく待つ。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-11-14T18:30:24+09:00-[メモ]OpenShiftでRedmineを作成してRedmineと戯れる/2-md.png" alt="スクリーンショット 2015-11-14 16.53.43.png"></p>
+<p>ビルドが完了後、青色のモザイク部分のリンクをクリックして
+Redmineの画面を開く
+<img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-11-14T18:30:24+09:00-[メモ]OpenShiftでRedmineを作成してRedmineと戯れる/3-md.png" alt="スクリーンショット 2015-11-14 17.11.09.png"></p>
+<h3 id="redmine-apiと戯れる">Redmine APIと戯れる</h3>
+<h4 id="rest-apiの使用許可">REST APIの使用許可</h4>
+<p>許可しなくても取得できるものもあるが
+管理-&gt;設定-&gt;認証から
+REST APIの使用を許可する（注意）。
+<img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-11-14T18:30:24+09:00-[メモ]OpenShiftでRedmineを作成してRedmineと戯れる/4-md.png" alt="スクリーンショット 2015-11-14 17.18.01.png"></p>
+<h4 id="apiの一覧">APIの一覧</h4>
+<p>公式の説明は下記
+http://www.redmine.org/projects/redmine/wiki/Rest_api</p>
+<p>APIが出力されるフォーマットとしてxml,jsonを対応している。</p>
+<h5 id="project-プロジェクト-api">Project プロジェクト API</h5>
+<p>公式
+http://www.redmine.org/projects/redmine/wiki/Rest_Projects</p>
+<p>プロジェクトの一覧を取得するとき
+GET
+http://{RedmineのURL}/projects.xml</p>
+<p>こんな感じのが取得できる</p>
+<pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;projects total_count=&quot;2&quot; offset=&quot;0&quot; limit=&quot;25&quot; type=&quot;array&quot;&gt;
+  &lt;project&gt;
+    &lt;id&gt;1&lt;/id&gt;
+    &lt;name&gt;さんぷる&lt;/name&gt;
+    &lt;identifier&gt;sample&lt;/identifier&gt;
+    &lt;description/&gt;
+    &lt;created_on&gt;2015-11-14T08:14:05Z&lt;/created_on&gt;
+    &lt;updated_on&gt;2015-11-14T08:14:05Z&lt;/updated_on&gt;
+  &lt;/project&gt;
+  &lt;project&gt;
+    &lt;id&gt;2&lt;/id&gt;
+    &lt;name&gt;サンプルだ&lt;/name&gt;
+    &lt;identifier&gt;sampleda&lt;/identifier&gt;
+    &lt;description/&gt;
+    &lt;created_on&gt;2015-11-14T09:48:02Z&lt;/created_on&gt;
+    &lt;updated_on&gt;2015-11-14T09:48:02Z&lt;/updated_on&gt;
+  &lt;/project&gt;
+&lt;/projects&gt;
+
+</code></pre><p>IDかidentifilterからプロジェクトを取得するとき
+GET
+http://{RedmineのURL}/projects/{idかidentifilter}.xml
+出力される内容はプロジェクトの一覧取得するのに対して絞り込んで
+出力されるような結果になる。</p>
+<h5 id="time-entries-工数-api">Time Entries 工数 API</h5>
+<p>公式の説明は下記
+http://www.redmine.org/projects/redmine/wiki/Rest_TimeEntries</p>
+<p>積まれていった工数時間を取得するとき
+GET
+http://{RedmineのURL}/time_entries.xml</p>
+<p>デロデロ出る</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;time_entries total_count=&quot;2&quot; offset=&quot;0&quot; limit=&quot;25&quot; type=&quot;array&quot;&gt;
+  &lt;time_entry&gt;
+    &lt;id&gt;2&lt;/id&gt;
+    &lt;project id=&quot;2&quot; name=&quot;サンプルだ&quot;/&gt;
+    &lt;issue id=&quot;3&quot;/&gt;
+    &lt;user id=&quot;3&quot; name=&quot;igara&quot;/&gt;
+    &lt;activity id=&quot;2&quot; name=&quot;さんぷる&quot;/&gt;
+    &lt;hours&gt;8.0&lt;/hours&gt;
+    &lt;comments&gt;
+    &lt;/comments&gt;
+    &lt;spent_on&gt;2015-11-14&lt;/spent_on&gt;
+    &lt;created_on&gt;2015-11-14T10:02:50Z&lt;/created_on&gt;
+    &lt;updated_on&gt;2015-11-14T10:02:50Z&lt;/updated_on&gt;
+  &lt;/time_entry&gt;
+  &lt;time_entry&gt;
+    &lt;id&gt;1&lt;/id&gt;
+    &lt;project id=&quot;1&quot; name=&quot;さんぷる&quot;/&gt;
+    &lt;issue id=&quot;1&quot;/&gt;
+    &lt;user id=&quot;1&quot; name=&quot;Redmine Admin&quot;/&gt;
+    &lt;activity id=&quot;2&quot; name=&quot;さんぷる&quot;/&gt;
+    &lt;hours&gt;2.5&lt;/hours&gt;
+    &lt;comments&gt;
+    &lt;/comments&gt;
+    &lt;spent_on&gt;2015-11-14&lt;/spent_on&gt;
+    &lt;created_on&gt;2015-11-14T09:38:19Z&lt;/created_on&gt;
+    &lt;updated_on&gt;2015-11-14T09:38:19Z&lt;/updated_on&gt;
+  &lt;/time_entry&gt;
+&lt;/time_entries&gt;
+</code></pre><h3 id="redmineのプラグインを追加する">Redmineのプラグインを追加する</h3>
+<h4 id="ssh接続する">SSH接続する</h4>
+<p>下記を参照にアプリケーションのサーバにSSHできるようにする。
+https://developers.openshift.com/en/managing-remote-connection.html</p>
+<h4 id="worktime">WorkTime</h4>
+<pre><code>
+cd ~/app-root/repo/plugins
+wget https://bitbucket.org/tkusukawa/redmine_work_time/downloads/redmine_work_time-0.3.1.zip
+unzip redmine_work_time-0.3.1.zip
+cd ~/app-root/repo/
+rake redmine:plugins:migrate RAILS_ENV=production
+</code></pre><p>OpenShiftのアプリケーション画面から再起動をかける
+<img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-11-14T18:30:24+09:00-[メモ]OpenShiftでRedmineを作成してRedmineと戯れる/5-md.png" alt="スクリーンショット 2015-11-14 18.26.11.png"></p>
+<p>これでRedmineの画面右上から工数を確認できるようになる
+<img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-11-14T18:30:24+09:00-[メモ]OpenShiftでRedmineを作成してRedmineと戯れる/6-md.png" alt="スクリーンショット 2015-11-14 18.28.58.png"></p>

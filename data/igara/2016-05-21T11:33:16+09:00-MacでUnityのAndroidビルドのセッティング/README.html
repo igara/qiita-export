@@ -1,0 +1,39 @@
+<h1 id="概要">概要</h1>
+<p>今後UnityでAndroid・iOSアプリ両方を作っていきたいということがあり、
+いざやってみようとしたらUnity以外に必要なものがあったため
+メモとして記載する。
+なお対象のプロジェクトはデフォルトで用意されているStandardプロジェクトで行う。</p>
+<h1 id="必要なもの">必要なもの</h1>
+<p>Unityはインストールされている前提で記載します。
+Androidのビルドに必要なものになります。</p>
+<p>下記のものがインストールされたらUnityのメニューバーより
+「 Unity → Preferences 」 External Tools を選択してパスの設定を行います。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-05-21T11:33:16+09:00-MacでUnityのAndroidビルドのセッティング/0-md.png" alt="スクリーンショット 2016-05-21 11.12.19.png"></p>
+<h2 id="android-sdk">Android　SDK</h2>
+<p>Unityの公式で記載されている内容としては下記になります。
+http://docs.unity3d.com/ja/current/Manual/android-sdksetup.html</p>
+<p>Android Studioをインストールされていて既にAndroid　SDKが存在するとき
+/Users/[ユーザ名]/Library/Android/sdk/
+ここにAndroid　SDKが設置されます。</p>
+<h2 id="jdk">JDK</h2>
+<p>既存でjdkがインストールされているときは下記のパスになります。
+/Library/Java/JavaVirtualMachines/jdk1.7.X_XX.jdk/Contents/Home</p>
+<h1 id="ビルドの実行">ビルドの実行</h1>
+<p>Androidのエミュレータとして<a href="https://www.genymotion.com/">Genymotion</a>というのがありますがこちらのエミュレータはAndroid SDKからのエミュレータ起動より早いためこちらを事前に起動しておくと良いかもしれません。</p>
+<p>https://www.genymotion.com/</p>
+<p>Unityのメニューバーより
+「 File → Build Settings 」
+PlatformからAndroidを選択し、「Build &amp; RUN」を行うとビルドが開始されます。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-05-21T11:33:16+09:00-MacでUnityのAndroidビルドのセッティング/1-md.png" alt="スクリーンショット 2016-05-21 11.29.54.png"></p>
+<p>しばらくするとGenymotionで起動したエミュレータ上にアプリケーションが起動されます。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-05-21T11:33:16+09:00-MacでUnityのAndroidビルドのセッティング/2-md.png" alt="スクリーンショット 2016-05-21 11.31.39.png"></p>
+<h1 id="新規のプロジェクトからandroidアプリを起動しよう">新規のプロジェクトからAndroidアプリを起動しよう</h1>
+<p>Unityによる画面作成は「canvas」から行います。
+Hierarchy ウィンドウから「Create　→ UI」より「canvas」を選択して画面を作成します。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-05-21T11:33:16+09:00-MacでUnityのAndroidビルドのセッティング/3-md.png" alt="スクリーンショット 2016-05-21 19.09.47.png"></p>
+<p>それからそのあと「Command + S」で保存を行い、「Build &amp; RUN」でUnityのロゴが表示されるかと思われます。</p>
+<p>次回画面の作りについて記載したいと思います。</p>

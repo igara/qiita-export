@@ -1,0 +1,42 @@
+<p>レンタルサーバをお借りしていると
+たまに意図せずにサーバが落ちてしまうことがあるので
+再起動した時に自動で独自のサービスを起動させるためのメモ</p>
+<h1 id="chkconfig">chkconfig</h1>
+<p>chkconfigの設定が必要そう!</p>
+<p>詳しい話は下記リンク参照
+http://blog.jicoman.info/2014/04/centos_init_script/</p>
+<h1 id="自動起動するスクリプトを書く">自動起動するスクリプトを書く</h1>
+<p>テスト的に記載</p>
+<p><strong>本来ならばコマンド失敗時にログを残すなどしないと!</strong></p>
+<pre><code>vi /etc/rc.d/init.d/syonet</code></pre><pre><code class="language-/etc/rc.d/init.d/syonet">
+#!/bin/bash
+# chkconfig: 345 99 1
+# description: syonet
+# processname: syonet
+
+start(){
+    if [ -e /root/.phpenv/versions/7.0.0/sbin/php-fpm ]; then
+        nohup /root/.phpenv/versions/7.0.0/sbin/php-fpm &amp;
+    else
+        echo &quot;/root/.phpenv/versions/7.0.0/sbin/php-fpmがないよ!&quot;
+    fi
+
+    if [ -e /root/http.conf ]; then
+        nohup h2o -c /root/http.conf &amp;
+    else
+        echo &quot;h2oのコンフィグファイル/root/http.confがないよ!&quot;
+    fi
+
+    if [ -e /root/c9sdk/server.js ] &amp;&amp; [ -d /root/slack_rack_php ]; then
+        nohup node /root/c9sdk/server.js -p 8080 -a XXX:XXX -w /root/slack_rack_php/ &amp;
+    else
+        echo &quot;cloud9をcloneした？syonetのcloneは?&quot;
+    fi
+
+    return 0;
+}
+stop(){
+    echo &quot;not stop&quot;
+    return 0
+}
+</code></pre>

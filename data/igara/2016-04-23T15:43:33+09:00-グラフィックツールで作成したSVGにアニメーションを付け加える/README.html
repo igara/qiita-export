@@ -1,0 +1,94 @@
+<h1 id="内容">内容</h1>
+<p>CSSで動くイラストを描いてみた（おまけでPostCSS導入のお話）
+http://qiita.com/igara/items/918c6237d0cf8fbc0c1d</p>
+<blockquote>
+<p>非イラストレータが初めてPCでイラストを描いた話
+http://qiita.com/igara/items/3a8dfad331652b632eff</p>
+<blockquote>
+<p>新しいデザインを作るということがないのでちょっと勉強がてらに絵を描いてみたという話になります。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>前回描いた絵からの教訓で簡単なイラストだったら画像を使わずにCSSで表示可能なのでは？と思った為実践してみたというお話になります。</p>
+</blockquote>
+<p>前回はCSSを用いて絵を描いてましたが、図形の角度をコードで変更したりと計算が辛かった為、
+グラフィックツールでGUI的に編集できたら便利そう！というのと
+尚且つアニメーション追加できたら面白そう！
+と思ったので試しにやってみたという内容になります。</p>
+<h1 id="svgとは">SVGとは</h1>
+<p>SVG：Scalable Vector Graphics</p>
+<p>JPGやPNGと呼ばれる画像はビットマップデータというものでデータの実態はバイナリです。
+それに対しSVGはベクターデータと呼ばれるものでデータの実態はXMLで構成されているものになります。
+なのでちょっとしたデザインの修正をソース修正で行うことが可能です。</p>
+<p>この二つにはそれぞれ得意・不得意としているものがあります。
+参考リンク：「ビットマップデータ」と「ベクターデータ」の違い
+http://webgaku.hateblo.jp/entry/20120408/1333859650</p>
+<p>近年、SVGはブラウザでもサポートされるようになった為、
+できればデザインはSVGで構築したいなと思いました。</p>
+<p>こちらは現在のSVG対応のブラウザバージョン状況です。
+http://caniuse.com/#feat=svg-img</p>
+<h1 id="inkscape">Inkscape</h1>
+<p><a href="https://inkscape.org/">Inkscape</a></p>
+<p>SVGを作成するために使用したソフトウェア
+MacやWindows、Linuxにマルチプラットフォームで対応されている。
+（Macは別途XQuartzをインストールする必要がある）
+Inkscape以外のソフトウェアですとAdobe IllustratorとかSketchなどでも作成可能です。
+何気にLibreOfficeのDrawでも作成は可能のようです。</p>
+<p>筆者はMacによるInkscapeの使用となります。
+Macですとコピーや貼り付けを普段はCommandキーを押して行っているかと思いますがControlキーでコピー貼り付けを行うなど操作点でWindowsに近いものがあるように感じました。</p>
+<h2 id="とりあえずxmlエディターを開こう">とりあえずXMLエディターを開こう!</h2>
+<p>前述でも記載しましたがSVGはXMLで構成されていますので
+Inkscapeを開いたときは
+メニューバーより 「編集」→「XMLエディター」を選択しましょう。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-04-23T15:43:33+09:00-グラフィックツールで作成したSVGにアニメーションを付け加える/0-md.png" alt="スクリーンショット 2016-04-17 20.04.48.png"></p>
+<p>すると画面の右側にこんなものが出てくるかと思います。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-04-23T15:43:33+09:00-グラフィックツールで作成したSVGにアニメーションを付け加える/1-md.png" alt="スクリーンショット 2016-04-17 20.08.51.png"></p>
+<p>height 297mmやwidth 210mmとありますがここを編集することで左に表示されている枠の大きさを変更することが可能です。</p>
+<h2 id="文字を入れてみる">文字を入れてみる</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-04-23T15:43:33+09:00-グラフィックツールで作成したSVGにアニメーションを付け加える/2-md.png" alt="スクリーンショット 2016-04-17 20.12.18.png"></p>
+<p>左のツールバーに「テキストツール」があるのでこちらを選択して文字を入れたい箇所へクリックすることで文字の追加が行えます。</p>
+<p>文字の追加を行うとXMLの方にも自動で追加されます。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-04-23T15:43:33+09:00-グラフィックツールで作成したSVGにアニメーションを付け加える/3-md.png" alt="スクリーンショット 2016-04-17 20.14.35.png"></p>
+<p>上の画像は追加した文字のXMLの内容ですが文字の色やサイズの指定方法が「style」に記載されています。
+styleの内容ですがこちらはCSSによるものです。
+文字を移動したい時、文字の大きさを変えたい時はXMLの変更からも行えますが、ツールバーの「選択ツール」（マウスマーク）でマウスによるデザインの変更が行えます。</p>
+<h2 id="xmlの記述を削除する">XMLの記述を削除する</h2>
+<p>SVGでアニメーションさせる方法として3つあります。</p>
+<ul>
+<li>CSS（このやり方は<a href="http://qiita.com/igara/items/918c6237d0cf8fbc0c1d">前回</a>やったものになるかと思います。）</li>
+<li>SVGのanimationタグ→こちらは一部ブラウザでは非推奨となっております。http://ssvvgg.net/post/127068682345/2015%E5%B9%B408%E6%9C%8819%E6%97%A5%E3%81%AEsvg</li>
+<li>JavaScript</li>
+</ul>
+<p>今回もCSSを用いてアニメーションの追加を行ってみましょう。</p>
+<p>せっかくInkspaceを使っていたところですが適当なテキストエディタで開きます。
+テキストエディタでSVGを開くと下記のようなXMLが表示されるかと思います。
+<img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-04-23T15:43:33+09:00-グラフィックツールで作成したSVGにアニメーションを付け加える/4-md.png" alt="スクリーンショット 2016-04-18 13.09.59.png"></p>
+<p>SVGはHTMLに直書きすることでも動作するので
+SVGのソースの最上部に記載されている下記の記述を削除します。</p>
+<p>こちらは削除を行っても再度Inkspaceを使ったデザインの修正可能です。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!-- Created with Inkscape (http://www.inkscape.org/) --&gt;</code></pre><p>削除した理由としてですが
+このSVGファイルをHTMLのモジュールとして読み込んであげて後でCSSのアニメーション追加を行っていこうという方針にしました。（もっと良い方法がありそう...）</p>
+<h2 id="アニメーションの追加">アニメーションの追加</h2>
+<p>作成したSVG中の要素は自動でidの指定がされているかと思います。
+（textXXXXとかpathYYYYとか）
+こちらのidに対してCSS3のアニメーション指定することで動かすことが可能になります。
+もちろんidの名前を変更することも可能です。</p>
+<p>CSS3のアニメーションについては下記のサイトを参考にしました。</p>
+<p>animation－CSS3リファレンス
+http://www.htmq.com/css3/animation.shtml
+css3のanimationを使ってみたら予想以上に簡単だった！
+http://sterfield.co.jp/designer/css3%E3%81%AEanimation%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E3%82%89%E4%BA%88%E6%83%B3%E4%BB%A5%E4%B8%8A%E3%81%AB%E7%B0%A1%E5%8D%98%E3%81%A0%E3%81%A3%E3%81%9F%EF%BC%81/</p>
+<h1 id="所感・感想・まとめ">所感・感想・まとめ</h1>
+<p>基本SVGファイルはInkspaceでいじる（HTMLに書き起こす作業についてWebPackがうまく解決してくれました）、アニメーション処理はCSSファイルで追加すると処理の分割ができました。</p>
+<p>アニメーションの箇所は結局また独自のCSSアニメーションの追加を行っていた為、次はライブラリを使って豪華なアニメーションを追加していきたいなと思います。</p>
+<h1 id="参考ページ">参考ページ</h1>
+<p>滑らかで美しい表現ができる！SVGアニメーションを使ってみよう
+https://blog.codecamp.jp/svg_animation_intro
+WEBデザイナーのはじめての「SVG」
+https://webkikaku.co.jp/blog/webdesign/svg_for_webdesigner/</p>

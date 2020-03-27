@@ -1,0 +1,41 @@
+<h1 id="前もこんな記事書いてました">前もこんな記事書いてました</h1>
+<p>[メモ]GentooにH2O+PHP7.0.0RC4をインストールする。
+http://qiita.com/igara/items/1b7cd8e714844440795d</p>
+<p>今回はアップデートについて記載</p>
+<h1 id="起動中のphp-fpmを停止させる">起動中のphp-fpmを停止させる</h1>
+<pre><code># php-fpmプロセスを調べる
+ps -ef
+
+php-fpm: master process (/root/.
+nobody   23272 23271  0 16:09 ?        00:00:00 
+↑これがphp-fpmのプロセスで23272がプロセスID
+php-fpm: pool www
+nobody   23273 23271  0 16:09 ?        00:00:00 php-fpm: pool www
+root     23274     2  0 16:09 ?        00:00:00 [kworker/0:2]
+root     23322     2  0 16:14 ?        00:00:00 [kworker/0:0]
+
+kill 23271
+</code></pre><h1 id="php-buildを更新する">php-buildを更新する</h1>
+<p>以前、phpのソースをビルドした場合コンフリクトを発生させるためresetする必要がある。</p>
+<pre><code>
+cd .phpenv/plugins/php-build/
+git reset --hard
+git pull
+</code></pre><h1 id="php700をビルドする">php7.0.0をビルドする</h1>
+<pre><code>
+phpenv install 7.0.0
+phpenv global 7.0.0
+phpenv local 7.0.0
+phpenv rehash
+</code></pre><pre><code>
+# 設定ファイルの適応
+cd /root/.phpenv/versions/7.0.0/etc/
+cp php-fpm.conf.default php-fpm.conf
+cd /root/.phpenv/versions/7.0.0/etc/php-fpm.d/
+cp www.conf.default www.conf
+</code></pre><p>#php7.0.0のphp-fpmを起動する</p>
+<pre><code>
+~/.phpenv/versions/7.0.0/sbin/php-fpm &amp;
+</code></pre><h1 id="完了">完了!</h1>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-12-05T16:24:40+09:00-[メモ]phpenvとphp-buildを用いたPHPバージョンアップ/0-md.png" alt="スクリーンショット 2015-12-05 16.23.34.png"></p>

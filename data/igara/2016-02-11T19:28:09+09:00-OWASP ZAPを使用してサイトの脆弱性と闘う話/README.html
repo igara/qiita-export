@@ -1,0 +1,55 @@
+<h1 id="概要">概要</h1>
+<p>無料でサイトの脆弱性チェックできるツールのOWASP ZAPを使ってみて
+脆弱性対応をしてみたというお話である。</p>
+<p>OWASP ZAPのダウンロードは下記
+https://github.com/zaproxy/zaproxy/wiki/Downloads</p>
+<h1 id="使い方">使い方</h1>
+<p>ところどころが日本語化されているので比較的に使いやすいかもしれない
+クイックスタートより攻撃対象URLを入力して攻撃！
+対象のサイトがどこかの外部サイトのものやCDNなどを使用されている場合は攻撃する前にURLの指定を外したほうが良い。
+<img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-02-11T19:28:09+09:00-OWASP ZAPを使用してサイトの脆弱性と闘う話/0-md.png" alt="スクリーンショット 2016-02-11 17.06.26.png"></p>
+<h1 id="発生した脆弱性">発生した脆弱性</h1>
+<h2 id="x-frame-optionsヘッダーの欠如">X-Frame-Optionsヘッダーの欠如</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-02-11T19:28:09+09:00-OWASP ZAPを使用してサイトの脆弱性と闘う話/1-md.png" alt="スクリーンショット 2016-02-11 17.15.29.png"></p>
+<p>「クリックジャッキング」攻撃を防止するために下記を追記することで対策できる。
+他のサイトからiframeによるアクセスができないようにするために行う内容である。</p>
+<p>.htaccessなら</p>
+<pre><code>Header set X-FRAME-OPTIONS &quot;DENY&quot;</code></pre><p>H2Oなら</p>
+<pre><code>header.set: &quot;X-Frame-Options: DENY&quot;</code></pre><p>PHP側で対応する場合なら</p>
+<pre><code>header(&quot;X-Frame-Options: DENY&quot;);</code></pre><h2 id="cookie-set-without-httponly-flag">Cookie set without HttpOnly flag</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-02-11T19:28:09+09:00-OWASP ZAPを使用してサイトの脆弱性と闘う話/2-md.png" alt="スクリーンショット 2016-02-11 18.15.22.png"></p>
+<p>CookieのセッションIDをJS経由で取得できてしまう脆弱性があるため
+Cookieのセットの設定はHttpOnlyにしよう。</p>
+<p>.htaccessなら</p>
+<pre><code>session.cookie_httponly = On</code></pre><p>H2Oなら</p>
+<pre><code>header.append: &quot;Set-Cookie: HttpOnly&quot;</code></pre><p>PHP側で対応する場合なら</p>
+<pre><code>ini_set(&#39;session.cookie_httponly&#39;, 1);</code></pre><h2 id="cookie-set-without-secure-flag">Cookie set without secure flag</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-02-11T19:28:09+09:00-OWASP ZAPを使用してサイトの脆弱性と闘う話/3-md.png" alt="スクリーンショット 2016-02-11 18.15.35.png"></p>
+<p>secure属性を指定することでHTTPSの通信時のみクッキーを送信するようになるとのこと</p>
+<p>.htaccessなら</p>
+<pre><code>session.cookie_secure = On</code></pre><p>H2Oなら</p>
+<pre><code>header.append: &quot;Set-Cookie: secure&quot;</code></pre><p>PHP側で対応する場合なら</p>
+<pre><code>ini_set(&#39;session.cookie_secure&#39;, 1);</code></pre><h2 id="incomplete-or-no-cache-control-and-pragma-http-header-set">Incomplete or No Cache-control and Pragma HTTP Header Set</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-02-11T19:28:09+09:00-OWASP ZAPを使用してサイトの脆弱性と闘う話/4-md.png" alt="スクリーンショット 2016-02-11 18.45.35.png"></p>
+<p>SSL化されているのにキャッシュが許可されている場合に発生する問題</p>
+<p>.htaccessなら</p>
+<pre><code>Header set Pragma no-cache
+Header set Cache-Control no-cache, no-store, must-revalidate</code></pre><p>H2Oなら</p>
+<pre><code>header.append: &quot;Cache-Control: no-cache, no-store, must-revalidate&quot;
+header.set: &quot;Pragma: no-cache&quot;</code></pre><p>PHPなら</p>
+<pre><code>header(&quot;Cache-Control: no-cache, no-store, must-revalidate&quot;);
+header(&quot;Pragma: no-cache&quot;);</code></pre><h2 id="web-browser-xss-protection-not-enabled">Web Browser XSS Protection Not Enabled</h2>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2016-02-11T19:28:09+09:00-OWASP ZAPを使用してサイトの脆弱性と闘う話/5-md.png" alt="スクリーンショット 2016-02-11 19.21.44.png"></p>
+<p>クロスサイトスクリプティング防止機能が無効になっていると出てくる問題らしい</p>
+<p>.htaccessなら</p>
+<pre><code>Header always set X-XSS-Protection &quot;1; mode=block&quot;</code></pre><p>H2Oなら</p>
+<pre><code>header.set: &quot;X-XSS-Protection: 1; mode=block&quot;</code></pre><p>PHPなら</p>
+<pre><code>header(&quot;X-XSS-Protection: 1; mode=block&quot;);</code></pre><h1 id="最後に">最後に</h1>
+<p>あまり脆弱性による問題点とかあげられていないのでその辺の追加編集をしていかないと、、、
+headerに情報を追加したものが多かったがサーバの設定で追加するべきなのかプログラム側で追加するべきなのかも調べておかないと。</p>

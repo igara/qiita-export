@@ -1,0 +1,29 @@
+<h1 id="この記事では">この記事では</h1>
+<p>RoBoHoN開発をmacで行った時に公式で公開されているサンプルコードをビルドして実行するまでの手順について記載する</p>
+<h1 id="準備物">準備物</h1>
+<p>Android Studio 2.1.1
+ADB DebugできるUSB mini端子
+※macですのでADB Driverのインストールは不要</p>
+<h1 id="robohonをusb経由でアプリインストールできるようにする">RoBoHoNをUSB経由でアプリインストールできるようにする</h1>
+<p>よくあるAndroidのデバッグモード切り替えの方法と同じだった  </p>
+<ol>
+<li>ロボホンの背中から「設定」を押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-01-14T17:36:17+09:00-RoBoHoN開発Tip - ADB認識するまで -/0-md.jpeg" alt="IMG_1217.JPG"></li>
+<li>「端末情報」を押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-01-14T17:36:17+09:00-RoBoHoN開発Tip - ADB認識するまで -/1-md.jpeg" alt="IMG_1218.JPG"></li>
+<li>「ビルド番号」を複数回押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-01-14T17:36:17+09:00-RoBoHoN開発Tip - ADB認識するまで -/2-md.jpeg" alt="IMG_1219.JPG">
+この時点でRoBoHoNは開発モードになります<br><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-01-14T17:36:17+09:00-RoBoHoN開発Tip - ADB認識するまで -/3-md.jpeg" alt="IMG_1220.JPG"></li>
+<li>「設定」画面から「その他」を押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-01-14T17:36:17+09:00-RoBoHoN開発Tip - ADB認識するまで -/4-md.jpeg" alt="IMG_1221.JPG"></li>
+<li>「開発者向けオプション」を押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-01-14T17:36:17+09:00-RoBoHoN開発Tip - ADB認識するまで -/5-md.jpeg" alt="IMG_1222.JPG"></li>
+<li>「On」にする<br><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-01-14T17:36:17+09:00-RoBoHoN開発Tip - ADB認識するまで -/6-md.jpeg" alt="IMG_1223.JPG"></li>
+<li>「USBデバッグ」をチェックする
+<img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-01-14T17:36:17+09:00-RoBoHoN開発Tip - ADB認識するまで -/7-md.jpeg" alt="IMG_1224.JPG"></li>
+</ol>
+<p>この手順でADBデバイスとして認識されるようになり、Andoid Studioから自作アプリインストールができるようになる
+次回はアプリ作成</p>

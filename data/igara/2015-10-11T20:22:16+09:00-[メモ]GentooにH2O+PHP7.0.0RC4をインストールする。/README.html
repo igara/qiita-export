@@ -1,0 +1,152 @@
+<h1 id="gentooをvmから起動する。">GentooをVMから起動する。</h1>
+<p>下記からVMを作成する。
+http://qiita.com/igara/items/989ea37805f0db85b2f2</p>
+<p>VMのネットワークをブリッジにして実行</p>
+<h1 id="h2oをインストールする前の準備">H2Oをインストールする前の準備</h1>
+<p>Gentooにsshで接続したら下記コマンドたちを実行する。</p>
+<h2 id="gitをインストール">Gitをインストール</h2>
+<pre><code>$ sudo emerge git</code></pre><h2 id="libyamlをインストール">libyamlをインストール</h2>
+<pre><code>$ sudo emerge libyaml</code></pre><h1 id="h2oのインストール">H2Oのインストール</h1>
+<p>下記を参考
+https://h2o.examp1e.net/install.html</p>
+<pre><code># H2Oをダウンロード
+$ wget https://github.com/h2o/h2o/archive/v1.5.0.tar.gz
+# 解凍
+$ tar zxf v1.5.0.tar.gz
+
+# 解凍して作成したディレクトリに移動する
+$ cd h2o-1.5.0/
+# -DWITH_BUNDLED_SSLフラグというのがあるのだそうだ
+$ cmake -DWITH_BUNDLED_SSL=on .
+
+# build
+$ cmake .
+$ make h2o
+$ sudo make install</code></pre><h1 id="h2oの設定ファイル作成">H2Oの設定ファイル作成</h1>
+<pre><code class="language-h2o.conf">user: vagrant
+
+listen: 80
+
+hosts:
+ &quot;example.com&quot;:
+   paths:
+    /:
+     file.dir: /home/vagrant/public_html
+
+file.custom-handler:
+ extension: .php
+ fastcgi.connect:
+  host: 127.0.0.1
+  port: 9000
+  type: tcp
+
+access-log: /home/vagrant/access-log
+error-log: /home/vagrant/error-log
+pid-file: /home/vagrant/pid-file</code></pre>
+<h1 id="public_htmlの作成とindexhtmlの作成">public_htmlの作成とindex.htmlの作成</h1>
+<pre><code># public_htmlというディレクトリを作成する
+$ mkdir /home/vagrant/public_html</code></pre><p>public_htmlにindex.htmlとindex.phpを作成する</p>
+<pre><code class="language-index.html">Hello H2O!</code></pre>
+<pre><code class="language-index.php">&lt;?PHP
+    phpinfo();</code></pre>
+<h1 id="h2oの起動と終了">H2Oの起動と終了</h1>
+<pre><code># 起動
+$ sudo h2o -m daemon -c h2o.conf
+# 終了
+$ sudo kill -TERM `cat /home/vagrant/pid-file`</code></pre><h1 id="phpを使えるようにする">PHPを使えるようにする</h1>
+<h2 id="phpenvのインストール">phpenvのインストール</h2>
+<p>これは
+https://blog.sus-happy.net/201506/h2o_php7/#php7-boot
+を参照に</p>
+<pre><code>$ git clone https://github.com/CHH/phpenv.git
+$ cd phpenv/bin/
+$ sh phpenv-install.sh</code></pre><pre><code class="language-~/.bashrc">export PATH=&quot;/home/vagrant/.phpenv/bin:$PATH&quot;
+eval &quot;$(phpenv init -)&quot;</code></pre>
+<pre><code>$ source ~/.bashrc</code></pre><h2 id="php-buildのインストール">php-buildのインストール</h2>
+<p>これも
+https://blog.sus-happy.net/201506/h2o_php7/#php7-boot
+を参照に</p>
+<pre><code>$ git clone https://github.com/CHH/php-build.git
+$ cd php-build/
+$ sudo sh install.sh</code></pre><h2 id="php7インストール">PHP7インストール</h2>
+<pre><code>$ php-build --definitions
+5.2.17
+↑
+省略
+↓
+5.6.14
+5.6snapshot
+7.0.0alpha1
+7.0.0alpha2
+7.0.0beta1
+7.0.0beta2
+7.0.0beta3
+7.0.0RC1
+7.0.0RC2
+7.0.0RC3
+7.0.0RC4
+7.0snapshot
+master</code></pre><p>PHPに必要なライブラリを入れる</p>
+<pre><code># libjpegをインストール
+$ wget http://www.ijg.org/files/jpegsrc.v9a.tar.gz
+$ tar xzf jpegsrc.v9a.tar.gz
+$ ./configure --enable-shared
+$ make
+$ make install
+
+# libpngをインストール
+$ wget http://prdownloads.sourceforge.net/libpng/libpng-1.6.18.tar.gz
+$ tar xzf libpng-1.6.18.tar.gz
+$ cd libpng-1.6.18
+$ ./configure --enable-shared
+$ make
+$ sudo make install
+
+$ cd
+
+# まだ足りないのがあるかも
+USE=&quot;tidy&quot; emerge php
+USE=&quot;fpm&quot; emerge php
+</code></pre><p>7.0.0RC4をビルド</p>
+<pre><code>$ sudo php-build 7.0.0RC4 ~/.phpenv/versions/7.0.0RC4</code></pre><p>インストールしたことがあるPHPバージョン確認</p>
+<pre><code>$ phpenv versions
+$ php-fpm -v
+# 現在のバージョンを確認する</code></pre><p>PHPバージョンを切り替える</p>
+<pre><code>$ phpenv global 7.0.0RC4
+$ php-fpm -v
+# 現在のバージョンを確認する</code></pre><p>PHP Config</p>
+<pre><code># php-fpm.confを更新
+$ cp ~/.phpenv/versions/7.0.0RC4/etc/php-fpm.conf.default ~/.phpenv/versions/7.0.0RC4/etc/php-fpm.conf
+# php-fpm.d/www.confも更新
+cp ~/.phpenv/versions/7.0.0RC4/etc/php-fpm.d/www.conf.default ~/.phpenv/versions/7.0.0RC4/etc/php-fpm.d/www.conf 
+
+# php-fpmを実行
+~/.phpenv/versions/7.0.0RC4/sbin/php-fpm &amp;
+# エラーが出なければ問題無し</code></pre><p>H2Oを起動してindex.htmlとindex.phpを見てみる</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2015-10-11T20:22:16+09:00-[メモ]GentooにH2O+PHP7.0.0RC4をインストールする。/0-md.png" alt="スクリーンショット 2015-10-12 23.01.28.png"></p>
+<h1 id="laravelのプロジェクトを作成する">laravelのプロジェクトを作成する</h1>
+<pre><code># composerのインストール
+$ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+$ composer global require &quot;laravel/installer=~1.1&quot;
+$ laravel new slack_rack_php</code></pre><p>h2oのpathsをlaravelのpublicフォルダに変更させる</p>
+<pre><code class="language-h2o.conf">user: vagrant
+
+listen: 80
+
+hosts:
+ &quot;example.com&quot;:
+   paths:
+    /:
+     file.dir: /home/vagrant/slack_rack_php/public
+
+file.custom-handler:
+ extension: .php
+ fastcgi.connect:
+  host: 127.0.0.1
+  port: 9000
+  type: tcp
+
+access-log: /home/vagrant/access-log
+error-log: /home/vagrant/error-log
+pid-file: /home/vagrant/pid-file</code></pre>

@@ -1,0 +1,75 @@
+<h1 id="この記事は">この記事は</h1>
+<p>VSCodeとgemのruby-debug-ide・debaseを用いてデバックできましたといった記事は多いのですがリモートデバッガーを利用する場合、環境周りなどその節々でなかなか実行できないというのが経験上多かったので参考程度にみていただければいいなぁと思います。</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2018-10-21T00:01:38+09:00-RailsプロジェクトをVSCodeからデバックできるようにする/0-md.gif" alt="ezgif-1-d3ba8c59123c.gif"></p>
+<h1 id="プロジェクト">プロジェクト</h1>
+<ul>
+<li>Rails: 5.2.1</li>
+<li>Ruby: 2.5.3</li>
+<li>VSCode: 1.28.2</li>
+<li>VSCode Extension Ruby(rebornix.ruby): 0.20.0</li>
+<li>gem ruby-debug-ide: 0.6.1</li>
+<li>gem debase: 0.2.2</li>
+</ul>
+<h2 id="ソースコード">ソースコード</h2>
+<p>https://github.com/igara/debug_sample</p>
+<p>MacOSから直接Rails起動した時と
+Dockerから起動した時のデバックを検証したソースになります。</p>
+<h3 id="プロジェクト構成">プロジェクト構成</h3>
+<img width="597" alt="スクリーンショット 2018-10-20 22.46.50.png" src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2018-10-21T00:01:38+09:00-RailsプロジェクトをVSCodeからデバックできるようにする/0-img-tag.png">
+
+<p>後々DBなどのミドルウェアや別のアプリケーションの追加しやすいようにRails用のディレクトリを切って構成しました。</p>
+<h3 id="vscodeのデバック設定launchjson">VSCodeのデバック設定(launch.json)</h3>
+<p><a href="https://github.com/igara/debug_sample/blob/master/.vscode/launch.json">.vscode/launch.json</a></p>
+<pre><code>{
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Local - Listen for rdebug-ide&quot;,
+            &quot;type&quot;: &quot;Ruby&quot;,
+            &quot;request&quot;: &quot;attach&quot;,
+            &quot;cwd&quot;: &quot;${workspaceRoot}/rails&quot;,
+            &quot;remoteHost&quot;: &quot;0.0.0.0&quot;,
+            &quot;remotePort&quot;: &quot;1234&quot;,
+            &quot;remoteWorkspaceRoot&quot;: &quot;${workspaceRoot}/rails&quot;,
+            &quot;useBundler&quot;: true
+        },
+        {
+            &quot;name&quot;: &quot;Local Docker - Listen for rdebug-ide&quot;,
+            &quot;type&quot;: &quot;Ruby&quot;,
+            &quot;request&quot;: &quot;attach&quot;,
+            &quot;cwd&quot;: &quot;${workspaceRoot}/rails&quot;,
+            &quot;remoteHost&quot;: &quot;0.0.0.0&quot;,
+            &quot;remotePort&quot;: &quot;1234&quot;,
+            &quot;remoteWorkspaceRoot&quot;: &quot;/rails&quot;,
+            &quot;useBundler&quot;: true
+        }
+    ]
+}</code></pre><ul>
+<li>Local - Listen for rdebug-ide<br>こちらはDockerを使用しないで直接Railsを起動した時の設定です。<br>一旦、下記のようにrailsディレクトリに移動してからbundle installを行いデバック用のrails起動コマンドを実行し、VSCodeのデバックを実行することができます。</li>
+</ul>
+<pre><code>$ cd rails
+$ bundle install --path vendor/bundle
+$ bundle exec rdebug-ide --host 0.0.0.0 --port 1234 --dispatcher-port 26162 -- bin/rails s</code></pre><ul>
+<li>Local Docker - Listen for rdebug-ide<br>こちらはDockerを使用したRailsデバックの設定になります。<br>remoteWorkspaceRootがコンテナ先のディレクトリ階層になります。<br>下記はデバック用に作成したDockerを起動するコマンドで起動後VSCodeのデバックが可能になります。</li>
+</ul>
+<pre><code>$ docker-compose -f docker-compose.debug.yml up</code></pre><p><a href="https://github.com/igara/debug_sample/blob/master/docker-compose.debug.yml">docker-compose.debug.yml</a>と<a href="https://github.com/igara/debug_sample/blob/master/docker-compose.yml">docker-compose.yml</a>の2つのファイルがありますが違いとして
+Rails起動しようとするコマンドにrdebug-ideがあるかないかの違いと
+デバックで使用するポートを開けてるかの違いしかありません。</p>
+<h3 id="ruby-253-rails-521のデバックではまったところ">Ruby 2.5.3 Rails 5.2.1のデバックではまったところ</h3>
+<p>下記のURLに現象と解決方法が書いてあったのですが</p>
+<p>https://superuser.com/questions/1359747/is-it-possible-to-get-visual-studio-code-ide-debugging-of-apps-on-rails-5-2-to-w</p>
+<p>あまり解説を見てもちょっと理解しきれていないのですが
+Ruby 2.5系のtrace命令を削除することによる5～10%の高速化の対応と
+gemのbootsnapによるRails起動時の最適化によるもので
+デバックがうまくいかないみたいなのがあるようです。</p>
+<p>一旦は<a href="https://github.com/igara/debug_sample/blob/master/rails/config/boot.rb">rails/config/boot.rb</a>を</p>
+<pre><code>ENV[&#39;BUNDLE_GEMFILE&#39;] ||= File.expand_path(&#39;../Gemfile&#39;, __dir__)
+
+require &#39;bundler/setup&#39; # Set up gems listed in the Gemfile.
+# require &#39;bootsnap/setup&#39; # Speed up boot time by caching expensive operations.
+unless ( ((&#39;2.5.0&#39;..&#39;2.5.3&#39;).include? RUBY_VERSION) &amp;&amp; defined?(Debugger) )
+  # see: https://superuser.com/questions/1359747/is-it-possible-to-get-visual-studio-code-ide-debugging-of-apps-on-rails-5-2-to-w
+  require &#39;bootsnap/setup&#39; # Speed up boot time by caching expensive operations.
+end</code></pre><p>みたいにデバック時はbootsnapを使用しないようにしてデバックできるようにしています。</p>
