@@ -32,9 +32,9 @@ const exec = () => {
         `src="https://raw.githubusercontent.com/${repositoryName}/master/data/${qiitaIDDirectoryName}/${qiitaItemDirectoryName}/`,
       );
 
-      body = `<body class="markdown-body">
+      body = `<div class="markdown-body">
   ${body}
-</body>`;
+</div>`;
 
       fs.writeFileSync(`data/${qiitaIDDirectoryName}/${qiitaItemDirectoryName}/README.html`, styleTag + body);
     });
