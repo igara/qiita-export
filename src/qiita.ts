@@ -57,6 +57,8 @@ export const user = async (userName: string, token: string): Promise<User> => {
   return await res.json();
 };
 
+const addZero = (num: number) => ("0" + num).slice(-2);
+
 export const userItems = async (userName: string, token: string, page: number): Promise<UserItem[]> => {
   const res = await fetch(`https://qiita.com/api/v2/users/${userName}/items?page=${page}&per_page=100`, {
     headers: {
@@ -72,9 +74,9 @@ export const userItems = async (userName: string, token: string, page: number): 
     return {
       ...item,
       // eslint-disable-next-line @typescript-eslint/camelcase
-      created_at: `${date.getFullYear()}-${
-        date.getMonth() + 1
-      }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,
+      created_at: `${date.getFullYear()}-${addZero(date.getMonth() + 1)}-${addZero(date.getDate())} ${addZero(
+        date.getHours(),
+      )}:${addZero(date.getMinutes())}:${addZero(date.getSeconds())}`,
     };
   });
 };
