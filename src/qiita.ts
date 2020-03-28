@@ -64,7 +64,19 @@ export const userItems = async (userName: string, token: string, page: number): 
     },
     method: "GET",
   });
-  return await res.json();
+  const json = await res.json();
+  return json.map((item) => {
+    const createAt = item.created_at;
+    const date = new Date(createAt);
+
+    return {
+      ...item,
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      created_at: `${date.getFullYear()}-${
+        date.getMonth() + 1
+      }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,
+    };
+  });
 };
 
 const directoryName = (item: UserItem) => `${item.user.id}/${item.created_at}-${item.title.replace(/\//g, "／")}`;
