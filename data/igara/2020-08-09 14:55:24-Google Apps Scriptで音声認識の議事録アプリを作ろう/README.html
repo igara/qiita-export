@@ -1154,7 +1154,7 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
   },</code></pre><p>&quot;access&quot;: &quot;MYSELF&quot;はWebアプリケーションを使用できる人を自分だけにするために設定しています。
 &quot;executeAs&quot;: &quot;USER_DEPLOYING&quot;はnpx clasp deployでもWebアプリケーションの更新ができるようなので設定しています。
 ただし初回の時はスクリプトエディタ上で承認しないと反映されないようです。
-Docsのアクセス権限はデフォルト自分の身になっているので後でブラウザからDocsはURLわかる人には閲覧できるようにするとかするとリアルタイムで議事録が動いているのがDocs経由でみれるとかできます。</p>
+Docsのアクセス権限はデフォルト自分のみになっているので後でブラウザからDocsはURLわかる人には閲覧できるようにするとかするとリアルタイムで議事録が動いているのがDocs経由でみれるとかできます。</p>
 <h4 id="indexhtml"><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/index.html">index.html</a></h4>
 <p>GASのWebアプリケーションを構成するHTMLです。</p>
 <pre><code>   &lt;?!= <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HtmlService</span>.</span></span>create<span class="hljs-constructor">HtmlOutputFromFile(<span class="hljs-string">"css"</span>)</span>.get<span class="hljs-constructor">Content()</span>; ?&gt;

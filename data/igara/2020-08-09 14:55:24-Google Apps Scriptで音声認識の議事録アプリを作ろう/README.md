@@ -90,7 +90,7 @@ npx clasp push
 "access": "MYSELF"はWebアプリケーションを使用できる人を自分だけにするために設定しています。
 "executeAs": "USER_DEPLOYING"はnpx clasp deployでもWebアプリケーションの更新ができるようなので設定しています。
 ただし初回の時はスクリプトエディタ上で承認しないと反映されないようです。
-Docsのアクセス権限はデフォルト自分の身になっているので後でブラウザからDocsはURLわかる人には閲覧できるようにするとかするとリアルタイムで議事録が動いているのがDocs経由でみれるとかできます。
+Docsのアクセス権限はデフォルト自分のみになっているので後でブラウザからDocsはURLわかる人には閲覧できるようにするとかするとリアルタイムで議事録が動いているのがDocs経由でみれるとかできます。
 
 #### [index.html](https://github.com/igara/speech-to-docs/blob/master/src/gas/index.html)
 
