@@ -1093,34 +1093,94 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
 }
 
 </style><div class="markdown-body">
-  <h1 id="この記事では">この記事では</h1>
-<p>RoBoHoN開発をmacで行った時に公式で公開されているサンプルコードをビルドして実行するまでの手順について記載する</p>
-<h1 id="準備物">準備物</h1>
-<p>Android Studio 2.1.1
-ADB DebugできるUSB mini端子
-※macですのでADB Driverのインストールは不要</p>
-<h1 id="robohonをusb経由でアプリインストールできるようにする">RoBoHoNをUSB経由でアプリインストールできるようにする</h1>
-<p>よくあるAndroidのデバッグモード切り替えの方法と同じだった  </p>
-<ol>
-<li>ロボホンの背中から「設定」を押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
-/master/data/igara/2017-01-14 17:36:17-RoBoHoN開発Tip - ADB認識するまで -/0-md.jpeg" alt="IMG_1217.JPG"></li>
-<li>「端末情報」を押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
-/master/data/igara/2017-01-14 17:36:17-RoBoHoN開発Tip - ADB認識するまで -/1-md.jpeg" alt="IMG_1218.JPG"></li>
-<li>「ビルド番号」を複数回押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
-/master/data/igara/2017-01-14 17:36:17-RoBoHoN開発Tip - ADB認識するまで -/2-md.jpeg" alt="IMG_1219.JPG">
-この時点でRoBoHoNは開発モードになります<br><img src="https://raw.githubusercontent.com/igara/qiita-export
-/master/data/igara/2017-01-14 17:36:17-RoBoHoN開発Tip - ADB認識するまで -/3-md.jpeg" alt="IMG_1220.JPG"></li>
-<li>「設定」画面から「その他」を押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
-/master/data/igara/2017-01-14 17:36:17-RoBoHoN開発Tip - ADB認識するまで -/4-md.jpeg" alt="IMG_1221.JPG"></li>
-<li>「開発者向けオプション」を押す<br><img src="https://raw.githubusercontent.com/igara/qiita-export
-/master/data/igara/2017-01-14 17:36:17-RoBoHoN開発Tip - ADB認識するまで -/5-md.jpeg" alt="IMG_1222.JPG"></li>
-<li>「On」にする<br><img src="https://raw.githubusercontent.com/igara/qiita-export
-/master/data/igara/2017-01-14 17:36:17-RoBoHoN開発Tip - ADB認識するまで -/6-md.jpeg" alt="IMG_1223.JPG"></li>
-<li>「USBデバッグ」をチェックする
-<img src="https://raw.githubusercontent.com/igara/qiita-export
-/master/data/igara/2017-01-14 17:36:17-RoBoHoN開発Tip - ADB認識するまで -/7-md.jpeg" alt="IMG_1224.JPG"></li>
-</ol>
-<p>この手順でADBデバイスとして認識されるようになり、Android Studioから自作アプリインストールができるようになる
-次回はアプリ作成</p>
+  <h2 id="この記事は">この記事は</h2>
+<p>喋ったことを文字で確認できるようなものなにかないか探していてGoogle Docsの音声入力というものがあることを知ったわけですが</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-08-09 14:55:24-Google Apps Scriptで音声認識の議事録アプリを作ろう/0-md.gif" alt="docs.gif">
+(GIFアニメ)</p>
+<p>音声入力中に他のアプリをクリックしてしまうと自動で終了されてしまいます。</p>
+<p>なんとかならんものかと考えたところ、ChromeのSpeech Recognition APIとGASのWebアプリケーションを使えば解決できたので解説していこうといった内容です。</p>
+<h2 id="どのようなものが仕上がったのか">どのようなものが仕上がったのか</h2>
+<p>↓の画像は動画のリンクになっております。</p>
+<p><a href="https://www.youtube.com/watch?v=yeq7vMeb7sA"><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-08-09 14:55:24-Google Apps Scriptで音声認識の議事録アプリを作ろう/1-md.png" alt="youtube"></a></p>
+<p>↓のリンクはソースコードです。</p>
+<p><a href="https://github.com/igara/speech-to-docs">https://github.com/igara/speech-to-docs</a></p>
+<h2 id="使い方">使い方</h2>
+<h3 id="docsとgasのwebアプリの作成">DocsとGASのWebアプリの作成</h3>
+<p>NodeJS v12.14.0使っていましたがたぶんよほど古くなければ他のバージョンでも大丈夫かと思います。
+コマンドを羅列すると</p>
+<pre><code><span class="hljs-attr">git</span> <span class="hljs-string">clone https://github.com/igara/speech-to-docs</span>
+<span class="hljs-attr">cd</span> <span class="hljs-string">speech-to-docs</span>
+<span class="hljs-attr">npm</span> <span class="hljs-string">install</span>
+<span class="hljs-comment">
+# Googleの認証を行う</span>
+<span class="hljs-attr">npx</span> <span class="hljs-string">clasp login</span>
+<span class="hljs-comment">
+# exampleという名前のDocsに紐づくGASプロジェクトを同時に作成する</span>
+<span class="hljs-attr">npm</span> <span class="hljs-string">run new name=example</span>
+<span class="hljs-comment">
+# TypeScriptで記載されたコードをGAS用にビルド</span>
+<span class="hljs-attr">npm</span> <span class="hljs-string">run build</span>
+<span class="hljs-comment">
+# ビルド済みのコードをGASプロジェクトに転送する</span>
+<span class="hljs-attr">npx</span> <span class="hljs-string">clasp push</span></code></pre><p>ここまでの作業が完了したらDocsから
+メニュー -&gt; ツール -&gt; スクリプトエディタ</p>
+<p>スクリプトエディタ上で
+メニュー -&gt; 公開 -&gt; ウェブアプリケーションとして導入...</p>
+<p>を選択し、作成しようとすると認証確認が出ると思うので認証させれば完成です。
+ウェブアプリケーションとして導入にあるURLが開ければ完了です。</p>
+<h3 id="gasのwebアプリ">GASのWebアプリ</h3>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-08-09 14:55:24-Google Apps Scriptで音声認識の議事録アプリを作ろう/2-md.gif" alt="webapp.gif">
+(GIFアニメ)</p>
+<p>背景色変更や文字の大きさの変更が可能だったりするので配信する人とかはここを変えてOBSのクロマキー処理とかも使ったりしたらいい感じになるんじゃないでしょうか。</p>
+<img width="436" alt="マイク.png" src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-08-09 14:55:24-Google Apps Scriptで音声認識の議事録アプリを作ろう/0-img-tag.png">
+
+<p>マイクの設定は各自使用しているものに適応してください。</p>
+<h2 id="コード説明">コード説明</h2>
+<h3 id="srcgas"><a href="https://github.com/igara/speech-to-docs/tree/master/src/gas">src/gas</a></h3>
+<p>  GASのスクリプトエディタに反映するコードを記載しています。</p>
+<h4 id="appsscriptjson"><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/appsscript.json">appsscript.json</a></h4>
+<pre><code>  <span class="hljs-string">"executionApi"</span>: {
+    <span class="hljs-string">"access"</span>: <span class="hljs-string">"ANYONE"</span>
+  },</code></pre><p>の箇所はclaspのデバッグの都合でANYONEにしています。
+今回の記事にはデバッグの仕方を記載しませんがやってみる場合はこちらの記事を参考にすると良いかもしれません。主にCloud Consoleでの設定がつむポイント
+<a href="https://qiita.com/abetomo/items/59379e26679e342ef6e3">clasp run できないとき。2018-09-25</a></p>
+<pre><code>  <span class="hljs-string">"webapp"</span>: {
+    <span class="hljs-string">"access"</span>: <span class="hljs-string">"MYSELF"</span>,
+    <span class="hljs-string">"executeAs"</span>: <span class="hljs-string">"USER_DEPLOYING"</span>
+  },</code></pre><p>&quot;access&quot;: &quot;MYSELF&quot;はWebアプリケーションを使用できる人を自分だけにするために設定しています。
+&quot;executeAs&quot;: &quot;USER_DEPLOYING&quot;はnpx clasp deployでもWebアプリケーションの更新ができるようなので設定しています。
+ただし初回の時はスクリプトエディタ上で承認しないと反映されないようです。
+Docsのアクセス権限はデフォルト自分の身になっているので後でブラウザからDocsはURLわかる人には閲覧できるようにするとかするとリアルタイムで議事録が動いているのがDocs経由でみれるとかできます。</p>
+<h4 id="indexhtml"><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/index.html">index.html</a></h4>
+<p>GASのWebアプリケーションを構成するHTMLです。</p>
+<pre><code>   &lt;?!= <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HtmlService</span>.</span></span>create<span class="hljs-constructor">HtmlOutputFromFile(<span class="hljs-string">"css"</span>)</span>.get<span class="hljs-constructor">Content()</span>; ?&gt;
+   &lt;?!= <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">HtmlService</span>.</span></span>create<span class="hljs-constructor">HtmlOutputFromFile(<span class="hljs-string">"js"</span>)</span>.get<span class="hljs-constructor">Content()</span>; ?&gt;</code></pre><p><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/index.html#L5-L6">https://github.com/igara/speech-to-docs/blob/master/src/gas/index.html#L5-L6</a></p>
+<p>外部のファイルを呼び出しを上記で行っている点以外は標準なHTMLかと思います。</p>
+<h4 id="csshtml"><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/css.html">css.html</a></h4>
+<p>HTMLファイルですがGASのWebアプリケーションを構成するCSSです。</p>
+<p>VSCodeでもstyleタグの補完が効いてくれていたので特に困ることがなかったです。</p>
+<h4 id="jshtml"><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/js.html">js.html</a></h4>
+<p>HTMLファイルですがGASのWebアプリケーションを構成するJavaScriptです。</p>
+<p>このファイルもTypeScript化しようかと思いましたが既にGASの関数定義でWebpack等使っているのもあり、Webアプリケーション上ではHTMLファイルじゃないと外部読み込みできないというのもあって普通にJavaScriptで書くようにしました。</p>
+<pre><code><span class="hljs-selector-tag">google</span><span class="hljs-selector-class">.script</span><span class="hljs-selector-class">.run</span><span class="hljs-selector-class">.setText</span>(<span class="hljs-selector-tag">logText</span>);</code></pre><p><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/js.html#L33">https://github.com/igara/speech-to-docs/blob/master/src/gas/js.html#L33</a></p>
+<p>というのがありますがWebアプリケーション側のJavaScriptでgoogle.script.run.xxxのような記載をするとGASの関数が起動可能みたいです。</p>
+<h4 id="do_getts"><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/do_get.ts">do_get.ts</a></h4>
+<p>WebアプリケーションのURLを開いた時に<a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/index.html">index.html</a>を開く処理を記載しています。</p>
+<h4 id="do_postts"><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/do_post.ts">do_post.ts</a></h4>
+<p>POSTで音声認識とは別でDocsにテキスト反映できるかテスト用に作成しただけのものです。</p>
+<h4 id="set_textts"><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/set_text.ts">set_text.ts</a></h4>
+<p><a href="https://github.com/igara/speech-to-docs/blob/master/src/gas/js.html">js.html</a>で使われているSpeech Recognition APIの結果をこのGAS関数を使ってDocsに文字起こしをしています。</p>
+<h3 id="srctasks"><a href="https://github.com/igara/speech-to-docs/tree/master/src/tasks">src/tasks</a></h3>
+<p>CLIで実行するツールなどを扱っています。</p>
+<h4 id="create_clasp_jsonts"><a href="https://github.com/igara/speech-to-docs/blob/master/src/tasks/create_clasp_json.ts">create_clasp_json.ts</a></h4>
+<pre><code><span class="hljs-comment"># exampleという名前のDocsに紐づくGASプロジェクトを同時に作成する</span>
+npm <span class="hljs-builtin-name">run</span> new <span class="hljs-attribute">name</span>=example</code></pre><p>を実行した時に使用していたスクリプトです。
+nameの指定からDocsとGASプロジェクトが作成されるような処理を記載しています。</p>
+<h2 id="最後に">最後に</h2>
+<p>配信を文字に起こして振り返りがしやすくなる利点ってありそうだけど、音声認識がまだそこまで精密でもないから実施していないのかわかんないですが、この記事をきっかけになにか発展があれば幸いです。</p>
 
 </div>
