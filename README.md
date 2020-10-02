@@ -6,4 +6,6 @@
 npm install
 
 npm run export user=igara token=XXXXXX
+
+npm run html
 ```

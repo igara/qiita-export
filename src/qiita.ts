@@ -76,7 +76,7 @@ export const userItems = async (userName: string, token: string, page: number): 
       // eslint-disable-next-line @typescript-eslint/camelcase
       created_at: `${date.getFullYear()}-${addZero(date.getMonth() + 1)}-${addZero(date.getDate())} ${addZero(
         date.getHours(),
-      )}:${addZero(date.getMinutes())}:${addZero(date.getSeconds())}`,
+      )}-${addZero(date.getMinutes())}-${addZero(date.getSeconds())}`,
     };
   });
 };
