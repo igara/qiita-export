@@ -21,7 +21,7 @@
   "homepage": "https://github.com/igara/qiita-export#readme",
   "dependencies": {
     "github-markdown-css": "4.0.0",
-    "highlight.js": "9.18.1",
+    "highlight.js": "10.1.2",
     "isomorphic-unfetch": "3.0.0",
     "marked": "0.8.2",
     "request-promise": "4.2.5"
