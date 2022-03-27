@@ -1107,7 +1107,7 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
 <li>gem debase: 0.2.2</li>
 </ul>
 <h2 id="ソースコード">ソースコード</h2>
-<p><a href="https://github.com/igara/debug_sample">https://github.com/igara/debug_sample</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/debug_sample">https://github.com/igara/debug_sample</a></p>
 <p>MacOSから直接Rails起動した時と
 Dockerから起動した時のデバックを検証したソースになります。</p>
 <h3 id="プロジェクト構成">プロジェクト構成</h3>
@@ -1116,7 +1116,7 @@ Dockerから起動した時のデバックを検証したソースになりま�
 
 <p>後々DBなどのミドルウェアや別のアプリケーションの追加しやすいようにRails用のディレクトリを切って構成しました。</p>
 <h3 id="vscodeのデバック設定launchjson">VSCodeのデバック設定(launch.json)</h3>
-<p><a href="https://github.com/igara/debug_sample/blob/master/.vscode/launch.json">.vscode/launch.json</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/debug_sample/blob/master/.vscode/launch.json">.vscode/launch.json</a></p>
 <pre><code>{
     <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.2.0"</span>,
     <span class="hljs-attr">"configurations"</span>: [
@@ -1149,17 +1149,17 @@ $ bundle install --path vendor/bundle
 $ bundle exec rdebug-ide --host <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span> --port <span class="hljs-number">1234</span> --dispatcher-port <span class="hljs-number">26162</span> -- bin/rails s</code></pre><ul>
 <li>Local Docker - Listen for rdebug-ide<br>こちらはDockerを使用したRailsデバックの設定になります。<br>remoteWorkspaceRootがコンテナ先のディレクトリ階層になります。<br>下記はデバック用に作成したDockerを起動するコマンドで起動後VSCodeのデバックが可能になります。</li>
 </ul>
-<pre><code><span class="hljs-variable">$</span> docker<span class="hljs-literal">-compose</span> <span class="hljs-operator">-f</span> docker<span class="hljs-literal">-compose</span>.debug.yml up</code></pre><p><a href="https://github.com/igara/debug_sample/blob/master/docker-compose.debug.yml">docker-compose.debug.yml</a>と<a href="https://github.com/igara/debug_sample/blob/master/docker-compose.yml">docker-compose.yml</a>の2つのファイルがありますが違いとして
+<pre><code><span class="hljs-variable">$</span> docker<span class="hljs-literal">-compose</span> <span class="hljs-operator">-f</span> docker<span class="hljs-literal">-compose</span>.debug.yml up</code></pre><p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/debug_sample/blob/master/docker-compose.debug.yml">docker-compose.debug.yml</a>と<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/debug_sample/blob/master/docker-compose.yml">docker-compose.yml</a>の2つのファイルがありますが違いとして
 Rails起動しようとするコマンドにrdebug-ideがあるかないかの違いと
 デバックで使用するポートを開けてるかの違いしかありません。</p>
 <h3 id="ruby-253-rails-521のデバックではまったところ">Ruby 2.5.3 Rails 5.2.1のデバックではまったところ</h3>
 <p>下記のURLに現象と解決方法が書いてあったのですが</p>
-<p><a href="https://superuser.com/questions/1359747/is-it-possible-to-get-visual-studio-code-ide-debugging-of-apps-on-rails-5-2-to-w">https://superuser.com/questions/1359747/is-it-possible-to-get-visual-studio-code-ide-debugging-of-apps-on-rails-5-2-to-w</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://superuser.com/questions/1359747/is-it-possible-to-get-visual-studio-code-ide-debugging-of-apps-on-rails-5-2-to-w">https://superuser.com/questions/1359747/is-it-possible-to-get-visual-studio-code-ide-debugging-of-apps-on-rails-5-2-to-w</a></p>
 <p>あまり解説を見てもちょっと理解しきれていないのですが
 Ruby 2.5系のtrace命令を削除することによる5～10%の高速化の対応と
 gemのbootsnapによるRails起動時の最適化によるもので
 デバックがうまくいかないみたいなのがあるようです。</p>
-<p>一旦は<a href="https://github.com/igara/debug_sample/blob/master/rails/config/boot.rb">rails/config/boot.rb</a>を</p>
+<p>一旦は<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/debug_sample/blob/master/rails/config/boot.rb">rails/config/boot.rb</a>を</p>
 <pre><code>ENV[<span class="hljs-string">'BUNDLE_GEMFILE'</span>] ||= File.expand_path(<span class="hljs-string">'../Gemfile'</span>, __dir__)
 
 require <span class="hljs-string">'bundler/setup'</span> # <span class="hljs-keyword">Set</span> up gems listed <span class="hljs-keyword">in</span> the Gemfile.

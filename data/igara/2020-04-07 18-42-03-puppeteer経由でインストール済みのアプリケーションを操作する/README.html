@@ -1101,7 +1101,7 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
 <h2 id="対象のアプリ">対象のアプリ</h2>
 <p>実際に試験的に外部のアプリを操作しているアプリです。
 macOSでのみ使用できます。
-<a href="https://github.com/igara/speeche/releases/tag/experimental-1">https://github.com/igara/speeche/releases/tag/experimental-1</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/releases/tag/experimental-1">https://github.com/igara/speeche/releases/tag/experimental-1</a>
 もしかするとソース上で指定しているアプリのパスの違いによって起動できない人もいるかもしれません。</p>
 <p>下記は実際に操作している対象のアプリです。</p>
 <ul>
@@ -1118,7 +1118,7 @@ macOSでのみ使用できます。
 </ul>
 <h3 id="chrome">Chrome</h3>
 <p>コードとして下記の箇所になります
-<a href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L20-L46">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L20-L46</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L20-L46">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L20-L46</a></p>
 <pre><code class="language-ts"><span class="hljs-keyword">const</span> createChromeBrowser = <span class="hljs-keyword">async</span> () =&gt; {
   <span class="hljs-keyword">try</span> {
     <span class="hljs-keyword">const</span> chromeBrowser = <span class="hljs-keyword">await</span> puppeteer.launch({
@@ -1150,7 +1150,7 @@ macOSでのみ使用できます。
 <code>userDataDir</code>がコメントされていますがこれ使用できればChromeでログインしているユーザの状態でpuppeteerの操作ができそうですが<strong>UnhandledPromiseRejectionWarning: Error: Failed to launch chrome!</strong>という実行エラーが出てしまったのでコメントにしています。</p>
 <h3 id="twitter">Twitter</h3>
 <p>該当箇所こちら
-<a href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L28-L34">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L28-L34</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L28-L34">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L28-L34</a></p>
 <pre><code class="language-ts"><span class="hljs-keyword">const</span> twitterCookies = chromeCookies.cookies(<span class="hljs-string">"twitter.com"</span>);
 <span class="hljs-keyword">const</span> twitterPage = <span class="hljs-keyword">await</span> chromeBrowser.newPage();
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> cookie of twitterCookies) {
@@ -1160,7 +1160,7 @@ macOSでのみ使用できます。
 <span class="hljs-keyword">await</span> twitterPage.addStyleTag({ content: `* {background: red;}` });</code></pre>
 <p>行っていることとしてtwitterのドメインで取得できるCookieを設定してTwitterのページを開き、CSSの追加をしているという処理をしています。
 Cookieの取得についてですが下記のツールから取得したものを使用しています。
-<a href="https://github.com/igara/chrome-cookies">https://github.com/igara/chrome-cookies</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/chrome-cookies">https://github.com/igara/chrome-cookies</a></p>
 <p>これを実行すると下記のような画面が表示されるようになります。</p>
 <img width="730" alt="スクリーンショット 2020-04-07 17.55.55.png" src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2020-04-07 18-42-03-puppeteer経由でインストール済みのアプリケーションを操作する/0-img-tag.png">
@@ -1169,7 +1169,7 @@ Cookieの取得についてですが下記のツールから取得したもの�
 （タイムラインの箇所とるためにCookie同様にLocal Strage取得用CLI作ろうとしたのですがLevelDBから取れたLocal Strageの値が暗号化されててうまく複合化できずにめげました。</p>
 <h3 id="facebook">Facebook</h3>
 <p>該当箇所こちら
-<a href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L36-L42">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L36-L42</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L36-L42">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L36-L42</a></p>
 <pre><code class="language-ts"><span class="hljs-keyword">const</span> facebookCookies = chromeCookies.cookies(<span class="hljs-string">"facebook.com"</span>);
 <span class="hljs-keyword">const</span> facebookPage = <span class="hljs-keyword">await</span> chromeBrowser.newPage();
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> cookie of facebookCookies) {
@@ -1187,7 +1187,7 @@ Cookieの取得についてですが下記のツールから取得したもの�
 「そのパスでいけちゃうもんなの？」という感じが否めなかったです。</p>
 <h3 id="slack">Slack</h3>
 <p>該当箇所はこちら
-<a href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L48-L64">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L48-L64</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L48-L64">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L48-L64</a></p>
 <pre><code class="language-ts"><span class="hljs-keyword">const</span> createSlackBrowser = <span class="hljs-keyword">async</span> () =&gt; {
   <span class="hljs-keyword">try</span> {
     <span class="hljs-keyword">const</span> slackBrowser = <span class="hljs-keyword">await</span> puppeteer.launch({
@@ -1211,7 +1211,7 @@ Cookieの取得についてですが下記のツールから取得したもの�
 
 <h3 id="discord">Discord</h3>
 <p>該当箇所はこちら
-<a href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L66-L82">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L66-L82</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L66-L82">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L66-L82</a></p>
 <pre><code class="language-ts"><span class="hljs-keyword">const</span> createDiscordBrowser = <span class="hljs-keyword">async</span> () =&gt; {
   <span class="hljs-keyword">try</span> {
     <span class="hljs-keyword">const</span> discordBrowser = <span class="hljs-keyword">await</span> puppeteer.launch({

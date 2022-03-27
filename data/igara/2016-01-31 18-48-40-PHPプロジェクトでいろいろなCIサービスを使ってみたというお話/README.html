@@ -1097,30 +1097,30 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
 <p>GitHubでコミット＆プッシュしたときに自動でテストを行ったり、
 PullRequest時では「このコード、コーディング規約違反してるよ！」とコメントしてくれるようなサービスの紹介になる。</p>
 <p>PHPプロジェクトについて下記のレポジトリが対象
-URL:<a href="https://github.com/igara/syonet">https://github.com/igara/syonet</a></p>
+URL:<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/syonet">https://github.com/igara/syonet</a></p>
 <h1 id="sideci">SideCI</h1>
-<p>URL:<a href="https://www.sideci.com/">https://www.sideci.com/</a>
+<p>URL:<a target="_blank" rel="noopener noreferrer" href="https://www.sideci.com/">https://www.sideci.com/</a>
 PullRequestを出した時にコミットしたファイルの静的解析を行い、
 コーディング規約違反している対象の行に対してコメントを追加してくれる。</p>
 <p><img src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2016-01-31 18-48-40-PHPプロジェクトでいろいろなCIサービスを使ってみたというお話/0-md.png" alt="スクリーンショット 2016-01-31 18.11.05.png">
 上記はnamespaceの指定がなく、規約に反していますというコメントの例である。</p>
 <p>PSRの規約に準じてコメントがされているので
-<a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">php-cs-fixer</a>をフォーマッタとして用いれば大抵は修正される。
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">php-cs-fixer</a>をフォーマッタとして用いれば大抵は修正される。
 （namespaceの違反は修正されないが、）</p>
 <p>コード修正をし、規約どおりになると下記のようにコメントが隠れるようになる。
 <img src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2016-01-31 18-48-40-PHPプロジェクトでいろいろなCIサービスを使ってみたというお話/1-md.png" alt="スクリーンショット 2016-01-31 18.13.27.png"></p>
 <p>この時のPullRequestの例として下記になる。
-<a href="https://github.com/igara/syonet/pull/48">https://github.com/igara/syonet/pull/48</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/syonet/pull/48">https://github.com/igara/syonet/pull/48</a></p>
 <p>PHP以外にTypeScriptとかも静的解析を行っていただける。</p>
 <h1 id="travisci">TravisCI</h1>
-<p>URL:<a href="https://travis-ci.org/">https://travis-ci.org/</a></p>
+<p>URL:<a target="_blank" rel="noopener noreferrer" href="https://travis-ci.org/">https://travis-ci.org/</a></p>
 <p>レポジトリにプッシュされた後に
 いろいろな言語のバージョンによるビルドを自動的に行ってくれるサービス
 主にPHPUnitの実行とカバレッジの取得用に使っている。</p>
 <p>カバレッジ取得するために
-<a href="https://github.com/satooshi/php-coveralls">php-coveralls</a>を使用している。</p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/satooshi/php-coveralls">php-coveralls</a>を使用している。</p>
 <p>composerで導入する時は下記を実行する。</p>
 <pre><code>composer <span class="hljs-built_in">require</span> satooshi/php-coveralls <span class="hljs-comment">--dev</span></code></pre><p>.travis.ymlに行いたいタスクを記載し、レポジトリのルートに置くことで自動でビルドが行われる。</p>
 <pre><code class="language-.travis.yml">
@@ -1158,7 +1158,7 @@ after_success:
 /master/data/igara/2016-01-31 18-48-40-PHPプロジェクトでいろいろなCIサービスを使ってみたというお話/2-md.png" alt="スクリーンショット 2016-01-31 18.23.31.png"></p>
 <p>README.mdにビルドの状態がわかるようにバッチを置くことができる。
 ↓こいつ
-<a href="https://travis-ci.org/igara/syonet"><img src="https://raw.githubusercontent.com/igara/qiita-export
+<a target="_blank" rel="noopener noreferrer" href="https://travis-ci.org/igara/syonet"><img src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2016-01-31 18-48-40-PHPプロジェクトでいろいろなCIサービスを使ってみたというお話/3-md.svg" alt="Build Status"></a></p>
 <h1 id="coveralls">Coveralls</h1>
 <p>カバレッジの結果をパーセント表示にしたり、カバレッジを元にPHPUnitのassertの状態を確認できたりできる。</p>
@@ -1171,9 +1171,9 @@ coverage_clover:</span> build<span class="hljs-meta-keyword">/logs/</span>clover
 </code></pre>
 <p>TravisCIと同様にバッチの設置ができる。
 ↓こいつ
-<a href="https://coveralls.io/github/igara/syonet?branch=master"><img src="https://raw.githubusercontent.com/igara/qiita-export
+<a target="_blank" rel="noopener noreferrer" href="https://coveralls.io/github/igara/syonet?branch=master"><img src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2016-01-31 18-48-40-PHPプロジェクトでいろいろなCIサービスを使ってみたというお話/4-md.svg" alt="Coverage Status"></a></p>
 <h1 id="参考記事">参考記事</h1>
-<p><a href="http://qiita.com/noboru_i/items/23827b655ac854ba04b2">規約に沿ってないPHPコードを駆逐する</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="http://qiita.com/noboru_i/items/23827b655ac854ba04b2">規約に沿ってないPHPコードを駆逐する</a></p>
 
 </div>

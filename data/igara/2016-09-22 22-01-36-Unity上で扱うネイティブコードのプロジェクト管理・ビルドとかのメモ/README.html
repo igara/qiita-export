@@ -1096,18 +1096,18 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
   <h1 id="この記事の内容について">この記事の内容について</h1>
 <p>前回UnityでSwiftで書いたiOSのネイティブコードを使う方法について記載しました。</p>
 <ul>
-<li><a href="http://qiita.com/igara/items/68b4d3efd53c118339b3">UnityのネイティブコードをSwiftで書こうとした時にはまったこと</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="http://qiita.com/igara/items/68b4d3efd53c118339b3">UnityのネイティブコードをSwiftで書こうとした時にはまったこと</a></li>
 </ul>
 <p>（実際やってみるとUnityでビルドする度にXcode上の設定が戻ってしまって辛い問題が...）</p>
 <p>その後Androidのネイティブコードも書いてみてiOSとAndroidのプロジェクト構成に違いが出たなぁということでメモ書きです。</p>
 <h1 id="対象のプロジェクトの簡単な説明">対象のプロジェクトの簡単な説明</h1>
 <ul>
-<li><p><a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55">Bariiiii</a>
+<li><p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55">Bariiiii</a>
 Assets、ProjectSettingsは
 Unityプロジェクトで使用されるものです。</p>
 <ul>
-<li><a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin">CreateBariiiiiAndroidNativePlugin</a><br>このプロジェクトはAndroid Studioで作成されており、<br>このプロジェクトでビルドで作成されたjarファイルやaarファイルをGradlew経由で<a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/Android">/Assets/Plugins/Android</a>にimportさせます。</li>
-<li><a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiIOSNativePlugin">CreateBariiiiiIOSNativePlugin</a><br>このプロジェクトはXcodeで作成されますが、<br>対象のネイティブコードはUnity管理のディレクトリ<a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii">/Assets/Plugins/iOS/</a>に直接配置します。この構成を実現させるにはXcodeプロジェクト上のファイルと実ファイルの参照がちゃんとリンクさせる必要があります。</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin">CreateBariiiiiAndroidNativePlugin</a><br>このプロジェクトはAndroid Studioで作成されており、<br>このプロジェクトでビルドで作成されたjarファイルやaarファイルをGradlew経由で<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/Android">/Assets/Plugins/Android</a>にimportさせます。</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiIOSNativePlugin">CreateBariiiiiIOSNativePlugin</a><br>このプロジェクトはXcodeで作成されますが、<br>対象のネイティブコードはUnity管理のディレクトリ<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii">/Assets/Plugins/iOS/</a>に直接配置します。この構成を実現させるにはXcodeプロジェクト上のファイルと実ファイルの参照がちゃんとリンクさせる必要があります。</li>
 </ul>
 </li>
 </ul>
@@ -1129,7 +1129,7 @@ Unityのビルドで直接Android端末にアプリインストールします�
 <p>使用したいAndroidプロジェクトのActivityや必要な権限（permission）はUnityプロジェクト側のAndroidManifest.xmlに記載します。
 理由としてはUnityビルド中に他のaarファイルの中にあるAndroidManifest.xmlがマージを行いコンフリクトを起こす原因になるからです。</p>
 <ul>
-<li>Androidプロジェクト側<br><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/AndroidManifest.xml">AndroidManifest.xml</a></li>
+<li>Androidプロジェクト側<br><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/AndroidManifest.xml">AndroidManifest.xml</a></li>
 </ul>
 <pre><code class="language-/CreateBariiiiiAndroidNativePlugin/app/src/main/AndroidManifest.xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">manifest</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>
@@ -1143,7 +1143,7 @@ Unityのビルドで直接Android端末にアプリインストールします�
     <span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">manifest</span>&gt;</span></code></pre>
 <ul>
-<li>Unityプロジェクト側<br><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/Android/AndroidManifest.xml">AndroidManifest.xml</a></li>
+<li>Unityプロジェクト側<br><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/Android/AndroidManifest.xml">AndroidManifest.xml</a></li>
 </ul>
 <pre><code class="language-/Assets/Plugins/Android/AndroidManifest.xml"><span class="hljs-tag">&lt;<span class="hljs-name">manifest</span>
     <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>&gt;</span>
@@ -1177,7 +1177,7 @@ Unityのビルドで直接Android端末にアプリインストールします�
 </code></pre>
 <h2 id="buildgradle">build.gradle</h2>
 <ul>
-<li>Androidプロジェクト直下のbuild.gradle<br><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/build.gradle">build.gradle</a></li>
+<li>Androidプロジェクト直下のbuild.gradle<br><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/build.gradle">build.gradle</a></li>
 </ul>
 <pre><code class="language-/CreateBariiiiiAndroidNativePlugin/build.gradle"><span class="hljs-comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span>
 
@@ -1205,7 +1205,7 @@ Unityのビルドで直接Android端末にアプリインストールします�
 </code></pre>
 <p>ちょっとkotlin使いたかったのでその設定ぐらいしかしていません  </p>
 <ul>
-<li>Androidプロジェクト直下のapp/build.gradle<br><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/build.gradle">build.gradle</a>  </li>
+<li>Androidプロジェクト直下のapp/build.gradle<br><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/build.gradle">build.gradle</a>  </li>
 </ul>
 <pre><code class="language-/CreateBariiiiiAndroidNativePlugin/app/build.gradle">apply plugin: <span class="hljs-string">'com.android.library'</span>
 apply plugin: <span class="hljs-string">'kotlin-android'</span>
@@ -1275,7 +1275,7 @@ android.libraryVariants.all { variant -&gt;
 <li>apply plugin: &#39;com.android.library&#39;<br>com.android.applicationから変更</li>
 <li>task copyLibs<br>Google Play ServicesなどAndroidプロジェクトで使用していた<br>ライブラリをUnity管理下にするためのバッチ</li>
 <li>task exportAar<br>今回作成したAndroidプロジェクトをaarファイル化しUnity管理下にするバッチ<br>aarファイル化させた理由としてはAndroidプロジェクト内にあるLayout XMLやstring.xmlなどもまとめてくれるからです。</li>
-<li>provided files(&#39;/Applications/Unity/〜〜〜〜<br>Androidプロジェクト内のコードでUnityで提供されているUnitySendMessageを使用したかったからです。<br>使用していた箇所として<a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/java/work/syonet/bariiiii/BarcodeCameraFragment.kt">これ</a>になります。<br>provided filesを入れないとtask copyLibsを実行した時にUnityのクラスファイルを二重に入れることになり、ビルドが通らなくなります。</li>
+<li>provided files(&#39;/Applications/Unity/〜〜〜〜<br>Androidプロジェクト内のコードでUnityで提供されているUnitySendMessageを使用したかったからです。<br>使用していた箇所として<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/java/work/syonet/bariiiii/BarcodeCameraFragment.kt">これ</a>になります。<br>provided filesを入れないとtask copyLibsを実行した時にUnityのクラスファイルを二重に入れることになり、ビルドが通らなくなります。</li>
 </ul>
 <h3 id="ビルド実行">ビルド実行</h3>
 <pre><code><span class="hljs-selector-tag">gradlew</span> <span class="hljs-selector-tag">app</span><span class="hljs-selector-pseudo">:copyLibs</span> &amp;&amp; <span class="hljs-selector-tag">gradlew</span> <span class="hljs-selector-tag">app</span><span class="hljs-selector-pseudo">:exportAar</span></code></pre><h2 id="androidバージョンの指定の統一">Androidバージョンの指定の統一</h2>
@@ -1286,13 +1286,13 @@ android.libraryVariants.all { variant -&gt;
 <p>ここのやり方は公式や他のQiitaの記事でも書いてあったりしますので詳しい説明は割愛します。
 ActivityLauncher.javaというkotlinじゃなくてJavaのファイルにした理由ですが特にありません。
 強いて理由とすればC#とJavaって書き方似てるなぁという愉悦に浸るぐらいの程度のものです。</p>
-<p><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Screen/BarcodeScanScreen/Component/CameraRawImageComponent.cs">CameraRawImageComponent.cs</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Screen/BarcodeScanScreen/Component/CameraRawImageComponent.cs">CameraRawImageComponent.cs</a></p>
 <pre><code class="language-CameraRawImageComponent.cs">AndroidJavaClass unityPlayer = <span class="hljs-keyword">new</span> <span class="hljs-constructor">AndroidJavaClass(<span class="hljs-string">"com.unity3d.player.UnityPlayer"</span>)</span>; 
         AndroidJavaObject currentUnityActivity = unityPlayer.GetStatic&lt;AndroidJavaObject&gt;(<span class="hljs-string">"currentActivity"</span>); 
 
         AndroidJavaClass plugin = <span class="hljs-keyword">new</span> <span class="hljs-constructor">AndroidJavaClass(<span class="hljs-string">"work.syonet.bariiiii.ActivityLauncher"</span>)</span>; 
         plugin.<span class="hljs-constructor">CallStatic(<span class="hljs-string">"launchActivity"</span>, <span class="hljs-string">"work.syonet.bariiiii.BarcodeScanAndroidActivity"</span>, <span class="hljs-params">currentUnityActivity</span> )</span>;</code></pre>
-<p><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/java/work/syonet/bariiiii/ActivityLauncher.java">ActivityLauncher.java</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/java/work/syonet/bariiiii/ActivityLauncher.java">ActivityLauncher.java</a></p>
 <pre><code class="language-ActivityLauncher.java">package work.syonet.bariiiii;
 
 import android.app.Activity;
@@ -1321,7 +1321,7 @@ public <span class="hljs-keyword">class</span> ActivityLauncher {
 <h2 id="ネイティブコードの配置先-1">ネイティブコードの配置先</h2>
 <p>この記事の冒頭にもありましたが/Assets/Plugins/iOS/下に配置します。</p>
 <blockquote>
-<p>このプロジェクトはXcodeで作成されますが、<br>対象のネイティブコードはUnity管理のディレクトリ<a href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii">/Assets/Plugins/iOS/</a>に直接配置します。この構成を実現させるにはXcodeプロジェクト上のファイルと実ファイルの参照がちゃんとリンクさせる必要があります。</p>
+<p>このプロジェクトはXcodeで作成されますが、<br>対象のネイティブコードはUnity管理のディレクトリ<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/tree/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii">/Assets/Plugins/iOS/</a>に直接配置します。この構成を実現させるにはXcodeプロジェクト上のファイルと実ファイルの参照がちゃんとリンクさせる必要があります。</p>
 </blockquote>
 <p>iOSにもLayoutを構成するxibファイルやstoryboardなどInterface Builderで作成したもの達がありますがUnity上でも呼び出すことが可能で特別なIBの設定なども必要ありません。</p>
 <h3 id="実ファイルとxcodeプロジェクトをリンクさせる方法">実ファイルとXcodeプロジェクトをリンクさせる方法</h3>
@@ -1332,7 +1332,7 @@ public <span class="hljs-keyword">class</span> ActivityLauncher {
 <p>これでリンクされるようになります。</p>
 <h2 id="cからiosプロジェクトのコードを動かすようにする">C#からiOSプロジェクトのコードを動かすようにする</h2>
 <p>ここのやり方もAndroid同様に公式や他のQiitaの記事でも書いてあったりしますので詳しい説明は割愛です。</p>
-<p><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.cs">BarcodeScanIOS.cs</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.cs">BarcodeScanIOS.cs</a></p>
 <pre><code class="language-/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.cs">    [<span class="hljs-meta">DllImport(<span class="hljs-meta-string">"__Internal"</span>)</span>]
     <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">extern</span> <span class="hljs-keyword">void</span> <span class="hljs-title">barcordScanInit_</span> (<span class="hljs-params"></span>)</span>;
 
@@ -1341,7 +1341,7 @@ public <span class="hljs-keyword">class</span> ActivityLauncher {
             barcordScanInit_ ();
         }
     }</code></pre>
-<p><a href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.mm">BarcodeScanIOS.mm</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.mm">BarcodeScanIOS.mm</a></p>
 <pre><code class="language-/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.mm"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> mark called by C#</span>
 <span class="hljs-comment">/**
  * MARK:Unity上で扱うViewController
@@ -1363,17 +1363,17 @@ public <span class="hljs-keyword">class</span> ActivityLauncher {
 }</code></pre>
 <h1 id="今後（今">今後（今</h1>
 <p>Unityプロジェクトとネイティブコードプロジェクトのビルドを楽にできるようなツールを作成中
-<a href="https://github.com/igara/Bariiiii/tree/master/BuildTool">https://github.com/igara/Bariiiii/tree/master/BuildTool</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/tree/master/BuildTool">https://github.com/igara/Bariiiii/tree/master/BuildTool</a>
 もっとiOSのビルドが楽になるようなものを作っていきたいです。</p>
 <h1 id="参考リンク">参考リンク</h1>
 <ul>
 <li>公式<ul>
-<li><a href="https://docs.unity3d.com/ja/current/Manual/PluginsForAndroid.html">Unity - マニュアル_ Android 用のプラグインをビルド</a></li>
-<li><a href="https://docs.unity3d.com/ja/current/Manual/PluginsForIOS.html">Unity - マニュアル_ iOS 用のプラグインをビルド</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://docs.unity3d.com/ja/current/Manual/PluginsForAndroid.html">Unity - マニュアル_ Android 用のプラグインをビルド</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://docs.unity3d.com/ja/current/Manual/PluginsForIOS.html">Unity - マニュアル_ iOS 用のプラグインをビルド</a></li>
 </ul>
 </li>
-<li>UnityとAndroidネイティブの連携：UnityからネイティブのActivityを呼び出す[part1] _ 未知の路<br><a href="http://redfreshet.com/2015/08/24/unity_android_link_3/">http://redfreshet.com/2015/08/24/unity_android_link_3/</a></li>
-<li>【Unity】こんなAndroidネイティブプラグインをつくっちゃいけない！【特に広告SDK】 - Qiita<br><a href="http://qiita.com/RyotaMurohoshi/items/3b95daeb8eaa6b487a20">http://qiita.com/RyotaMurohoshi/items/3b95daeb8eaa6b487a20</a></li>
+<li>UnityとAndroidネイティブの連携：UnityからネイティブのActivityを呼び出す[part1] _ 未知の路<br><a target="_blank" rel="noopener noreferrer" href="http://redfreshet.com/2015/08/24/unity_android_link_3/">http://redfreshet.com/2015/08/24/unity_android_link_3/</a></li>
+<li>【Unity】こんなAndroidネイティブプラグインをつくっちゃいけない！【特に広告SDK】 - Qiita<br><a target="_blank" rel="noopener noreferrer" href="http://qiita.com/RyotaMurohoshi/items/3b95daeb8eaa6b487a20">http://qiita.com/RyotaMurohoshi/items/3b95daeb8eaa6b487a20</a></li>
 </ul>
 
 </div>

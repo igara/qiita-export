@@ -1124,22 +1124,22 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
 <h2 id="結果的にできたもの">結果的にできたもの</h2>
 <p><strong>即席で画像を集めたかったのでコードの内容は煩雑です。お許しください。</strong></p>
 <p>使い方としてこちらのREADME参照
-<a href="https://github.com/igara/image_shiki">https://github.com/igara/image_shiki</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki">https://github.com/igara/image_shiki</a></p>
 <p>puppeteerを使用した例
-<a href="https://github.com/igara/image_shiki/blob/a115335016cd3d301daf1e959ed4fa3d0bbe976d/puppeteer.js">https://github.com/igara/image_shiki/blob/a115335016cd3d301daf1e959ed4fa3d0bbe976d/puppeteer.js</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/a115335016cd3d301daf1e959ed4fa3d0bbe976d/puppeteer.js">https://github.com/igara/image_shiki/blob/a115335016cd3d301daf1e959ed4fa3d0bbe976d/puppeteer.js</a></p>
 <p>chrome-launcherとchrome-remote-interfaceを使用した例
-<a href="https://github.com/igara/image_shiki/blob/aa8b39d0a74ee10e780cd8b40a3e82cb0b1abdf5/chrome_launcher.js">https://github.com/igara/image_shiki/blob/aa8b39d0a74ee10e780cd8b40a3e82cb0b1abdf5/chrome_launcher.js</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/aa8b39d0a74ee10e780cd8b40a3e82cb0b1abdf5/chrome_launcher.js">https://github.com/igara/image_shiki/blob/aa8b39d0a74ee10e780cd8b40a3e82cb0b1abdf5/chrome_launcher.js</a></p>
 <p>最初はchrome-launcherとchrome-remote-interfaceを使って画像取得ツール作成してましたが、
 とある噂でpuppeteerの方が楽という強い言葉を聞き、puppeteerも使用してみました。</p>
 <p><strong>本記事の内容もpuppeteerを中心に寄せて記載します。</strong></p>
-<p>比較してみて一部の <a href="https://chromedevtools.github.io/devtools-protocol/">Chrome DevTools Protocol</a> による機能の関数化がpuppeteerではされていなかったりしますが下記のコードで使用することができます。</p>
+<p>比較してみて一部の <a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/">Chrome DevTools Protocol</a> による機能の関数化がpuppeteerではされていなかったりしますが下記のコードで使用することができます。</p>
 <pre><code><span class="hljs-selector-tag">page</span><span class="hljs-selector-class">._client</span><span class="hljs-selector-class">.send</span>(<span class="hljs-string">'使用したいChrome DevTools Protocolメソッド名'</span>, {パラメータ});</code></pre><p>puppeteerで関数化されていないChrome DevTools ProtocolというのはだいたいがEXPERIMENTAL（試験的な）と記載されているものが多いです。</p>
-<p>後記で出てくる<a href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>もEXPERIMENTALなものの１つです。</p>
+<p>後記で出てくる<a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>もEXPERIMENTALなものの１つです。</p>
 <h1 id="僕のheadless-chromeを用いた画像収集方法">僕のHeadless Chromeを用いた画像収集方法</h1>
 <p>大雑把に手順を公開すると</p>
 <ol>
 <li>Headless Chromeでみている画面を<br>コードでスクロール or 「もっと見る」リンクを押下して追加の画像を読み込む</li>
-<li>Chrome DevTools Protocolの１つである<a href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>を使用して<br>画像のリソースを取得する</li>
+<li>Chrome DevTools Protocolの１つである<a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>を使用して<br>画像のリソースを取得する</li>
 <li>画像を保存する</li>
 </ol>
 <p>な手順で画像を集めました。</p>
@@ -1153,16 +1153,16 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
 <h2 id="1-headless-chromeでみている画面をコードでスクロール-or-「もっと見る」リンクを押下して追加の画像を読み込む">1. Headless Chromeでみている画面をコードでスクロール or 「もっと見る」リンクを押下して追加の画像を読み込む</h2>
 <h3 id="スクロール方法">スクロール方法</h3>
 <p>puppeteerによるHeadless Chromeのスクロール方法についてのコード部分
-<a href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L85-L93">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L85-L93</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L85-L93">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L85-L93</a></p>
 <p>ここで注意することはスクロールの処理が非同期的なものなので
 await / async ちゃんとしてないと
 無駄にスクロールしてるけど画像あまり拾えてないとなってしまいます。</p>
 <h3 id="「もっと見る」リンクの押下方法">「もっと見る」リンクの押下方法</h3>
 <p>puppeteerによるHeadless Chromeのリンク押下方法についてのコード部分
-<a href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L80-L81">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L80-L81</a></p>
-<p>こちらのボタンの指定は <code>page.$</code> を使用しましたが <a href="https://developer.mozilla.org/ja/docs/Web/API/Document/querySelector">document.querySelector</a> のようなHTMLのセレクタ・クラスなどの指定からHTMLElementを指定することができます。</p>
-<h2 id="2-chrome-devtools-protocolの１つであるpagegetresourcetreeを使用して画像のリソースを取得する">2. Chrome DevTools Protocolの１つである<a href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>を使用して画像のリソースを取得する</h2>
-<p>先ほどから<a href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>という単語だけ先行して出てきていますが
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L80-L81">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L80-L81</a></p>
+<p>こちらのボタンの指定は <code>page.$</code> を使用しましたが <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/ja/docs/Web/API/Document/querySelector">document.querySelector</a> のようなHTMLのセレクタ・クラスなどの指定からHTMLElementを指定することができます。</p>
+<h2 id="2-chrome-devtools-protocolの１つであるpagegetresourcetreeを使用して画像のリソースを取得する">2. Chrome DevTools Protocolの１つである<a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>を使用して画像のリソースを取得する</h2>
+<p>先ほどから<a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>という単語だけ先行して出てきていますが
 こいつは何なのかというとChromeの開発ツールのNetworkタブで表示されるリソースを取得することができます。</p>
 <p>どうゆうことかというと</p>
 <img width="1290" alt="スクリーンショット 2017-12-11 17.21.23.png" src="https://raw.githubusercontent.com/igara/qiita-export
@@ -1171,7 +1171,7 @@ await / async ちゃんとしてないと
 <p>赤枠の箇所の情報を全て取得できるわけです。
 当然不要なリソースも存在するかと思いますので任意で取り除いたりすると良いかと思います。</p>
 <p>コードとしてこちらになります。
-<a href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L112-L114">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L112-L114</a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L112-L114">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L112-L114</a></p>
 <h2 id="3-画像を保存する">3. 画像を保存する</h2>
 <p>Page.getResourceTreeで画像のURLを取得できるわけですが
 (http|https)〜〜〜から始まるURLのパターンと
@@ -1180,13 +1180,13 @@ data:image〜〜〜から始まるパターンがありますので
 <p>ソース上では趣味上の理由により謎のjpgに変換する処理がありますが
 気にしないでください。</p>
 <h3 id="httphttps〜〜〜から始まるurlのパターン">(http|https)〜〜〜から始まるURLのパターン</h3>
-<p><a href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L130-L132">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L130-L132</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L130-L132">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L130-L132</a></p>
 <p>レスポンスからバイナリデータを引っ張ってくる処理を行なっています。</p>
 <h3 id="dataimage〜〜〜から始まるパターン">data:image〜〜〜から始まるパターン</h3>
-<p><a href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L127-L128">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L127-L128</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L127-L128">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L127-L128</a></p>
 <p>base64エンコード文字列の部分だけを持ってきて再度バイナリにする処置を行なっています。</p>
 <h3 id="あとは取得したバイナリデータをファイル書き込みするだけ">あとは取得したバイナリデータをファイル書き込みするだけ</h3>
-<p><a href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L143-L143">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L143-L143</a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L143-L143">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L143-L143</a></p>
 <p>すみません。ファイル名適当すぎました。</p>
 <p>以上で僕の画像収集方法についての説明になります。</p>
 <h1 id="さいごに--やってみた感想">さいごに &amp; やってみた感想</h1>
