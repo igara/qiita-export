@@ -81,7 +81,7 @@ export const userItems = async (userName: string, token: string, page: number): 
   });
 };
 
-const directoryName = (item: UserItem) => `${item.user.id}/${item.created_at}-${item.title.replace(/\//g, "／")}`;
+const directoryName = (item: UserItem) => `${item.user.id}/${item.created_at} ${item.title.replace(/\//g, "／")}`;
 
 export const mkdir = (item: UserItem) => {
   fs.mkdirSync(`./data/${directoryName(item)}`, { recursive: true });

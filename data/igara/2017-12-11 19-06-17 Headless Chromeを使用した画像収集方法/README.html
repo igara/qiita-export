@@ -1,0 +1,1062 @@
+<style>
+pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/.hljs{color:#24292e;background:#fff}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#d73a49}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#6f42c1}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#005cc5}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#032f62}.hljs-built_in,.hljs-symbol{color:#e36209}.hljs-code,.hljs-comment,.hljs-formula{color:#6a737d}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#22863a}.hljs-subst{color:#24292e}.hljs-section{color:#005cc5;font-weight:700}.hljs-bullet{color:#735c0f}.hljs-emphasis{color:#24292e;font-style:italic}.hljs-strong{color:#24292e;font-weight:700}.hljs-addition{color:#22863a;background-color:#f0fff4}.hljs-deletion{color:#b31d28;background-color:#ffeef0}
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  color: #24292f;
+  background-color: #ffffff;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body h1:hover .anchor .octicon-link:before,
+.markdown-body h2:hover .anchor .octicon-link:before,
+.markdown-body h3:hover .anchor .octicon-link:before,
+.markdown-body h4:hover .anchor .octicon-link:before,
+.markdown-body h5:hover .anchor .octicon-link:before,
+.markdown-body h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+}
+
+.markdown-body details,
+.markdown-body figcaption,
+.markdown-body figure {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body [hidden] {
+  display: none !important;
+}
+
+.markdown-body a {
+  background-color: transparent;
+  color: #0969da;
+  text-decoration: none;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body abbr[title] {
+  border-bottom: none;
+  text-decoration: underline dotted;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body dfn {
+  font-style: italic;
+}
+
+.markdown-body h1 {
+  margin: .67em 0;
+  font-weight: 600;
+  padding-bottom: .3em;
+  font-size: 2em;
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+}
+
+.markdown-body mark {
+  background-color: #fff8c5;
+  color: #24292f;
+}
+
+.markdown-body small {
+  font-size: 90%;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body sup {
+  top: -0.5em;
+}
+
+.markdown-body img {
+  border-style: none;
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #ffffff;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body figure {
+  margin: 1em 40px;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  overflow: hidden;
+  background: transparent;
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #d0d7de;
+  border: 0;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+  overflow: visible;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body [type=button],
+.markdown-body [type=reset],
+.markdown-body [type=submit] {
+  -webkit-appearance: button;
+}
+
+.markdown-body [type=button]::-moz-focus-inner,
+.markdown-body [type=reset]::-moz-focus-inner,
+.markdown-body [type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+.markdown-body [type=button]:-moz-focusring,
+.markdown-body [type=reset]:-moz-focusring,
+.markdown-body [type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+.markdown-body [type=checkbox],
+.markdown-body [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body [type=number]::-webkit-inner-spin-button,
+.markdown-body [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+.markdown-body [type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+.markdown-body [type=search]::-webkit-search-cancel-button,
+.markdown-body [type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.markdown-body ::-webkit-input-placeholder {
+  color: inherit;
+  opacity: .54;
+}
+
+.markdown-body ::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body hr::before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body details:not([open])>*:not(summary) {
+  display: none !important;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  line-height: 10px;
+  color: #24292f;
+  vertical-align: middle;
+  background-color: #f6f8fa;
+  border: solid 1px rgba(175,184,193,0.2);
+  border-bottom-color: rgba(175,184,193,0.2);
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 rgba(175,184,193,0.2);
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown-body h2 {
+  font-weight: 600;
+  padding-bottom: .3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+}
+
+.markdown-body h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-weight: 600;
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  font-weight: 600;
+  font-size: .85em;
+  color: #57606a;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+  padding: 0 1em;
+  color: #57606a;
+  border-left: .25em solid #d0d7de;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body tt,
+.markdown-body code {
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+  word-wrap: normal;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-body ::placeholder {
+  color: #6e7781;
+  opacity: 1;
+}
+
+.markdown-body input::-webkit-outer-spin-button,
+.markdown-body input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.markdown-body .pl-c {
+  color: #6e7781;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #0550ae;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #8250df;
+}
+
+.markdown-body .pl-smi,
+.markdown-body .pl-s .pl-s1 {
+  color: #24292f;
+}
+
+.markdown-body .pl-ent {
+  color: #116329;
+}
+
+.markdown-body .pl-k {
+  color: #cf222e;
+}
+
+.markdown-body .pl-s,
+.markdown-body .pl-pds,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sre,
+.markdown-body .pl-sr .pl-sra {
+  color: #0a3069;
+}
+
+.markdown-body .pl-v,
+.markdown-body .pl-smw {
+  color: #953800;
+}
+
+.markdown-body .pl-bu {
+  color: #82071e;
+}
+
+.markdown-body .pl-ii {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+
+.markdown-body .pl-c2 {
+  color: #f6f8fa;
+  background-color: #cf222e;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #116329;
+}
+
+.markdown-body .pl-ml {
+  color: #3b2300;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: bold;
+  color: #0550ae;
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: #24292f;
+}
+
+.markdown-body .pl-mb {
+  font-weight: bold;
+  color: #24292f;
+}
+
+.markdown-body .pl-md {
+  color: #82071e;
+  background-color: #FFEBE9;
+}
+
+.markdown-body .pl-mi1 {
+  color: #116329;
+  background-color: #dafbe1;
+}
+
+.markdown-body .pl-mc {
+  color: #953800;
+  background-color: #ffd8b5;
+}
+
+.markdown-body .pl-mi2 {
+  color: #eaeef2;
+  background-color: #0550ae;
+}
+
+.markdown-body .pl-mdr {
+  font-weight: bold;
+  color: #8250df;
+}
+
+.markdown-body .pl-ba {
+  color: #57606a;
+}
+
+.markdown-body .pl-sg {
+  color: #8c959f;
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #0a3069;
+}
+
+.markdown-body [data-catalyst] {
+  display: block;
+}
+
+.markdown-body g-emoji {
+  font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1em;
+  font-style: normal !important;
+  font-weight: 400;
+  line-height: 1;
+  vertical-align: -0.075em;
+}
+
+.markdown-body g-emoji img {
+  width: 1em;
+  height: 1em;
+}
+
+.markdown-body::before {
+  display: table;
+  content: "";
+}
+
+.markdown-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .absent {
+  color: #cf222e;
+}
+
+.markdown-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body details {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body sup>a::before {
+  content: "[";
+}
+
+.markdown-body sup>a::after {
+  content: "]";
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #24292f;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 tt,
+.markdown-body h1 code,
+.markdown-body h2 tt,
+.markdown-body h2 code,
+.markdown-body h3 tt,
+.markdown-body h3 code,
+.markdown-body h4 tt,
+.markdown-body h4 code,
+.markdown-body h5 tt,
+.markdown-body h5 code,
+.markdown-body h6 tt,
+.markdown-body h6 code {
+  padding: 0 .2em;
+  font-size: inherit;
+}
+
+.markdown-body ul.no-list,
+.markdown-body ol.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.markdown-body ol[type="1"] {
+  list-style-type: decimal;
+}
+
+.markdown-body ol[type=a] {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body ol[type=i] {
+  list-style-type: lower-roman;
+}
+
+.markdown-body div>ol:not([type]) {
+  list-style-type: decimal;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #d0d7de;
+}
+
+.markdown-body table tr {
+  background-color: #ffffff;
+  border-top: 1px solid hsla(210,18%,87%,1);
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body table img {
+  background-color: transparent;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body .emoji {
+  max-width: none;
+  vertical-align: text-top;
+  background-color: transparent;
+}
+
+.markdown-body span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+.markdown-body span.frame>span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid #d0d7de;
+}
+
+.markdown-body span.frame span img {
+  display: block;
+  float: left;
+}
+
+.markdown-body span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: #24292f;
+}
+
+.markdown-body span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.markdown-body span.align-center>span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.markdown-body span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.markdown-body span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.markdown-body span.align-right>span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.markdown-body span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+.markdown-body span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+
+.markdown-body span.float-left span {
+  margin: 13px 0 0;
+}
+
+.markdown-body span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+
+.markdown-body span.float-right>span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.markdown-body code,
+.markdown-body tt {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(175,184,193,0.2);
+  border-radius: 6px;
+}
+
+.markdown-body code br,
+.markdown-body tt br {
+  display: none;
+}
+
+.markdown-body del code {
+  text-decoration: inherit;
+}
+
+.markdown-body pre code {
+  font-size: 100%;
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body .csv-data td,
+.markdown-body .csv-data th {
+  padding: 5px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.markdown-body .csv-data .blob-num {
+  padding: 10px 8px 9px;
+  text-align: right;
+  background: #ffffff;
+  border: 0;
+}
+
+.markdown-body .csv-data tr {
+  border-top: 0;
+}
+
+.markdown-body .csv-data th {
+  font-weight: 600;
+  background: #f6f8fa;
+  border-top: 0;
+}
+
+.markdown-body .footnotes {
+  font-size: 12px;
+  color: #57606a;
+  border-top: 1px solid #d0d7de;
+}
+
+.markdown-body .footnotes ol {
+  padding-left: 16px;
+}
+
+.markdown-body .footnotes li {
+  position: relative;
+}
+
+.markdown-body .footnotes li:target::before {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -24px;
+  pointer-events: none;
+  content: "";
+  border: 2px solid #0969da;
+  border-radius: 6px;
+}
+
+.markdown-body .footnotes li:target {
+  color: #24292f;
+}
+
+.markdown-body .footnotes .data-footnote-backref g-emoji {
+  font-family: monospace;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item label {
+  font-weight: 400;
+}
+
+.markdown-body .task-list-item.enabled label {
+  cursor: pointer;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item .handle {
+  display: none;
+}
+
+.markdown-body .task-list-item-checkbox {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox {
+  margin: 0 -1.6em .25em .2em;
+}
+
+.markdown-body ::-webkit-calendar-picker-indicator {
+  filter: invert(50%);
+}
+
+.markdown-body img {
+  object-fit: contain;
+  height: auto;
+}
+</style><div class="markdown-body">
+  <h1 id="はじめに--モチベーションまわり">はじめに &amp; モチベーションまわり</h1>
+<p>この記事では
+<strong>更読みがあるような一覧画面での画像収集方法</strong>
+について一部記載します。</p>
+<p>更読みがある一覧画面とは言わずもがなという感じもしますが</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-12-11 19-06-17 Headless Chromeを使用した画像収集方法/0-md.gif" alt="1.gif"></p>
+<p>なんかボタンを押したらさらに情報が出てきたり、</p>
+<p><img src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-12-11 19-06-17 Headless Chromeを使用した画像収集方法/1-md.gif" alt="2.gif"></p>
+<p>画面の一番下に行ったらさらに画像が読み込まれるような画面です。</p>
+<p>動機としては最近やっぱり独自でデータを所有していること前提でビジネス動いてるなというのあり、
+最低限のデータ収集方法を身に付けたいというのがありました。</p>
+<p>その中でデータ収集の中で画像を集めることというのが
+今の僕の趣味に一番マッチしてたのでやってみたという話です。</p>
+<h2 id="なぜheadless-chromeを使った画像収集を行おうとしたのか">なぜHeadless Chromeを使った画像収集を行おうとしたのか</h2>
+<p>理由は多々あって</p>
+<ul>
+<li><p>最近はSPA(シングルページアプリケーション)なページが多い為、
+どうしてもブラウザの機能使ったデータ取得がしたかった。</p>
+</li>
+<li><p>某SNSでAPIによる画像URL取得できるが、
+某他サイトではAPIがオープン公開されてない or
+<del>APIの仕様を調べるのが面倒</del>
+なのでブラウザに見えるありのままの一覧情報を<del>こそっと</del>
+ごそっと持ってきたかったから。</p>
+</li>
+</ul>
+<h2 id="結果的にできたもの">結果的にできたもの</h2>
+<p><strong>即席で画像を集めたかったのでコードの内容は煩雑です。お許しください。</strong></p>
+<p>使い方としてこちらのREADME参照
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki">https://github.com/igara/image_shiki</a></p>
+<p>puppeteerを使用した例
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/a115335016cd3d301daf1e959ed4fa3d0bbe976d/puppeteer.js">https://github.com/igara/image_shiki/blob/a115335016cd3d301daf1e959ed4fa3d0bbe976d/puppeteer.js</a></p>
+<p>chrome-launcherとchrome-remote-interfaceを使用した例
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/aa8b39d0a74ee10e780cd8b40a3e82cb0b1abdf5/chrome_launcher.js">https://github.com/igara/image_shiki/blob/aa8b39d0a74ee10e780cd8b40a3e82cb0b1abdf5/chrome_launcher.js</a></p>
+<p>最初はchrome-launcherとchrome-remote-interfaceを使って画像取得ツール作成してましたが、
+とある噂でpuppeteerの方が楽という強い言葉を聞き、puppeteerも使用してみました。</p>
+<p><strong>本記事の内容もpuppeteerを中心に寄せて記載します。</strong></p>
+<p>比較してみて一部の <a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/">Chrome DevTools Protocol</a> による機能の関数化がpuppeteerではされていなかったりしますが下記のコードで使用することができます。</p>
+<pre><code>page._client.<span class="hljs-built_in">send</span>(<span class="hljs-string">&#x27;使用したいChrome DevTools Protocolメソッド名&#x27;</span>, {パラメータ})<span class="hljs-comment">;</span>
+</code></pre>
+<p>puppeteerで関数化されていないChrome DevTools ProtocolというのはだいたいがEXPERIMENTAL（試験的な）と記載されているものが多いです。</p>
+<p>後記で出てくる<a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>もEXPERIMENTALなものの１つです。</p>
+<h1 id="僕のheadless-chromeを用いた画像収集方法">僕のHeadless Chromeを用いた画像収集方法</h1>
+<p>大雑把に手順を公開すると</p>
+<ol>
+<li>Headless Chromeでみている画面を<br>コードでスクロール or 「もっと見る」リンクを押下して追加の画像を読み込む</li>
+<li>Chrome DevTools Protocolの１つである<a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>を使用して<br>画像のリソースを取得する</li>
+<li>画像を保存する</li>
+</ol>
+<p>な手順で画像を集めました。</p>
+<p><strong>先にこの収集方法の欠点をいうと</strong></p>
+<ul>
+<li>Web画面のデザイン変更を行われると大量の画像取得できなくなる</li>
+<li>Chrome起動やっぱりメモリいっぱい取られる</li>
+</ul>
+<p>などなどありますが、
+上記の手順についてさらに詳しく説明していきたいと思います。</p>
+<h2 id="1-headless-chromeでみている画面をコードでスクロール-or-「もっと見る」リンクを押下して追加の画像を読み込む">1. Headless Chromeでみている画面をコードでスクロール or 「もっと見る」リンクを押下して追加の画像を読み込む</h2>
+<h3 id="スクロール方法">スクロール方法</h3>
+<p>puppeteerによるHeadless Chromeのスクロール方法についてのコード部分
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L85-L93">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L85-L93</a></p>
+<p>ここで注意することはスクロールの処理が非同期的なものなので
+await / async ちゃんとしてないと
+無駄にスクロールしてるけど画像あまり拾えてないとなってしまいます。</p>
+<h3 id="「もっと見る」リンクの押下方法">「もっと見る」リンクの押下方法</h3>
+<p>puppeteerによるHeadless Chromeのリンク押下方法についてのコード部分
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L80-L81">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L80-L81</a></p>
+<p>こちらのボタンの指定は <code>page.$</code> を使用しましたが <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/ja/docs/Web/API/Document/querySelector">document.querySelector</a> のようなHTMLのセレクタ・クラスなどの指定からHTMLElementを指定することができます。</p>
+<h2 id="2-chrome-devtools-protocolの１つであるpagegetresourcetreeを使用して画像のリソースを取得する">2. Chrome DevTools Protocolの１つである<a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>を使用して画像のリソースを取得する</h2>
+<p>先ほどから<a target="_blank" rel="noopener noreferrer" href="https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree">Page.getResourceTree</a>という単語だけ先行して出てきていますが
+こいつは何なのかというとChromeの開発ツールのNetworkタブで表示されるリソースを取得することができます。</p>
+<p>どうゆうことかというと</p>
+<img width="1290" alt="スクリーンショット 2017-12-11 17.21.23.png" src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2017-12-11 19-06-17 Headless Chromeを使用した画像収集方法/0-img-tag.png">
+
+<p>赤枠の箇所の情報を全て取得できるわけです。
+当然不要なリソースも存在するかと思いますので任意で取り除いたりすると良いかと思います。</p>
+<p>コードとしてこちらになります。
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L112-L114">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L112-L114</a></p>
+<h2 id="3-画像を保存する">3. 画像を保存する</h2>
+<p>Page.getResourceTreeで画像のURLを取得できるわけですが
+(http|https)〜〜〜から始まるURLのパターンと
+data:image〜〜〜から始まるパターンがありますので
+それぞれのパターンでの画像データ取得について説明します。</p>
+<p>ソース上では趣味上の理由により謎のjpgに変換する処理がありますが
+気にしないでください。</p>
+<h3 id="httphttps〜〜〜から始まるurlのパターン">(http|https)〜〜〜から始まるURLのパターン</h3>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L130-L132">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L130-L132</a></p>
+<p>レスポンスからバイナリデータを引っ張ってくる処理を行なっています。</p>
+<h3 id="dataimage〜〜〜から始まるパターン">data:image〜〜〜から始まるパターン</h3>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L127-L128">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L127-L128</a></p>
+<p>base64エンコード文字列の部分だけを持ってきて再度バイナリにする処置を行なっています。</p>
+<h3 id="あとは取得したバイナリデータをファイル書き込みするだけ">あとは取得したバイナリデータをファイル書き込みするだけ</h3>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L143-L143">https://github.com/igara/image_shiki/blob/1396197fa28d9657869df1945dba6cfdc38ca65c/puppeteer.js#L143-L143</a></p>
+<p>すみません。ファイル名適当すぎました。</p>
+<p>以上で僕の画像収集方法についての説明になります。</p>
+<h1 id="さいごに--やってみた感想">さいごに &amp; やってみた感想</h1>
+<p>アドベントカレンダーやらなきゃという圧に屈して記載したのですが
+なかなかこの話題は記載していて罪悪感があるというのか...
+ただ遊びのための技術を得る楽しさがありました。</p>
+<p>後日のアドベントカレンダーも楽しみですね!</p>
+
+</div>

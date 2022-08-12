@@ -1,0 +1,1112 @@
+<style>
+pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/.hljs{color:#24292e;background:#fff}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#d73a49}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#6f42c1}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#005cc5}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#032f62}.hljs-built_in,.hljs-symbol{color:#e36209}.hljs-code,.hljs-comment,.hljs-formula{color:#6a737d}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#22863a}.hljs-subst{color:#24292e}.hljs-section{color:#005cc5;font-weight:700}.hljs-bullet{color:#735c0f}.hljs-emphasis{color:#24292e;font-style:italic}.hljs-strong{color:#24292e;font-weight:700}.hljs-addition{color:#22863a;background-color:#f0fff4}.hljs-deletion{color:#b31d28;background-color:#ffeef0}
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  color: #24292f;
+  background-color: #ffffff;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body h1:hover .anchor .octicon-link:before,
+.markdown-body h2:hover .anchor .octicon-link:before,
+.markdown-body h3:hover .anchor .octicon-link:before,
+.markdown-body h4:hover .anchor .octicon-link:before,
+.markdown-body h5:hover .anchor .octicon-link:before,
+.markdown-body h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+}
+
+.markdown-body details,
+.markdown-body figcaption,
+.markdown-body figure {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body [hidden] {
+  display: none !important;
+}
+
+.markdown-body a {
+  background-color: transparent;
+  color: #0969da;
+  text-decoration: none;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body abbr[title] {
+  border-bottom: none;
+  text-decoration: underline dotted;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body dfn {
+  font-style: italic;
+}
+
+.markdown-body h1 {
+  margin: .67em 0;
+  font-weight: 600;
+  padding-bottom: .3em;
+  font-size: 2em;
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+}
+
+.markdown-body mark {
+  background-color: #fff8c5;
+  color: #24292f;
+}
+
+.markdown-body small {
+  font-size: 90%;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body sup {
+  top: -0.5em;
+}
+
+.markdown-body img {
+  border-style: none;
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #ffffff;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body figure {
+  margin: 1em 40px;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  overflow: hidden;
+  background: transparent;
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #d0d7de;
+  border: 0;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+  overflow: visible;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body [type=button],
+.markdown-body [type=reset],
+.markdown-body [type=submit] {
+  -webkit-appearance: button;
+}
+
+.markdown-body [type=button]::-moz-focus-inner,
+.markdown-body [type=reset]::-moz-focus-inner,
+.markdown-body [type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+.markdown-body [type=button]:-moz-focusring,
+.markdown-body [type=reset]:-moz-focusring,
+.markdown-body [type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+.markdown-body [type=checkbox],
+.markdown-body [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body [type=number]::-webkit-inner-spin-button,
+.markdown-body [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+.markdown-body [type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+.markdown-body [type=search]::-webkit-search-cancel-button,
+.markdown-body [type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.markdown-body ::-webkit-input-placeholder {
+  color: inherit;
+  opacity: .54;
+}
+
+.markdown-body ::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body hr::before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body details:not([open])>*:not(summary) {
+  display: none !important;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  line-height: 10px;
+  color: #24292f;
+  vertical-align: middle;
+  background-color: #f6f8fa;
+  border: solid 1px rgba(175,184,193,0.2);
+  border-bottom-color: rgba(175,184,193,0.2);
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 rgba(175,184,193,0.2);
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown-body h2 {
+  font-weight: 600;
+  padding-bottom: .3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+}
+
+.markdown-body h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-weight: 600;
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  font-weight: 600;
+  font-size: .85em;
+  color: #57606a;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+  padding: 0 1em;
+  color: #57606a;
+  border-left: .25em solid #d0d7de;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body tt,
+.markdown-body code {
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+  word-wrap: normal;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-body ::placeholder {
+  color: #6e7781;
+  opacity: 1;
+}
+
+.markdown-body input::-webkit-outer-spin-button,
+.markdown-body input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.markdown-body .pl-c {
+  color: #6e7781;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #0550ae;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #8250df;
+}
+
+.markdown-body .pl-smi,
+.markdown-body .pl-s .pl-s1 {
+  color: #24292f;
+}
+
+.markdown-body .pl-ent {
+  color: #116329;
+}
+
+.markdown-body .pl-k {
+  color: #cf222e;
+}
+
+.markdown-body .pl-s,
+.markdown-body .pl-pds,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sre,
+.markdown-body .pl-sr .pl-sra {
+  color: #0a3069;
+}
+
+.markdown-body .pl-v,
+.markdown-body .pl-smw {
+  color: #953800;
+}
+
+.markdown-body .pl-bu {
+  color: #82071e;
+}
+
+.markdown-body .pl-ii {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+
+.markdown-body .pl-c2 {
+  color: #f6f8fa;
+  background-color: #cf222e;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #116329;
+}
+
+.markdown-body .pl-ml {
+  color: #3b2300;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: bold;
+  color: #0550ae;
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: #24292f;
+}
+
+.markdown-body .pl-mb {
+  font-weight: bold;
+  color: #24292f;
+}
+
+.markdown-body .pl-md {
+  color: #82071e;
+  background-color: #FFEBE9;
+}
+
+.markdown-body .pl-mi1 {
+  color: #116329;
+  background-color: #dafbe1;
+}
+
+.markdown-body .pl-mc {
+  color: #953800;
+  background-color: #ffd8b5;
+}
+
+.markdown-body .pl-mi2 {
+  color: #eaeef2;
+  background-color: #0550ae;
+}
+
+.markdown-body .pl-mdr {
+  font-weight: bold;
+  color: #8250df;
+}
+
+.markdown-body .pl-ba {
+  color: #57606a;
+}
+
+.markdown-body .pl-sg {
+  color: #8c959f;
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #0a3069;
+}
+
+.markdown-body [data-catalyst] {
+  display: block;
+}
+
+.markdown-body g-emoji {
+  font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1em;
+  font-style: normal !important;
+  font-weight: 400;
+  line-height: 1;
+  vertical-align: -0.075em;
+}
+
+.markdown-body g-emoji img {
+  width: 1em;
+  height: 1em;
+}
+
+.markdown-body::before {
+  display: table;
+  content: "";
+}
+
+.markdown-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .absent {
+  color: #cf222e;
+}
+
+.markdown-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body details {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body sup>a::before {
+  content: "[";
+}
+
+.markdown-body sup>a::after {
+  content: "]";
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #24292f;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 tt,
+.markdown-body h1 code,
+.markdown-body h2 tt,
+.markdown-body h2 code,
+.markdown-body h3 tt,
+.markdown-body h3 code,
+.markdown-body h4 tt,
+.markdown-body h4 code,
+.markdown-body h5 tt,
+.markdown-body h5 code,
+.markdown-body h6 tt,
+.markdown-body h6 code {
+  padding: 0 .2em;
+  font-size: inherit;
+}
+
+.markdown-body ul.no-list,
+.markdown-body ol.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.markdown-body ol[type="1"] {
+  list-style-type: decimal;
+}
+
+.markdown-body ol[type=a] {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body ol[type=i] {
+  list-style-type: lower-roman;
+}
+
+.markdown-body div>ol:not([type]) {
+  list-style-type: decimal;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #d0d7de;
+}
+
+.markdown-body table tr {
+  background-color: #ffffff;
+  border-top: 1px solid hsla(210,18%,87%,1);
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body table img {
+  background-color: transparent;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body .emoji {
+  max-width: none;
+  vertical-align: text-top;
+  background-color: transparent;
+}
+
+.markdown-body span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+.markdown-body span.frame>span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid #d0d7de;
+}
+
+.markdown-body span.frame span img {
+  display: block;
+  float: left;
+}
+
+.markdown-body span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: #24292f;
+}
+
+.markdown-body span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.markdown-body span.align-center>span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.markdown-body span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.markdown-body span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.markdown-body span.align-right>span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.markdown-body span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+.markdown-body span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+
+.markdown-body span.float-left span {
+  margin: 13px 0 0;
+}
+
+.markdown-body span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+
+.markdown-body span.float-right>span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.markdown-body code,
+.markdown-body tt {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(175,184,193,0.2);
+  border-radius: 6px;
+}
+
+.markdown-body code br,
+.markdown-body tt br {
+  display: none;
+}
+
+.markdown-body del code {
+  text-decoration: inherit;
+}
+
+.markdown-body pre code {
+  font-size: 100%;
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body .csv-data td,
+.markdown-body .csv-data th {
+  padding: 5px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.markdown-body .csv-data .blob-num {
+  padding: 10px 8px 9px;
+  text-align: right;
+  background: #ffffff;
+  border: 0;
+}
+
+.markdown-body .csv-data tr {
+  border-top: 0;
+}
+
+.markdown-body .csv-data th {
+  font-weight: 600;
+  background: #f6f8fa;
+  border-top: 0;
+}
+
+.markdown-body .footnotes {
+  font-size: 12px;
+  color: #57606a;
+  border-top: 1px solid #d0d7de;
+}
+
+.markdown-body .footnotes ol {
+  padding-left: 16px;
+}
+
+.markdown-body .footnotes li {
+  position: relative;
+}
+
+.markdown-body .footnotes li:target::before {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -24px;
+  pointer-events: none;
+  content: "";
+  border: 2px solid #0969da;
+  border-radius: 6px;
+}
+
+.markdown-body .footnotes li:target {
+  color: #24292f;
+}
+
+.markdown-body .footnotes .data-footnote-backref g-emoji {
+  font-family: monospace;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item label {
+  font-weight: 400;
+}
+
+.markdown-body .task-list-item.enabled label {
+  cursor: pointer;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item .handle {
+  display: none;
+}
+
+.markdown-body .task-list-item-checkbox {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox {
+  margin: 0 -1.6em .25em .2em;
+}
+
+.markdown-body ::-webkit-calendar-picker-indicator {
+  filter: invert(50%);
+}
+
+.markdown-body img {
+  object-fit: contain;
+  height: auto;
+}
+</style><div class="markdown-body">
+  <h2 id="最初に">最初に</h2>
+<p>この記事でやろうとしたことを思ったきっかけとして
+最近声をかけられるということが少なくなったのでせめてSlackとかのチャットで文字だけでなく声を発してくれるようなのが欲しいと思ったのがはじまりでした。</p>
+<p>（このままだと聞き取り能力下がるんじゃないかというの危険視してる。テレビ電話使えよというのはありますが会話としての相手がいないとね...</p>
+<p>いろいろ試行錯誤した結果、Electronで作られたアプリとか既にChromeで使用しているアプリに対して「こんな操作方法ある？」というやり方ができてしまったので記事にしました。</p>
+<h2 id="対象のアプリ">対象のアプリ</h2>
+<p>実際に試験的に外部のアプリを操作しているアプリです。
+macOSでのみ使用できます。
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/releases/tag/experimental-1">https://github.com/igara/speeche/releases/tag/experimental-1</a>
+もしかするとソース上で指定しているアプリのパスの違いによって起動できない人もいるかもしれません。</p>
+<p>下記は実際に操作している対象のアプリです。</p>
+<ul>
+<li>Chrome<ul>
+<li>Twitter</li>
+<li>Facebook</li>
+</ul>
+</li>
+<li>Electron<ul>
+<li>Slack</li>
+<li>Discord</li>
+</ul>
+</li>
+</ul>
+<h3 id="chrome">Chrome</h3>
+<p>コードとして下記の箇所になります
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L20-L46">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L20-L46</a></p>
+<pre><code class="language-ts"><span class="hljs-keyword">const</span> <span class="hljs-title function_">createChromeBrowser</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> chromeBrowser = <span class="hljs-keyword">await</span> puppeteer.<span class="hljs-title function_">launch</span>({
+      <span class="hljs-attr">executablePath</span>: <span class="hljs-string">&quot;/Applications/Google Chrome.app/Contents/MacOS/Google Chrome&quot;</span>,
+      <span class="hljs-comment">// userDataDir: path.resolve(path.join(process.env.HOME || &quot;&quot;, &quot;Library/Application Support/Google/Chrome&quot;)),</span>
+      <span class="hljs-attr">headless</span>: <span class="hljs-literal">false</span>,
+    });
+
+    <span class="hljs-keyword">const</span> twitterCookies = chromeCookies.<span class="hljs-title function_">cookies</span>(<span class="hljs-string">&quot;twitter.com&quot;</span>);
+    <span class="hljs-keyword">const</span> twitterPage = <span class="hljs-keyword">await</span> chromeBrowser.<span class="hljs-title function_">newPage</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> cookie <span class="hljs-keyword">of</span> twitterCookies) {
+      <span class="hljs-keyword">await</span> twitterPage.<span class="hljs-title function_">setCookie</span>(cookie);
+    }
+    <span class="hljs-keyword">await</span> twitterPage.<span class="hljs-title function_">goto</span>(<span class="hljs-string">&quot;https://twitter.com/home&quot;</span>);
+    <span class="hljs-keyword">await</span> twitterPage.<span class="hljs-title function_">addStyleTag</span>({ <span class="hljs-attr">content</span>: <span class="hljs-string">`* {background: red;}`</span> });
+
+    <span class="hljs-keyword">const</span> facebookCookies = chromeCookies.<span class="hljs-title function_">cookies</span>(<span class="hljs-string">&quot;facebook.com&quot;</span>);
+    <span class="hljs-keyword">const</span> facebookPage = <span class="hljs-keyword">await</span> chromeBrowser.<span class="hljs-title function_">newPage</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> cookie <span class="hljs-keyword">of</span> facebookCookies) {
+      <span class="hljs-keyword">await</span> facebookPage.<span class="hljs-title function_">setCookie</span>(cookie);
+    }
+    <span class="hljs-keyword">await</span> facebookPage.<span class="hljs-title function_">goto</span>(<span class="hljs-string">&quot;https://www.facebook.com&quot;</span>);
+    <span class="hljs-keyword">await</span> facebookPage.<span class="hljs-title function_">addStyleTag</span>({ <span class="hljs-attr">content</span>: <span class="hljs-string">`* {background: red;}`</span> });
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(error);
+  }
+};
+</code></pre>
+<p><code>executablePath</code>には実際に使用しているChromeのアプリ内の実行ファイルを指定しています。
+<code>userDataDir</code>がコメントされていますがこれ使用できればChromeでログインしているユーザの状態でpuppeteerの操作ができそうですが**UnhandledPromiseRejectionWarning: Error: Failed to launch chrome!**という実行エラーが出てしまったのでコメントにしています。</p>
+<h3 id="twitter">Twitter</h3>
+<p>該当箇所こちら
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L28-L34">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L28-L34</a></p>
+<pre><code class="language-ts"><span class="hljs-keyword">const</span> twitterCookies = chromeCookies.cookies(<span class="hljs-string">&quot;twitter.com&quot;</span>);
+<span class="hljs-keyword">const</span> twitterPage = <span class="hljs-keyword">await</span> chromeBrowser.newPage();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> cookie of twitterCookies) {
+  <span class="hljs-keyword">await</span> twitterPage.setCookie(cookie);
+}
+<span class="hljs-keyword">await</span> twitterPage.<span class="hljs-keyword">goto</span>(<span class="hljs-string">&quot;https://twitter.com/home&quot;</span>);
+<span class="hljs-keyword">await</span> twitterPage.addStyleTag({ content: `* {background: red;}` });
+</code></pre>
+<p>行っていることとしてtwitterのドメインで取得できるCookieを設定してTwitterのページを開き、CSSの追加をしているという処理をしています。
+Cookieの取得についてですが下記のツールから取得したものを使用しています。
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/chrome-cookies">https://github.com/igara/chrome-cookies</a></p>
+<p>これを実行すると下記のような画面が表示されるようになります。</p>
+<img width="730" alt="スクリーンショット 2020-04-07 17.55.55.png" src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-04-07 18-42-03 puppeteer経由でインストール済みのアプリケーションを操作する/0-img-tag.png">
+
+<p>タイムラインの箇所はCookieではない別のストレージの情報から取得するようになっているようなので中途半端なログインな状態で表示されます。
+（タイムラインの箇所とるためにCookie同様にLocal Strage取得用CLI作ろうとしたのですがLevelDBから取れたLocal Strageの値が暗号化されててうまく複合化できずにめげました。</p>
+<h3 id="facebook">Facebook</h3>
+<p>該当箇所こちら
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L36-L42">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L36-L42</a></p>
+<pre><code class="language-ts"><span class="hljs-keyword">const</span> facebookCookies = chromeCookies.cookies(<span class="hljs-string">&quot;facebook.com&quot;</span>);
+<span class="hljs-keyword">const</span> facebookPage = <span class="hljs-keyword">await</span> chromeBrowser.newPage();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> cookie of facebookCookies) {
+  <span class="hljs-keyword">await</span> facebookPage.setCookie(cookie);
+}
+<span class="hljs-keyword">await</span> facebookPage.<span class="hljs-keyword">goto</span>(<span class="hljs-string">&quot;https://www.facebook.com&quot;</span>);
+<span class="hljs-keyword">await</span> facebookPage.addStyleTag({ content: `* {background: red;}` });
+</code></pre>
+<p>Twitterとやっていることは同様ですがこちらは他のユーザの投稿内容を取得することが可能みたいです。</p>
+<img width="808" alt="スクリーンショット 2020-04-07 18.02.21.png" src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-04-07 18-42-03 puppeteer経由でインストール済みのアプリケーションを操作する/1-img-tag.png">
+
+
+<h2 id="electron">Electron</h2>
+<p>ElectronのアプリはChromeとは異なり何故か<code>userDataDir</code>でユーザの状態を保ったまま開くことが可能みたいです。
+「そのパスでいけちゃうもんなの？」という感じが否めなかったです。</p>
+<h3 id="slack">Slack</h3>
+<p>該当箇所はこちら
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L48-L64">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L48-L64</a></p>
+<pre><code class="language-ts"><span class="hljs-keyword">const</span> <span class="hljs-title function_">createSlackBrowser</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> slackBrowser = <span class="hljs-keyword">await</span> puppeteer.<span class="hljs-title function_">launch</span>({
+      <span class="hljs-attr">executablePath</span>: <span class="hljs-string">&quot;/Applications/Slack.app/Contents/MacOS/Slack&quot;</span>,
+      <span class="hljs-attr">userDataDir</span>: path.<span class="hljs-title function_">resolve</span>(path.<span class="hljs-title function_">join</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">HOME</span> || <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;Library/Application Support/Slack&quot;</span>)),
+      <span class="hljs-attr">headless</span>: <span class="hljs-literal">false</span>,
+    });
+    <span class="hljs-keyword">const</span> pages = <span class="hljs-keyword">await</span> slackBrowser.<span class="hljs-title function_">pages</span>();
+
+    pages.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">async</span> page =&gt; {
+      <span class="hljs-keyword">await</span> page.<span class="hljs-title function_">waitFor</span>(<span class="hljs-number">1000</span>);
+      <span class="hljs-keyword">await</span> page.<span class="hljs-title function_">addStyleTag</span>({ <span class="hljs-attr">content</span>: <span class="hljs-string">`* {background: red;}`</span> });
+    });
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(error);
+  }
+};
+</code></pre>
+<img width="800" alt="スクリーンショット 2020-04-07 18.21.52.png" src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-04-07 18-42-03 puppeteer経由でインストール済みのアプリケーションを操作する/2-img-tag.png">
+
+
+<h3 id="discord">Discord</h3>
+<p>該当箇所はこちら
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L66-L82">https://github.com/igara/speeche/blob/26ce768c357eb1ee61f497507f5f06b2445fae14/src/index.ts#L66-L82</a></p>
+<pre><code class="language-ts"><span class="hljs-keyword">const</span> <span class="hljs-title function_">createDiscordBrowser</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> discordBrowser = <span class="hljs-keyword">await</span> puppeteer.<span class="hljs-title function_">launch</span>({
+      <span class="hljs-attr">executablePath</span>: <span class="hljs-string">&quot;/Applications/Discord.app/Contents/MacOS/discord&quot;</span>,
+      <span class="hljs-attr">userDataDir</span>: path.<span class="hljs-title function_">resolve</span>(path.<span class="hljs-title function_">join</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">HOME</span> || <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;Library/Application Support/Discord&quot;</span>)),
+      <span class="hljs-attr">headless</span>: <span class="hljs-literal">false</span>,
+    });
+    <span class="hljs-keyword">const</span> pages = <span class="hljs-keyword">await</span> discordBrowser.<span class="hljs-title function_">pages</span>();
+
+    pages.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">async</span> page =&gt; {
+      <span class="hljs-keyword">await</span> page.<span class="hljs-title function_">waitFor</span>(<span class="hljs-number">1000</span>);
+      <span class="hljs-keyword">await</span> page.<span class="hljs-title function_">addStyleTag</span>({ <span class="hljs-attr">content</span>: <span class="hljs-string">`* {background: red;}`</span> });
+    });
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(error);
+  }
+};
+</code></pre>
+<p>DiscordはSlackと異なって</p>
+<img width="288" alt="スクリーンショット 2020-04-07 18.27.38.png" src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-04-07 18-42-03 puppeteer経由でインストール済みのアプリケーションを操作する/3-img-tag.png">
+
+<p>一瞬DOMのかけらのようなものが表示されて</p>
+<img width="1267" alt="スクリーンショット 2020-04-07 18.31.08.png" src="https://raw.githubusercontent.com/igara/qiita-export
+/master/data/igara/2020-04-07 18-42-03 puppeteer経由でインストール済みのアプリケーションを操作する/4-img-tag.png">
+
+<p>いつものような画面が表示されているので遅延的に複数のpageを扱うようにしているみたいです。</p>
+<h2 id="最後に">最後に</h2>
+<p>今回は<code>page.addStyleTag</code>によるスタイル変更しか実施していないですが
+puppeteerには<code>page.evaluate</code>というアプリケーション内でJavaScriptを実行できるものがあったりするのでより高度な操作を要求する場合はpuppeteerのドキュメントを見るとよりいろんなことできそうと妄想を膨らますことができるんじゃないかと思います。</p>
+
+</div>
