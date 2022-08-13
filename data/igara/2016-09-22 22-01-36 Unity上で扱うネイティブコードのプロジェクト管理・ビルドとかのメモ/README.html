@@ -1,960 +1,4 @@
-<style>
-pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
-  Theme: GitHub
-  Description: Light theme as seen on github.com
-  Author: github.com
-  Maintainer: @Hirse
-  Updated: 2021-05-15
-
-  Outdated base version: https://github.com/primer/github-syntax-light
-  Current colors taken from GitHub's CSS
-*/.hljs{color:#24292e;background:#fff}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#d73a49}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#6f42c1}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#005cc5}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#032f62}.hljs-built_in,.hljs-symbol{color:#e36209}.hljs-code,.hljs-comment,.hljs-formula{color:#6a737d}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#22863a}.hljs-subst{color:#24292e}.hljs-section{color:#005cc5;font-weight:700}.hljs-bullet{color:#735c0f}.hljs-emphasis{color:#24292e;font-style:italic}.hljs-strong{color:#24292e;font-weight:700}.hljs-addition{color:#22863a;background-color:#f0fff4}.hljs-deletion{color:#b31d28;background-color:#ffeef0}
-.markdown-body {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  margin: 0;
-  color: #24292f;
-  background-color: #ffffff;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-  font-size: 16px;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
-.markdown-body .octicon {
-  display: inline-block;
-  fill: currentColor;
-  vertical-align: text-bottom;
-}
-
-.markdown-body h1:hover .anchor .octicon-link:before,
-.markdown-body h2:hover .anchor .octicon-link:before,
-.markdown-body h3:hover .anchor .octicon-link:before,
-.markdown-body h4:hover .anchor .octicon-link:before,
-.markdown-body h5:hover .anchor .octicon-link:before,
-.markdown-body h6:hover .anchor .octicon-link:before {
-  width: 16px;
-  height: 16px;
-  content: ' ';
-  display: inline-block;
-  background-color: currentColor;
-  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
-  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
-}
-
-.markdown-body details,
-.markdown-body figcaption,
-.markdown-body figure {
-  display: block;
-}
-
-.markdown-body summary {
-  display: list-item;
-}
-
-.markdown-body [hidden] {
-  display: none !important;
-}
-
-.markdown-body a {
-  background-color: transparent;
-  color: #0969da;
-  text-decoration: none;
-}
-
-.markdown-body a:active,
-.markdown-body a:hover {
-  outline-width: 0;
-}
-
-.markdown-body abbr[title] {
-  border-bottom: none;
-  text-decoration: underline dotted;
-}
-
-.markdown-body b,
-.markdown-body strong {
-  font-weight: 600;
-}
-
-.markdown-body dfn {
-  font-style: italic;
-}
-
-.markdown-body h1 {
-  margin: .67em 0;
-  font-weight: 600;
-  padding-bottom: .3em;
-  font-size: 2em;
-  border-bottom: 1px solid hsla(210,18%,87%,1);
-}
-
-.markdown-body mark {
-  background-color: #fff8c5;
-  color: #24292f;
-}
-
-.markdown-body small {
-  font-size: 90%;
-}
-
-.markdown-body sub,
-.markdown-body sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-.markdown-body sub {
-  bottom: -0.25em;
-}
-
-.markdown-body sup {
-  top: -0.5em;
-}
-
-.markdown-body img {
-  border-style: none;
-  max-width: 100%;
-  box-sizing: content-box;
-  background-color: #ffffff;
-}
-
-.markdown-body code,
-.markdown-body kbd,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: monospace,monospace;
-  font-size: 1em;
-}
-
-.markdown-body figure {
-  margin: 1em 40px;
-}
-
-.markdown-body hr {
-  box-sizing: content-box;
-  overflow: hidden;
-  background: transparent;
-  border-bottom: 1px solid hsla(210,18%,87%,1);
-  height: .25em;
-  padding: 0;
-  margin: 24px 0;
-  background-color: #d0d7de;
-  border: 0;
-}
-
-.markdown-body input {
-  font: inherit;
-  margin: 0;
-  overflow: visible;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-.markdown-body [type=button],
-.markdown-body [type=reset],
-.markdown-body [type=submit] {
-  -webkit-appearance: button;
-}
-
-.markdown-body [type=button]::-moz-focus-inner,
-.markdown-body [type=reset]::-moz-focus-inner,
-.markdown-body [type=submit]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-.markdown-body [type=button]:-moz-focusring,
-.markdown-body [type=reset]:-moz-focusring,
-.markdown-body [type=submit]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-.markdown-body [type=checkbox],
-.markdown-body [type=radio] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-.markdown-body [type=number]::-webkit-inner-spin-button,
-.markdown-body [type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-.markdown-body [type=search] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
-}
-
-.markdown-body [type=search]::-webkit-search-cancel-button,
-.markdown-body [type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-.markdown-body ::-webkit-input-placeholder {
-  color: inherit;
-  opacity: .54;
-}
-
-.markdown-body ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit;
-}
-
-.markdown-body a:hover {
-  text-decoration: underline;
-}
-
-.markdown-body hr::before {
-  display: table;
-  content: "";
-}
-
-.markdown-body hr::after {
-  display: table;
-  clear: both;
-  content: "";
-}
-
-.markdown-body table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  display: block;
-  width: max-content;
-  max-width: 100%;
-  overflow: auto;
-}
-
-.markdown-body td,
-.markdown-body th {
-  padding: 0;
-}
-
-.markdown-body details summary {
-  cursor: pointer;
-}
-
-.markdown-body details:not([open])>*:not(summary) {
-  display: none !important;
-}
-
-.markdown-body kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-  line-height: 10px;
-  color: #24292f;
-  vertical-align: middle;
-  background-color: #f6f8fa;
-  border: solid 1px rgba(175,184,193,0.2);
-  border-bottom-color: rgba(175,184,193,0.2);
-  border-radius: 6px;
-  box-shadow: inset 0 -1px 0 rgba(175,184,193,0.2);
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  margin-top: 24px;
-  margin-bottom: 16px;
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.markdown-body h2 {
-  font-weight: 600;
-  padding-bottom: .3em;
-  font-size: 1.5em;
-  border-bottom: 1px solid hsla(210,18%,87%,1);
-}
-
-.markdown-body h3 {
-  font-weight: 600;
-  font-size: 1.25em;
-}
-
-.markdown-body h4 {
-  font-weight: 600;
-  font-size: 1em;
-}
-
-.markdown-body h5 {
-  font-weight: 600;
-  font-size: .875em;
-}
-
-.markdown-body h6 {
-  font-weight: 600;
-  font-size: .85em;
-  color: #57606a;
-}
-
-.markdown-body p {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.markdown-body blockquote {
-  margin: 0;
-  padding: 0 1em;
-  color: #57606a;
-  border-left: .25em solid #d0d7de;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 2em;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-  list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body dd {
-  margin-left: 0;
-}
-
-.markdown-body tt,
-.markdown-body code {
-  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-  font-size: 12px;
-}
-
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-  font-size: 12px;
-  word-wrap: normal;
-}
-
-.markdown-body .octicon {
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-body ::placeholder {
-  color: #6e7781;
-  opacity: 1;
-}
-
-.markdown-body input::-webkit-outer-spin-button,
-.markdown-body input::-webkit-inner-spin-button {
-  margin: 0;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.markdown-body .pl-c {
-  color: #6e7781;
-}
-
-.markdown-body .pl-c1,
-.markdown-body .pl-s .pl-v {
-  color: #0550ae;
-}
-
-.markdown-body .pl-e,
-.markdown-body .pl-en {
-  color: #8250df;
-}
-
-.markdown-body .pl-smi,
-.markdown-body .pl-s .pl-s1 {
-  color: #24292f;
-}
-
-.markdown-body .pl-ent {
-  color: #116329;
-}
-
-.markdown-body .pl-k {
-  color: #cf222e;
-}
-
-.markdown-body .pl-s,
-.markdown-body .pl-pds,
-.markdown-body .pl-s .pl-pse .pl-s1,
-.markdown-body .pl-sr,
-.markdown-body .pl-sr .pl-cce,
-.markdown-body .pl-sr .pl-sre,
-.markdown-body .pl-sr .pl-sra {
-  color: #0a3069;
-}
-
-.markdown-body .pl-v,
-.markdown-body .pl-smw {
-  color: #953800;
-}
-
-.markdown-body .pl-bu {
-  color: #82071e;
-}
-
-.markdown-body .pl-ii {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-
-.markdown-body .pl-c2 {
-  color: #f6f8fa;
-  background-color: #cf222e;
-}
-
-.markdown-body .pl-sr .pl-cce {
-  font-weight: bold;
-  color: #116329;
-}
-
-.markdown-body .pl-ml {
-  color: #3b2300;
-}
-
-.markdown-body .pl-mh,
-.markdown-body .pl-mh .pl-en,
-.markdown-body .pl-ms {
-  font-weight: bold;
-  color: #0550ae;
-}
-
-.markdown-body .pl-mi {
-  font-style: italic;
-  color: #24292f;
-}
-
-.markdown-body .pl-mb {
-  font-weight: bold;
-  color: #24292f;
-}
-
-.markdown-body .pl-md {
-  color: #82071e;
-  background-color: #FFEBE9;
-}
-
-.markdown-body .pl-mi1 {
-  color: #116329;
-  background-color: #dafbe1;
-}
-
-.markdown-body .pl-mc {
-  color: #953800;
-  background-color: #ffd8b5;
-}
-
-.markdown-body .pl-mi2 {
-  color: #eaeef2;
-  background-color: #0550ae;
-}
-
-.markdown-body .pl-mdr {
-  font-weight: bold;
-  color: #8250df;
-}
-
-.markdown-body .pl-ba {
-  color: #57606a;
-}
-
-.markdown-body .pl-sg {
-  color: #8c959f;
-}
-
-.markdown-body .pl-corl {
-  text-decoration: underline;
-  color: #0a3069;
-}
-
-.markdown-body [data-catalyst] {
-  display: block;
-}
-
-.markdown-body g-emoji {
-  font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1em;
-  font-style: normal !important;
-  font-weight: 400;
-  line-height: 1;
-  vertical-align: -0.075em;
-}
-
-.markdown-body g-emoji img {
-  width: 1em;
-  height: 1em;
-}
-
-.markdown-body::before {
-  display: table;
-  content: "";
-}
-
-.markdown-body::after {
-  display: table;
-  clear: both;
-  content: "";
-}
-
-.markdown-body>*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body>*:last-child {
-  margin-bottom: 0 !important;
-}
-
-.markdown-body a:not([href]) {
-  color: inherit;
-  text-decoration: none;
-}
-
-.markdown-body .absent {
-  color: #cf222e;
-}
-
-.markdown-body .anchor {
-  float: left;
-  padding-right: 4px;
-  margin-left: -20px;
-  line-height: 1;
-}
-
-.markdown-body .anchor:focus {
-  outline: none;
-}
-
-.markdown-body p,
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table,
-.markdown-body pre,
-.markdown-body details {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-body blockquote>:first-child {
-  margin-top: 0;
-}
-
-.markdown-body blockquote>:last-child {
-  margin-bottom: 0;
-}
-
-.markdown-body sup>a::before {
-  content: "[";
-}
-
-.markdown-body sup>a::after {
-  content: "]";
-}
-
-.markdown-body h1 .octicon-link,
-.markdown-body h2 .octicon-link,
-.markdown-body h3 .octicon-link,
-.markdown-body h4 .octicon-link,
-.markdown-body h5 .octicon-link,
-.markdown-body h6 .octicon-link {
-  color: #24292f;
-  vertical-align: middle;
-  visibility: hidden;
-}
-
-.markdown-body h1:hover .anchor,
-.markdown-body h2:hover .anchor,
-.markdown-body h3:hover .anchor,
-.markdown-body h4:hover .anchor,
-.markdown-body h5:hover .anchor,
-.markdown-body h6:hover .anchor {
-  text-decoration: none;
-}
-
-.markdown-body h1:hover .anchor .octicon-link,
-.markdown-body h2:hover .anchor .octicon-link,
-.markdown-body h3:hover .anchor .octicon-link,
-.markdown-body h4:hover .anchor .octicon-link,
-.markdown-body h5:hover .anchor .octicon-link,
-.markdown-body h6:hover .anchor .octicon-link {
-  visibility: visible;
-}
-
-.markdown-body h1 tt,
-.markdown-body h1 code,
-.markdown-body h2 tt,
-.markdown-body h2 code,
-.markdown-body h3 tt,
-.markdown-body h3 code,
-.markdown-body h4 tt,
-.markdown-body h4 code,
-.markdown-body h5 tt,
-.markdown-body h5 code,
-.markdown-body h6 tt,
-.markdown-body h6 code {
-  padding: 0 .2em;
-  font-size: inherit;
-}
-
-.markdown-body ul.no-list,
-.markdown-body ol.no-list {
-  padding: 0;
-  list-style-type: none;
-}
-
-.markdown-body ol[type="1"] {
-  list-style-type: decimal;
-}
-
-.markdown-body ol[type=a] {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body ol[type=i] {
-  list-style-type: lower-roman;
-}
-
-.markdown-body div>ol:not([type]) {
-  list-style-type: decimal;
-}
-
-.markdown-body ul ul,
-.markdown-body ul ol,
-.markdown-body ol ol,
-.markdown-body ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body li>p {
-  margin-top: 16px;
-}
-
-.markdown-body li+li {
-  margin-top: .25em;
-}
-
-.markdown-body dl {
-  padding: 0;
-}
-
-.markdown-body dl dt {
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: 600;
-}
-
-.markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
-}
-
-.markdown-body table th {
-  font-weight: 600;
-}
-
-.markdown-body table th,
-.markdown-body table td {
-  padding: 6px 13px;
-  border: 1px solid #d0d7de;
-}
-
-.markdown-body table tr {
-  background-color: #ffffff;
-  border-top: 1px solid hsla(210,18%,87%,1);
-}
-
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f6f8fa;
-}
-
-.markdown-body table img {
-  background-color: transparent;
-}
-
-.markdown-body img[align=right] {
-  padding-left: 20px;
-}
-
-.markdown-body img[align=left] {
-  padding-right: 20px;
-}
-
-.markdown-body .emoji {
-  max-width: none;
-  vertical-align: text-top;
-  background-color: transparent;
-}
-
-.markdown-body span.frame {
-  display: block;
-  overflow: hidden;
-}
-
-.markdown-body span.frame>span {
-  display: block;
-  float: left;
-  width: auto;
-  padding: 7px;
-  margin: 13px 0 0;
-  overflow: hidden;
-  border: 1px solid #d0d7de;
-}
-
-.markdown-body span.frame span img {
-  display: block;
-  float: left;
-}
-
-.markdown-body span.frame span span {
-  display: block;
-  padding: 5px 0 0;
-  clear: both;
-  color: #24292f;
-}
-
-.markdown-body span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both;
-}
-
-.markdown-body span.align-center>span {
-  display: block;
-  margin: 13px auto 0;
-  overflow: hidden;
-  text-align: center;
-}
-
-.markdown-body span.align-center span img {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.markdown-body span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both;
-}
-
-.markdown-body span.align-right>span {
-  display: block;
-  margin: 13px 0 0;
-  overflow: hidden;
-  text-align: right;
-}
-
-.markdown-body span.align-right span img {
-  margin: 0;
-  text-align: right;
-}
-
-.markdown-body span.float-left {
-  display: block;
-  float: left;
-  margin-right: 13px;
-  overflow: hidden;
-}
-
-.markdown-body span.float-left span {
-  margin: 13px 0 0;
-}
-
-.markdown-body span.float-right {
-  display: block;
-  float: right;
-  margin-left: 13px;
-  overflow: hidden;
-}
-
-.markdown-body span.float-right>span {
-  display: block;
-  margin: 13px auto 0;
-  overflow: hidden;
-  text-align: right;
-}
-
-.markdown-body code,
-.markdown-body tt {
-  padding: .2em .4em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(175,184,193,0.2);
-  border-radius: 6px;
-}
-
-.markdown-body code br,
-.markdown-body tt br {
-  display: none;
-}
-
-.markdown-body del code {
-  text-decoration: inherit;
-}
-
-.markdown-body pre code {
-  font-size: 100%;
-}
-
-.markdown-body pre>code {
-  padding: 0;
-  margin: 0;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.markdown-body .highlight {
-  margin-bottom: 16px;
-}
-
-.markdown-body .highlight pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.markdown-body .highlight pre,
-.markdown-body pre {
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f6f8fa;
-  border-radius: 6px;
-}
-
-.markdown-body pre code,
-.markdown-body pre tt {
-  display: inline;
-  max-width: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
-}
-
-.markdown-body .csv-data td,
-.markdown-body .csv-data th {
-  padding: 5px;
-  overflow: hidden;
-  font-size: 12px;
-  line-height: 1;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.markdown-body .csv-data .blob-num {
-  padding: 10px 8px 9px;
-  text-align: right;
-  background: #ffffff;
-  border: 0;
-}
-
-.markdown-body .csv-data tr {
-  border-top: 0;
-}
-
-.markdown-body .csv-data th {
-  font-weight: 600;
-  background: #f6f8fa;
-  border-top: 0;
-}
-
-.markdown-body .footnotes {
-  font-size: 12px;
-  color: #57606a;
-  border-top: 1px solid #d0d7de;
-}
-
-.markdown-body .footnotes ol {
-  padding-left: 16px;
-}
-
-.markdown-body .footnotes li {
-  position: relative;
-}
-
-.markdown-body .footnotes li:target::before {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  bottom: -8px;
-  left: -24px;
-  pointer-events: none;
-  content: "";
-  border: 2px solid #0969da;
-  border-radius: 6px;
-}
-
-.markdown-body .footnotes li:target {
-  color: #24292f;
-}
-
-.markdown-body .footnotes .data-footnote-backref g-emoji {
-  font-family: monospace;
-}
-
-.markdown-body .task-list-item {
-  list-style-type: none;
-}
-
-.markdown-body .task-list-item label {
-  font-weight: 400;
-}
-
-.markdown-body .task-list-item.enabled label {
-  cursor: pointer;
-}
-
-.markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
-}
-
-.markdown-body .task-list-item .handle {
-  display: none;
-}
-
-.markdown-body .task-list-item-checkbox {
-  margin: 0 .2em .25em -1.6em;
-  vertical-align: middle;
-}
-
-.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox {
-  margin: 0 -1.6em .25em .2em;
-}
-
-.markdown-body ::-webkit-calendar-picker-indicator {
-  filter: invert(50%);
-}
-
-.markdown-body img {
-  object-fit: contain;
-  height: auto;
-}
-</style><div class="markdown-body">
+<div class="markdown-body">
   <h1 id="この記事の内容について">この記事の内容について</h1>
 <p>前回UnityでSwiftで書いたiOSのネイティブコードを使う方法について記載しました。</p>
 <ul>
@@ -993,144 +37,144 @@ Unityのビルドで直接Android端末にアプリインストールします�
 <ul>
 <li>Androidプロジェクト側<br><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/AndroidManifest.xml">AndroidManifest.xml</a></li>
 </ul>
-<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/app/src/main/AndroidManifest.xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">manifest</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-    <span class="hljs-attr">package</span>=<span class="hljs-string">&quot;work.syonet.bariiiii&quot;</span>&gt;</span>
+<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/app/src/main/AndroidManifest.xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;work.syonet.bariiiii&quot;&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">application</span>
-        <span class="hljs-attr">android:allowBackup</span>=<span class="hljs-string">&quot;true&quot;</span>
-        <span class="hljs-attr">android:icon</span>=<span class="hljs-string">&quot;@mipmap/ic_launcher&quot;</span>
-        <span class="hljs-attr">android:supportsRtl</span>=<span class="hljs-string">&quot;true&quot;</span>
-        <span class="hljs-attr">android:theme</span>=<span class="hljs-string">&quot;@style/AppTheme&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">manifest</span>&gt;</span>
+    &lt;application
+        android:allowBackup=&quot;true&quot;
+        android:icon=&quot;@mipmap/ic_launcher&quot;
+        android:supportsRtl=&quot;true&quot;
+        android:theme=&quot;@style/AppTheme&quot;&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
 </code></pre>
 <ul>
 <li>Unityプロジェクト側<br><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/Android/AndroidManifest.xml">AndroidManifest.xml</a></li>
 </ul>
-<pre><code class="language-/Assets/Plugins/Android/AndroidManifest.xml"><span class="hljs-tag">&lt;<span class="hljs-name">manifest</span>
-    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">uses-sdk</span> <span class="hljs-attr">android:minSdkVersion</span>=<span class="hljs-string">&quot;14&quot;</span> <span class="hljs-attr">android:targetSdkVersion</span>=<span class="hljs-string">&quot;23&quot;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CAMERA&quot;</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">uses-feature</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.hardware.camera&quot;</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">uses-feature</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.hardware.camera.autofocus&quot;</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">application</span>
-        <span class="hljs-attr">android:theme</span>=<span class="hljs-string">&quot;@style/UnityThemeSelector&quot;</span>
-        <span class="hljs-attr">android:icon</span>=<span class="hljs-string">&quot;@drawable/app_icon&quot;</span>
-        <span class="hljs-attr">android:label</span>=<span class="hljs-string">&quot;@string/app_name&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">activity</span>
-            <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.unity3d.player.UnityPlayerNativeActivity&quot;</span>
-            <span class="hljs-attr">android:configChanges</span>=<span class="hljs-string">&quot;fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">meta-data</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.app.lib_name&quot;</span> <span class="hljs-attr">android:value</span>=<span class="hljs-string">&quot;unity&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">meta-data</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;unityplayer.ForwardNativeEventsToDalvik&quot;</span> <span class="hljs-attr">android:value</span>=<span class="hljs-string">&quot;true&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">activity</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;work.syonet.bariiiii.BarcodeScanAndroidActivity&quot;</span>
-            <span class="hljs-attr">android:label</span>=<span class="hljs-string">&quot;@string/app_name&quot;</span>
-            <span class="hljs-attr">android:configChanges</span>=<span class="hljs-string">&quot;keyboard|keyboardHidden|orientation&quot;</span>
-            <span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;true&quot;</span>
-            <span class="hljs-attr">android:permission</span>=<span class="hljs-string">&quot;android.permission.INTERNET&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">manifest</span>&gt;</span>
+<pre><code class="language-/Assets/Plugins/Android/AndroidManifest.xml">&lt;manifest
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;uses-sdk android:minSdkVersion=&quot;14&quot; android:targetSdkVersion=&quot;23&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot;/&gt;
+    &lt;uses-feature android:name=&quot;android.hardware.camera&quot;/&gt;
+    &lt;uses-feature android:name=&quot;android.hardware.camera.autofocus&quot;/&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+    &lt;application
+        android:theme=&quot;@style/UnityThemeSelector&quot;
+        android:icon=&quot;@drawable/app_icon&quot;
+        android:label=&quot;@string/app_name&quot;&gt;
+        &lt;activity
+            android:name=&quot;com.unity3d.player.UnityPlayerNativeActivity&quot;
+            android:configChanges=&quot;fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen&quot;&gt;
+            &lt;meta-data android:name=&quot;android.app.lib_name&quot; android:value=&quot;unity&quot; /&gt;
+            &lt;meta-data android:name=&quot;unityplayer.ForwardNativeEventsToDalvik&quot; android:value=&quot;true&quot; /&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;activity android:name=&quot;work.syonet.bariiiii.BarcodeScanAndroidActivity&quot;
+            android:label=&quot;@string/app_name&quot;
+            android:configChanges=&quot;keyboard|keyboardHidden|orientation&quot;
+            android:exported=&quot;true&quot;
+            android:permission=&quot;android.permission.INTERNET&quot;&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
 </code></pre>
 <h2 id="buildgradle">build.gradle</h2>
 <ul>
 <li>Androidプロジェクト直下のbuild.gradle<br><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/build.gradle">build.gradle</a></li>
 </ul>
-<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/build.gradle"><span class="hljs-comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span>
+<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/build.gradle">// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-<span class="hljs-keyword">buildscript</span> {
-    ext.kotlin_version = <span class="hljs-string">&#x27;1.0.3&#x27;</span>
-    <span class="hljs-keyword">repositories</span> {
+buildscript {
+    ext.kotlin_version = &#39;1.0.3&#39;
+    repositories {
         jcenter()
     }
-    <span class="hljs-keyword">dependencies</span> {
-        <span class="hljs-keyword">classpath</span> <span class="hljs-string">&#x27;com.android.tools.build:gradle:2.1.0&#x27;</span>
-        <span class="hljs-keyword">classpath</span> <span class="hljs-string">&quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;</span>
-        <span class="hljs-keyword">classpath</span> <span class="hljs-string">&quot;org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version&quot;</span>
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:2.1.0&#39;
+        classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;
+        classpath &quot;org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version&quot;
     }
 }
 
-<span class="hljs-keyword">allprojects</span> {
-    <span class="hljs-keyword">repositories</span> {
+allprojects {
+    repositories {
         jcenter()
     }
 }
 
-<span class="hljs-keyword">task</span> clean(type: <span class="hljs-keyword">Delete</span>) {
-    <span class="hljs-keyword">delete</span> rootProject.buildDir
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
 </code></pre>
 <p>ちょっとkotlin使いたかったのでその設定ぐらいしかしていません  </p>
 <ul>
 <li>Androidプロジェクト直下のapp/build.gradle<br><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/build.gradle">build.gradle</a></li>
 </ul>
-<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/app/build.gradle">apply plugin: <span class="hljs-string">&#x27;com.android.library&#x27;</span>
-apply plugin: <span class="hljs-string">&#x27;kotlin-android&#x27;</span>
-apply plugin: <span class="hljs-string">&#x27;kotlin-android-extensions&#x27;</span>
+<pre><code class="language-/CreateBariiiiiAndroidNativePlugin/app/build.gradle">apply plugin: &#39;com.android.library&#39;
+apply plugin: &#39;kotlin-android&#39;
+apply plugin: &#39;kotlin-android-extensions&#39;
 
 android {
-    compileSdkVersion <span class="hljs-number">23</span>
-    buildToolsVersion <span class="hljs-string">&quot;24.0.2&quot;</span>
+    compileSdkVersion 23
+    buildToolsVersion &quot;24.0.2&quot;
 
     defaultConfig {
-        minSdkVersion <span class="hljs-number">14</span>
-        targetSdkVersion <span class="hljs-number">23</span>
-        versionCode <span class="hljs-number">1</span>
-        versionName <span class="hljs-string">&quot;1.0&quot;</span>
-        multiDexEnabled <span class="hljs-keyword">true</span>
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName &quot;1.0&quot;
+        multiDexEnabled true
     }
     buildTypes {
         release {
-            minifyEnabled <span class="hljs-keyword">false</span>
-            proguardFiles getDefaultProguardFile(<span class="hljs-string">&#x27;proguard-android.txt&#x27;</span>), <span class="hljs-string">&#x27;proguard-rules.pro&#x27;</span>
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
         }
     }
-    <span class="hljs-keyword">sourceSets</span> {
-        main.java.srcDirs += <span class="hljs-string">&#x27;src/main/kotlin&#x27;</span>
-    }
-}
-
-<span class="hljs-comment">// UnityのAndroidプラグインフォルダに移動させる</span>
-<span class="hljs-keyword">task</span> copyLibs &lt;&lt; {
-    <span class="hljs-keyword">configurations</span>.<span class="hljs-keyword">compile</span>.<span class="hljs-keyword">each</span> { lib -&gt;
-        <span class="hljs-keyword">if</span> (lib.path.startsWith(<span class="hljs-string">&quot;${projectDir}/libs&quot;</span>)) {
-            <span class="hljs-comment">// libs内のものはコピー対象外</span>
-            <span class="hljs-keyword">return</span>
-        }
-        <span class="hljs-keyword">copy</span> {
-            <span class="hljs-keyword">from</span> lib.path
-            <span class="hljs-keyword">into</span> <span class="hljs-string">&#x27;../../Assets/Plugins/Android&#x27;</span>
-        }
+    sourceSets {
+        main.java.srcDirs += &#39;src/main/kotlin&#39;
     }
 }
 
-<span class="hljs-keyword">dependencies</span> {
-    <span class="hljs-keyword">compile</span> <span class="hljs-keyword">fileTree</span>(<span class="hljs-keyword">include</span>: [<span class="hljs-string">&#x27;*.jar&#x27;</span>], dir: <span class="hljs-string">&#x27;libs&#x27;</span>)
-    testCompile <span class="hljs-string">&#x27;junit:junit:4.12&#x27;</span>
-    <span class="hljs-keyword">compile</span> <span class="hljs-string">&quot;org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version&quot;</span>
-    <span class="hljs-keyword">compile</span> <span class="hljs-string">&#x27;com.google.android.gms:play-services-vision:9.4.0&#x27;</span>
-    <span class="hljs-comment">// Unityのプラグイン一覧には含めない</span>
-    provided files(<span class="hljs-string">&#x27;/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Development/Classes/classes.jar&#x27;</span>)
+// UnityのAndroidプラグインフォルダに移動させる
+task copyLibs &lt;&lt; {
+    configurations.compile.each { lib -&gt;
+        if (lib.path.startsWith(&quot;${projectDir}/libs&quot;)) {
+            // libs内のものはコピー対象外
+            return
+        }
+        copy {
+            from lib.path
+            into &#39;../../Assets/Plugins/Android&#39;
+        }
+    }
 }
 
-<span class="hljs-comment">// このプロジェクトをaar化させる</span>
-<span class="hljs-keyword">task</span> exportAar(type: <span class="hljs-keyword">Copy</span>, dependsOn: assembleRelease) {
-    <span class="hljs-keyword">from</span>(<span class="hljs-string">&#x27;build/outputs/aar/&#x27;</span>)
-    <span class="hljs-keyword">into</span>(<span class="hljs-string">&#x27;../../Assets/Plugins/Android/&#x27;</span>)
-    <span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;app-release.aar&#x27;</span>)
-    rename(<span class="hljs-string">&#x27;app-release.aar&#x27;</span>, <span class="hljs-string">&#x27;bariiiii.aar&#x27;</span>)
+dependencies {
+    compile fileTree(include: [&#39;*.jar&#39;], dir: &#39;libs&#39;)
+    testCompile &#39;junit:junit:4.12&#39;
+    compile &quot;org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version&quot;
+    compile &#39;com.google.android.gms:play-services-vision:9.4.0&#39;
+    // Unityのプラグイン一覧には含めない
+    provided files(&#39;/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Development/Classes/classes.jar&#39;)
+}
+
+// このプロジェクトをaar化させる
+task exportAar(type: Copy, dependsOn: assembleRelease) {
+    from(&#39;build/outputs/aar/&#39;)
+    into(&#39;../../Assets/Plugins/Android/&#39;)
+    include(&#39;app-release.aar&#39;)
+    rename(&#39;app-release.aar&#39;, &#39;bariiiii.aar&#39;)
 }
 
 
 android.libraryVariants.all { variant -&gt;
-    variant.outputs.<span class="hljs-keyword">each</span> { output -&gt;
-        output.packageLibrary.<span class="hljs-keyword">exclude</span>(<span class="hljs-string">&#x27;libs/classes.jar&#x27;</span>)
+    variant.outputs.each { output -&gt;
+        output.packageLibrary.exclude(&#39;libs/classes.jar&#39;)
     }
 }
 </code></pre>
@@ -1142,7 +186,7 @@ android.libraryVariants.all { variant -&gt;
 <li>provided files(&#39;/Applications/Unity/〜〜〜〜<br>Androidプロジェクト内のコードでUnityで提供されているUnitySendMessageを使用したかったからです。<br>使用していた箇所として<a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/java/work/syonet/bariiiii/BarcodeCameraFragment.kt">これ</a>になります。<br>provided filesを入れないとtask copyLibsを実行した時にUnityのクラスファイルを二重に入れることになり、ビルドが通らなくなります。</li>
 </ul>
 <h3 id="ビルド実行">ビルド実行</h3>
-<pre><code>gradlew <span class="hljs-keyword">app</span>:copyLibs &amp;&amp; gradlew <span class="hljs-keyword">app</span>:exportAar
+<pre><code>gradlew app:copyLibs &amp;&amp; gradlew app:exportAar
 </code></pre>
 <h2 id="androidバージョンの指定の統一">Androidバージョンの指定の統一</h2>
 <p>build.gradlewやAndroidManifest.xml、UnityEditor上で指定されているminSdkVersionやtargetSdkVersionはバラツキがないように設定</p>
@@ -1153,11 +197,11 @@ android.libraryVariants.all { variant -&gt;
 ActivityLauncher.javaというkotlinじゃなくてJavaのファイルにした理由ですが特にありません。
 強いて理由とすればC#とJavaって書き方似てるなぁという愉悦に浸るぐらいの程度のものです。</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Screen/BarcodeScanScreen/Component/CameraRawImageComponent.cs">CameraRawImageComponent.cs</a></p>
-<pre><code class="language-CameraRawImageComponent.cs">AndroidJavaClass unityPlayer = <span class="hljs-keyword">new</span> <span class="hljs-constructor">AndroidJavaClass(<span class="hljs-string">&quot;com.unity3d.player.UnityPlayer&quot;</span>)</span>; 
-        AndroidJavaObject currentUnityActivity = unityPlayer.GetStatic&lt;AndroidJavaObject&gt;(<span class="hljs-string">&quot;currentActivity&quot;</span>); 
+<pre><code class="language-CameraRawImageComponent.cs">AndroidJavaClass unityPlayer = new AndroidJavaClass(&quot;com.unity3d.player.UnityPlayer&quot;); 
+        AndroidJavaObject currentUnityActivity = unityPlayer.GetStatic&lt;AndroidJavaObject&gt;(&quot;currentActivity&quot;); 
 
-        AndroidJavaClass plugin = <span class="hljs-keyword">new</span> <span class="hljs-constructor">AndroidJavaClass(<span class="hljs-string">&quot;work.syonet.bariiiii.ActivityLauncher&quot;</span>)</span>; 
-        plugin.<span class="hljs-constructor">CallStatic(<span class="hljs-string">&quot;launchActivity&quot;</span>, <span class="hljs-string">&quot;work.syonet.bariiiii.BarcodeScanAndroidActivity&quot;</span>, <span class="hljs-params">currentUnityActivity</span> )</span>;
+        AndroidJavaClass plugin = new AndroidJavaClass(&quot;work.syonet.bariiiii.ActivityLauncher&quot;); 
+        plugin.CallStatic(&quot;launchActivity&quot;, &quot;work.syonet.bariiiii.BarcodeScanAndroidActivity&quot;, currentUnityActivity );
 </code></pre>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/CreateBariiiiiAndroidNativePlugin/app/src/main/java/work/syonet/bariiiii/ActivityLauncher.java">ActivityLauncher.java</a></p>
 <pre><code class="language-ActivityLauncher.java">package work.syonet.bariiiii;
@@ -1165,23 +209,23 @@ ActivityLauncher.javaというkotlinじゃなくてJavaのファイルにした�
 import android.app.Activity;
 import android.content.Intent;
 
-<span class="hljs-comment">/**
+/**
  * C#のコードからAndroidのアクティビティにつなげるクラス
- */</span>
-public <span class="hljs-keyword">class</span> ActivityLauncher {
+ */
+public class ActivityLauncher {
 
-    <span class="hljs-comment">/**
+    /**
      * AndroidのアクティビティにIntentを発行する
      * @param type 起動したいアクティビティ
      * @param m_activity Unity自身のアクティビティ
-     */</span>
-    public static void launch<span class="hljs-constructor">Activity(String <span class="hljs-params">type</span>, <span class="hljs-params">final</span> Activity <span class="hljs-params">m_activity</span>)</span> {
-        Intent i = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Intent()</span>;
-        i.set<span class="hljs-constructor">Action(Intent.ACTION_MAIN)</span>;
-        i.set<span class="hljs-constructor">ClassName(<span class="hljs-params">m_activity</span>, <span class="hljs-params">type</span>)</span>;
+     */
+    public static void launchActivity(String type, final Activity m_activity) {
+        Intent i = new Intent();
+        i.setAction(Intent.ACTION_MAIN);
+        i.setClassName(m_activity, type);
 
-        <span class="hljs-comment">// 画面遷移を行う</span>
-        m_activity.start<span class="hljs-constructor">Activity(<span class="hljs-params">i</span>)</span>;
+        // 画面遷移を行う
+        m_activity.startActivity(i);
     }
 }
 </code></pre>
@@ -1201,34 +245,34 @@ public <span class="hljs-keyword">class</span> ActivityLauncher {
 <h2 id="cからiosプロジェクトのコードを動かすようにする">C#からiOSプロジェクトのコードを動かすようにする</h2>
 <p>ここのやり方もAndroid同様に公式や他のQiitaの記事でも書いてあったりしますので詳しい説明は割愛です。</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.cs">BarcodeScanIOS.cs</a></p>
-<pre><code class="language-/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.cs">    [<span class="hljs-meta">DllImport(<span class="hljs-string">&quot;__Internal&quot;</span>)</span>]
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">extern</span> <span class="hljs-keyword">void</span> <span class="hljs-title">barcordScanInit_</span> ()</span>;
+<pre><code class="language-/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.cs">    [DllImport(&quot;__Internal&quot;)]
+    private static extern void barcordScanInit_ ();
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">barcordScanInit</span> ()</span> {
-        <span class="hljs-keyword">if</span> (Application.platform != RuntimePlatform.OSXEditor) {
+    public static void barcordScanInit () {
+        if (Application.platform != RuntimePlatform.OSXEditor) {
             barcordScanInit_ ();
         }
     }
 </code></pre>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/igara/Bariiiii/blob/f25487a98531cd2eb27a294ab928a1976d933a55/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.mm">BarcodeScanIOS.mm</a></p>
-<pre><code class="language-/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.mm"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> mark called by C#</span>
-<span class="hljs-comment">/**
+<pre><code class="language-/Assets/Plugins/iOS/Bariiiii/BarcodeScanIOS/BarcodeScanIOS.mm">#pragma mark called by C#
+/**
  * MARK:Unity上で扱うViewController
- */</span>
-<span class="hljs-keyword">extern</span> <span class="hljs-built_in">UIViewController</span> *UnityGetGLViewController();
+ */
+extern UIViewController *UnityGetGLViewController();
 
-<span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> {
-    <span class="hljs-type">void</span> barcordScanInit_();
+extern &quot;C&quot; {
+    void barcordScanInit_();
 }
 
-<span class="hljs-comment">/**
+/**
  * MARK:C#からBarcodeIOSのクラスを呼び出す
- */</span>
-<span class="hljs-type">void</span> barcordScanInit_() {
+ */
+void barcordScanInit_() {
 
-    <span class="hljs-built_in">UINib</span> *nib = [<span class="hljs-built_in">UINib</span> nibWithNibName:<span class="hljs-string">@&quot;BarcodeScanIOSScreen&quot;</span> bundle:<span class="hljs-literal">nil</span>];
-    BarcodeScanIOS *barcode = [[nib instantiateWithOwner:<span class="hljs-literal">nil</span> options:<span class="hljs-literal">nil</span>] objectAtIndex:<span class="hljs-number">0</span>];
-    [UnityGetGLViewController() presentViewController:barcode animated:<span class="hljs-literal">YES</span> completion:<span class="hljs-literal">nil</span>];
+    UINib *nib = [UINib nibWithNibName:@&quot;BarcodeScanIOSScreen&quot; bundle:nil];
+    BarcodeScanIOS *barcode = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    [UnityGetGLViewController() presentViewController:barcode animated:YES completion:nil];
 }
 </code></pre>
 <h1 id="今後（今">今後（今</h1>

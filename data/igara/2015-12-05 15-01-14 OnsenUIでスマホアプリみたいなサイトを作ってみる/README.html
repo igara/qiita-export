@@ -1,960 +1,4 @@
-<style>
-pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
-  Theme: GitHub
-  Description: Light theme as seen on github.com
-  Author: github.com
-  Maintainer: @Hirse
-  Updated: 2021-05-15
-
-  Outdated base version: https://github.com/primer/github-syntax-light
-  Current colors taken from GitHub's CSS
-*/.hljs{color:#24292e;background:#fff}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#d73a49}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#6f42c1}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#005cc5}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#032f62}.hljs-built_in,.hljs-symbol{color:#e36209}.hljs-code,.hljs-comment,.hljs-formula{color:#6a737d}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#22863a}.hljs-subst{color:#24292e}.hljs-section{color:#005cc5;font-weight:700}.hljs-bullet{color:#735c0f}.hljs-emphasis{color:#24292e;font-style:italic}.hljs-strong{color:#24292e;font-weight:700}.hljs-addition{color:#22863a;background-color:#f0fff4}.hljs-deletion{color:#b31d28;background-color:#ffeef0}
-.markdown-body {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  margin: 0;
-  color: #24292f;
-  background-color: #ffffff;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-  font-size: 16px;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
-.markdown-body .octicon {
-  display: inline-block;
-  fill: currentColor;
-  vertical-align: text-bottom;
-}
-
-.markdown-body h1:hover .anchor .octicon-link:before,
-.markdown-body h2:hover .anchor .octicon-link:before,
-.markdown-body h3:hover .anchor .octicon-link:before,
-.markdown-body h4:hover .anchor .octicon-link:before,
-.markdown-body h5:hover .anchor .octicon-link:before,
-.markdown-body h6:hover .anchor .octicon-link:before {
-  width: 16px;
-  height: 16px;
-  content: ' ';
-  display: inline-block;
-  background-color: currentColor;
-  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
-  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
-}
-
-.markdown-body details,
-.markdown-body figcaption,
-.markdown-body figure {
-  display: block;
-}
-
-.markdown-body summary {
-  display: list-item;
-}
-
-.markdown-body [hidden] {
-  display: none !important;
-}
-
-.markdown-body a {
-  background-color: transparent;
-  color: #0969da;
-  text-decoration: none;
-}
-
-.markdown-body a:active,
-.markdown-body a:hover {
-  outline-width: 0;
-}
-
-.markdown-body abbr[title] {
-  border-bottom: none;
-  text-decoration: underline dotted;
-}
-
-.markdown-body b,
-.markdown-body strong {
-  font-weight: 600;
-}
-
-.markdown-body dfn {
-  font-style: italic;
-}
-
-.markdown-body h1 {
-  margin: .67em 0;
-  font-weight: 600;
-  padding-bottom: .3em;
-  font-size: 2em;
-  border-bottom: 1px solid hsla(210,18%,87%,1);
-}
-
-.markdown-body mark {
-  background-color: #fff8c5;
-  color: #24292f;
-}
-
-.markdown-body small {
-  font-size: 90%;
-}
-
-.markdown-body sub,
-.markdown-body sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-.markdown-body sub {
-  bottom: -0.25em;
-}
-
-.markdown-body sup {
-  top: -0.5em;
-}
-
-.markdown-body img {
-  border-style: none;
-  max-width: 100%;
-  box-sizing: content-box;
-  background-color: #ffffff;
-}
-
-.markdown-body code,
-.markdown-body kbd,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: monospace,monospace;
-  font-size: 1em;
-}
-
-.markdown-body figure {
-  margin: 1em 40px;
-}
-
-.markdown-body hr {
-  box-sizing: content-box;
-  overflow: hidden;
-  background: transparent;
-  border-bottom: 1px solid hsla(210,18%,87%,1);
-  height: .25em;
-  padding: 0;
-  margin: 24px 0;
-  background-color: #d0d7de;
-  border: 0;
-}
-
-.markdown-body input {
-  font: inherit;
-  margin: 0;
-  overflow: visible;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-.markdown-body [type=button],
-.markdown-body [type=reset],
-.markdown-body [type=submit] {
-  -webkit-appearance: button;
-}
-
-.markdown-body [type=button]::-moz-focus-inner,
-.markdown-body [type=reset]::-moz-focus-inner,
-.markdown-body [type=submit]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-.markdown-body [type=button]:-moz-focusring,
-.markdown-body [type=reset]:-moz-focusring,
-.markdown-body [type=submit]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-.markdown-body [type=checkbox],
-.markdown-body [type=radio] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-.markdown-body [type=number]::-webkit-inner-spin-button,
-.markdown-body [type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-.markdown-body [type=search] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
-}
-
-.markdown-body [type=search]::-webkit-search-cancel-button,
-.markdown-body [type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-.markdown-body ::-webkit-input-placeholder {
-  color: inherit;
-  opacity: .54;
-}
-
-.markdown-body ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit;
-}
-
-.markdown-body a:hover {
-  text-decoration: underline;
-}
-
-.markdown-body hr::before {
-  display: table;
-  content: "";
-}
-
-.markdown-body hr::after {
-  display: table;
-  clear: both;
-  content: "";
-}
-
-.markdown-body table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  display: block;
-  width: max-content;
-  max-width: 100%;
-  overflow: auto;
-}
-
-.markdown-body td,
-.markdown-body th {
-  padding: 0;
-}
-
-.markdown-body details summary {
-  cursor: pointer;
-}
-
-.markdown-body details:not([open])>*:not(summary) {
-  display: none !important;
-}
-
-.markdown-body kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-  line-height: 10px;
-  color: #24292f;
-  vertical-align: middle;
-  background-color: #f6f8fa;
-  border: solid 1px rgba(175,184,193,0.2);
-  border-bottom-color: rgba(175,184,193,0.2);
-  border-radius: 6px;
-  box-shadow: inset 0 -1px 0 rgba(175,184,193,0.2);
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  margin-top: 24px;
-  margin-bottom: 16px;
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.markdown-body h2 {
-  font-weight: 600;
-  padding-bottom: .3em;
-  font-size: 1.5em;
-  border-bottom: 1px solid hsla(210,18%,87%,1);
-}
-
-.markdown-body h3 {
-  font-weight: 600;
-  font-size: 1.25em;
-}
-
-.markdown-body h4 {
-  font-weight: 600;
-  font-size: 1em;
-}
-
-.markdown-body h5 {
-  font-weight: 600;
-  font-size: .875em;
-}
-
-.markdown-body h6 {
-  font-weight: 600;
-  font-size: .85em;
-  color: #57606a;
-}
-
-.markdown-body p {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.markdown-body blockquote {
-  margin: 0;
-  padding: 0 1em;
-  color: #57606a;
-  border-left: .25em solid #d0d7de;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 2em;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-  list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body dd {
-  margin-left: 0;
-}
-
-.markdown-body tt,
-.markdown-body code {
-  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-  font-size: 12px;
-}
-
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-  font-size: 12px;
-  word-wrap: normal;
-}
-
-.markdown-body .octicon {
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-body ::placeholder {
-  color: #6e7781;
-  opacity: 1;
-}
-
-.markdown-body input::-webkit-outer-spin-button,
-.markdown-body input::-webkit-inner-spin-button {
-  margin: 0;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.markdown-body .pl-c {
-  color: #6e7781;
-}
-
-.markdown-body .pl-c1,
-.markdown-body .pl-s .pl-v {
-  color: #0550ae;
-}
-
-.markdown-body .pl-e,
-.markdown-body .pl-en {
-  color: #8250df;
-}
-
-.markdown-body .pl-smi,
-.markdown-body .pl-s .pl-s1 {
-  color: #24292f;
-}
-
-.markdown-body .pl-ent {
-  color: #116329;
-}
-
-.markdown-body .pl-k {
-  color: #cf222e;
-}
-
-.markdown-body .pl-s,
-.markdown-body .pl-pds,
-.markdown-body .pl-s .pl-pse .pl-s1,
-.markdown-body .pl-sr,
-.markdown-body .pl-sr .pl-cce,
-.markdown-body .pl-sr .pl-sre,
-.markdown-body .pl-sr .pl-sra {
-  color: #0a3069;
-}
-
-.markdown-body .pl-v,
-.markdown-body .pl-smw {
-  color: #953800;
-}
-
-.markdown-body .pl-bu {
-  color: #82071e;
-}
-
-.markdown-body .pl-ii {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-
-.markdown-body .pl-c2 {
-  color: #f6f8fa;
-  background-color: #cf222e;
-}
-
-.markdown-body .pl-sr .pl-cce {
-  font-weight: bold;
-  color: #116329;
-}
-
-.markdown-body .pl-ml {
-  color: #3b2300;
-}
-
-.markdown-body .pl-mh,
-.markdown-body .pl-mh .pl-en,
-.markdown-body .pl-ms {
-  font-weight: bold;
-  color: #0550ae;
-}
-
-.markdown-body .pl-mi {
-  font-style: italic;
-  color: #24292f;
-}
-
-.markdown-body .pl-mb {
-  font-weight: bold;
-  color: #24292f;
-}
-
-.markdown-body .pl-md {
-  color: #82071e;
-  background-color: #FFEBE9;
-}
-
-.markdown-body .pl-mi1 {
-  color: #116329;
-  background-color: #dafbe1;
-}
-
-.markdown-body .pl-mc {
-  color: #953800;
-  background-color: #ffd8b5;
-}
-
-.markdown-body .pl-mi2 {
-  color: #eaeef2;
-  background-color: #0550ae;
-}
-
-.markdown-body .pl-mdr {
-  font-weight: bold;
-  color: #8250df;
-}
-
-.markdown-body .pl-ba {
-  color: #57606a;
-}
-
-.markdown-body .pl-sg {
-  color: #8c959f;
-}
-
-.markdown-body .pl-corl {
-  text-decoration: underline;
-  color: #0a3069;
-}
-
-.markdown-body [data-catalyst] {
-  display: block;
-}
-
-.markdown-body g-emoji {
-  font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1em;
-  font-style: normal !important;
-  font-weight: 400;
-  line-height: 1;
-  vertical-align: -0.075em;
-}
-
-.markdown-body g-emoji img {
-  width: 1em;
-  height: 1em;
-}
-
-.markdown-body::before {
-  display: table;
-  content: "";
-}
-
-.markdown-body::after {
-  display: table;
-  clear: both;
-  content: "";
-}
-
-.markdown-body>*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body>*:last-child {
-  margin-bottom: 0 !important;
-}
-
-.markdown-body a:not([href]) {
-  color: inherit;
-  text-decoration: none;
-}
-
-.markdown-body .absent {
-  color: #cf222e;
-}
-
-.markdown-body .anchor {
-  float: left;
-  padding-right: 4px;
-  margin-left: -20px;
-  line-height: 1;
-}
-
-.markdown-body .anchor:focus {
-  outline: none;
-}
-
-.markdown-body p,
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table,
-.markdown-body pre,
-.markdown-body details {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-body blockquote>:first-child {
-  margin-top: 0;
-}
-
-.markdown-body blockquote>:last-child {
-  margin-bottom: 0;
-}
-
-.markdown-body sup>a::before {
-  content: "[";
-}
-
-.markdown-body sup>a::after {
-  content: "]";
-}
-
-.markdown-body h1 .octicon-link,
-.markdown-body h2 .octicon-link,
-.markdown-body h3 .octicon-link,
-.markdown-body h4 .octicon-link,
-.markdown-body h5 .octicon-link,
-.markdown-body h6 .octicon-link {
-  color: #24292f;
-  vertical-align: middle;
-  visibility: hidden;
-}
-
-.markdown-body h1:hover .anchor,
-.markdown-body h2:hover .anchor,
-.markdown-body h3:hover .anchor,
-.markdown-body h4:hover .anchor,
-.markdown-body h5:hover .anchor,
-.markdown-body h6:hover .anchor {
-  text-decoration: none;
-}
-
-.markdown-body h1:hover .anchor .octicon-link,
-.markdown-body h2:hover .anchor .octicon-link,
-.markdown-body h3:hover .anchor .octicon-link,
-.markdown-body h4:hover .anchor .octicon-link,
-.markdown-body h5:hover .anchor .octicon-link,
-.markdown-body h6:hover .anchor .octicon-link {
-  visibility: visible;
-}
-
-.markdown-body h1 tt,
-.markdown-body h1 code,
-.markdown-body h2 tt,
-.markdown-body h2 code,
-.markdown-body h3 tt,
-.markdown-body h3 code,
-.markdown-body h4 tt,
-.markdown-body h4 code,
-.markdown-body h5 tt,
-.markdown-body h5 code,
-.markdown-body h6 tt,
-.markdown-body h6 code {
-  padding: 0 .2em;
-  font-size: inherit;
-}
-
-.markdown-body ul.no-list,
-.markdown-body ol.no-list {
-  padding: 0;
-  list-style-type: none;
-}
-
-.markdown-body ol[type="1"] {
-  list-style-type: decimal;
-}
-
-.markdown-body ol[type=a] {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body ol[type=i] {
-  list-style-type: lower-roman;
-}
-
-.markdown-body div>ol:not([type]) {
-  list-style-type: decimal;
-}
-
-.markdown-body ul ul,
-.markdown-body ul ol,
-.markdown-body ol ol,
-.markdown-body ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body li>p {
-  margin-top: 16px;
-}
-
-.markdown-body li+li {
-  margin-top: .25em;
-}
-
-.markdown-body dl {
-  padding: 0;
-}
-
-.markdown-body dl dt {
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: 600;
-}
-
-.markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
-}
-
-.markdown-body table th {
-  font-weight: 600;
-}
-
-.markdown-body table th,
-.markdown-body table td {
-  padding: 6px 13px;
-  border: 1px solid #d0d7de;
-}
-
-.markdown-body table tr {
-  background-color: #ffffff;
-  border-top: 1px solid hsla(210,18%,87%,1);
-}
-
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f6f8fa;
-}
-
-.markdown-body table img {
-  background-color: transparent;
-}
-
-.markdown-body img[align=right] {
-  padding-left: 20px;
-}
-
-.markdown-body img[align=left] {
-  padding-right: 20px;
-}
-
-.markdown-body .emoji {
-  max-width: none;
-  vertical-align: text-top;
-  background-color: transparent;
-}
-
-.markdown-body span.frame {
-  display: block;
-  overflow: hidden;
-}
-
-.markdown-body span.frame>span {
-  display: block;
-  float: left;
-  width: auto;
-  padding: 7px;
-  margin: 13px 0 0;
-  overflow: hidden;
-  border: 1px solid #d0d7de;
-}
-
-.markdown-body span.frame span img {
-  display: block;
-  float: left;
-}
-
-.markdown-body span.frame span span {
-  display: block;
-  padding: 5px 0 0;
-  clear: both;
-  color: #24292f;
-}
-
-.markdown-body span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both;
-}
-
-.markdown-body span.align-center>span {
-  display: block;
-  margin: 13px auto 0;
-  overflow: hidden;
-  text-align: center;
-}
-
-.markdown-body span.align-center span img {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.markdown-body span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both;
-}
-
-.markdown-body span.align-right>span {
-  display: block;
-  margin: 13px 0 0;
-  overflow: hidden;
-  text-align: right;
-}
-
-.markdown-body span.align-right span img {
-  margin: 0;
-  text-align: right;
-}
-
-.markdown-body span.float-left {
-  display: block;
-  float: left;
-  margin-right: 13px;
-  overflow: hidden;
-}
-
-.markdown-body span.float-left span {
-  margin: 13px 0 0;
-}
-
-.markdown-body span.float-right {
-  display: block;
-  float: right;
-  margin-left: 13px;
-  overflow: hidden;
-}
-
-.markdown-body span.float-right>span {
-  display: block;
-  margin: 13px auto 0;
-  overflow: hidden;
-  text-align: right;
-}
-
-.markdown-body code,
-.markdown-body tt {
-  padding: .2em .4em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(175,184,193,0.2);
-  border-radius: 6px;
-}
-
-.markdown-body code br,
-.markdown-body tt br {
-  display: none;
-}
-
-.markdown-body del code {
-  text-decoration: inherit;
-}
-
-.markdown-body pre code {
-  font-size: 100%;
-}
-
-.markdown-body pre>code {
-  padding: 0;
-  margin: 0;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.markdown-body .highlight {
-  margin-bottom: 16px;
-}
-
-.markdown-body .highlight pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.markdown-body .highlight pre,
-.markdown-body pre {
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f6f8fa;
-  border-radius: 6px;
-}
-
-.markdown-body pre code,
-.markdown-body pre tt {
-  display: inline;
-  max-width: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
-}
-
-.markdown-body .csv-data td,
-.markdown-body .csv-data th {
-  padding: 5px;
-  overflow: hidden;
-  font-size: 12px;
-  line-height: 1;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.markdown-body .csv-data .blob-num {
-  padding: 10px 8px 9px;
-  text-align: right;
-  background: #ffffff;
-  border: 0;
-}
-
-.markdown-body .csv-data tr {
-  border-top: 0;
-}
-
-.markdown-body .csv-data th {
-  font-weight: 600;
-  background: #f6f8fa;
-  border-top: 0;
-}
-
-.markdown-body .footnotes {
-  font-size: 12px;
-  color: #57606a;
-  border-top: 1px solid #d0d7de;
-}
-
-.markdown-body .footnotes ol {
-  padding-left: 16px;
-}
-
-.markdown-body .footnotes li {
-  position: relative;
-}
-
-.markdown-body .footnotes li:target::before {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  bottom: -8px;
-  left: -24px;
-  pointer-events: none;
-  content: "";
-  border: 2px solid #0969da;
-  border-radius: 6px;
-}
-
-.markdown-body .footnotes li:target {
-  color: #24292f;
-}
-
-.markdown-body .footnotes .data-footnote-backref g-emoji {
-  font-family: monospace;
-}
-
-.markdown-body .task-list-item {
-  list-style-type: none;
-}
-
-.markdown-body .task-list-item label {
-  font-weight: 400;
-}
-
-.markdown-body .task-list-item.enabled label {
-  cursor: pointer;
-}
-
-.markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
-}
-
-.markdown-body .task-list-item .handle {
-  display: none;
-}
-
-.markdown-body .task-list-item-checkbox {
-  margin: 0 .2em .25em -1.6em;
-  vertical-align: middle;
-}
-
-.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox {
-  margin: 0 -1.6em .25em .2em;
-}
-
-.markdown-body ::-webkit-calendar-picker-indicator {
-  filter: invert(50%);
-}
-
-.markdown-body img {
-  object-fit: contain;
-  height: auto;
-}
-</style><div class="markdown-body">
+<div class="markdown-body">
   <h1 id="onsenuiとは">OnsenUIとは</h1>
 <p>モバイル向けに作られたHTML5フレームワーク
 クラウドIDEのmonacaでも用いられており、Webでもネイティブアプリでも使えるハイブリットなアプリ作りに貢献しているようだ。
@@ -969,36 +13,36 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
 <p>nodejsインストールされている前提で説明
 下記を実行してライブラリをダウンロード</p>
 <pre><code>
-npm install gulp --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
-npm install angular --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
-npm install onsenui --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span>
+npm install gulp --save-dev
+npm install angular --save-dev
+npm install onsenui --save-dev
 </code></pre>
 <h2 id="gulp-task">gulp task</h2>
 <pre><code class="language-gulpfile.js">
-<span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;gulp&#x27;</span>);
+var gulp = require(&#39;gulp&#39;);
 
-gulp.<span class="hljs-title function_">task</span>(<span class="hljs-string">&#x27;import&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+gulp.task(&#39;import&#39;, function() {
 
-    <span class="hljs-comment">// onsenUIをpublic下に設置する。</span>
-    <span class="hljs-keyword">var</span> onsenUIPath = <span class="hljs-string">&#x27;node_modules/onsenui&#x27;</span>;
-    gulp.<span class="hljs-title function_">src</span>(onsenUIPath + <span class="hljs-string">&#x27;/css/**&#x27;</span>)
-        .<span class="hljs-title function_">pipe</span>(gulp.<span class="hljs-title function_">dest</span>(<span class="hljs-string">&#x27;public/css/lib/onsenui&#x27;</span>));
-    gulp.<span class="hljs-title function_">src</span>(onsenUIPath + <span class="hljs-string">&#x27;/js/**&#x27;</span>)
-        .<span class="hljs-title function_">pipe</span>(gulp.<span class="hljs-title function_">dest</span>(<span class="hljs-string">&#x27;public/js/lib/onsenui&#x27;</span>));
+    // onsenUIをpublic下に設置する。
+    var onsenUIPath = &#39;node_modules/onsenui&#39;;
+    gulp.src(onsenUIPath + &#39;/css/**&#39;)
+        .pipe(gulp.dest(&#39;public/css/lib/onsenui&#39;));
+    gulp.src(onsenUIPath + &#39;/js/**&#39;)
+        .pipe(gulp.dest(&#39;public/js/lib/onsenui&#39;));
 
-    <span class="hljs-comment">// AngularJSをpublic下に設置する。</span>
-    <span class="hljs-keyword">var</span> angularJSPath = <span class="hljs-string">&#x27;node_modules/angular&#x27;</span>;
-    gulp.<span class="hljs-title function_">src</span>(angularJSPath + <span class="hljs-string">&#x27;/angular.min.js&#x27;</span>)
-        .<span class="hljs-title function_">pipe</span>(gulp.<span class="hljs-title function_">dest</span>(<span class="hljs-string">&#x27;public/js/lib/angular&#x27;</span>));
-    gulp.<span class="hljs-title function_">src</span>(angularJSPath + <span class="hljs-string">&#x27;/angular-csp.css&#x27;</span>)
-        .<span class="hljs-title function_">pipe</span>(gulp.<span class="hljs-title function_">dest</span>(<span class="hljs-string">&#x27;public/css/lib/angular&#x27;</span>));
+    // AngularJSをpublic下に設置する。
+    var angularJSPath = &#39;node_modules/angular&#39;;
+    gulp.src(angularJSPath + &#39;/angular.min.js&#39;)
+        .pipe(gulp.dest(&#39;public/js/lib/angular&#39;));
+    gulp.src(angularJSPath + &#39;/angular-csp.css&#39;)
+        .pipe(gulp.dest(&#39;public/css/lib/angular&#39;));
 
 }
 </code></pre>
 <p>gulpのタスクを実行する。</p>
 <pre><code>
-<span class="hljs-comment"># プロジェクトのディレクトリ配下にいるときに下記実行</span>
-.<span class="hljs-regexp">/node_modules/</span>.bin/gulp import
+# プロジェクトのディレクトリ配下にいるときに下記実行
+./node_modules/.bin/gulp import
 </code></pre>
 <p>これでpublic下にcss,jsファイルが移動されるはず。</p>
 <p><img src="https://raw.githubusercontent.com/igara/qiita-export
@@ -1011,115 +55,115 @@ laravelでデフォルトで作成されているwelcome.blade.phpと
 /master/data/igara/2015-12-05 15-01-14 OnsenUIでスマホアプリみたいなサイトを作ってみる/2-md.png" alt="スクリーンショット 2015-12-05 14.09.38.png"></p>
 <h3 id="welcomebladephpの編集">welcome.blade.phpの編集</h3>
 <pre><code class="language-welcome.blade.php">
-<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../css/lib/onsenui/onsenui.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../css/lib/onsenui/onsen-css-components-dark-theme.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../js/lib/systemjs/system.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../js/lib/angular/angular.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../js/lib/onsenui/onsenui.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link href=&quot;../css/lib/onsenui/onsenui.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;../css/lib/onsenui/onsen-css-components-dark-theme.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../js/lib/systemjs/system.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../js/lib/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../js/lib/onsenui/onsenui.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
         ons.bootstrap();
-    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-@include(&#x27;welcome.common.header&#x27;)
-@include(&#x27;welcome.common.menu&#x27;)
-@include(&#x27;welcome.common.footer&#x27;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+@include(&#39;welcome.common.header&#39;)
+@include(&#39;welcome.common.menu&#39;)
+@include(&#39;welcome.common.footer&#39;)
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 <h3 id="ファイルの新規作成">ファイルの新規作成</h3>
 <h4 id="画面下のタブを構成するテンプレートを作成する">画面下のタブを構成するテンプレートを作成する</h4>
 <pre><code class="language-footer.blade.php">
-<span class="hljs-comment">&lt;!-- フッター --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tabbar.html&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-tabbar</span> <span class="hljs-attr">var</span>=<span class="hljs-string">&quot;tabbar&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ons-tab</span> <span class="hljs-attr">page</span>=<span class="hljs-string">&quot;home.html&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Home&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;ion-home&quot;</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ons-tab</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ons-tab</span> <span class="hljs-attr">page</span>=<span class="hljs-string">&quot;comments.html&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Comments&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;ion-chatbox-working&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ons-tab</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ons-tab</span> <span class="hljs-attr">page</span>=<span class="hljs-string">&quot;tags.html&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Tags&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;ion-ios-pricetag&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ons-tab</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ons-tab</span> <span class="hljs-attr">page</span>=<span class="hljs-string">&quot;settings.html&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Settings&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;ion-ios-cog&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-tab</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ons-tabbar</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- /フッター --&gt;</span>
+&lt;!-- フッター --&gt;
+&lt;ons-template id=&quot;tabbar.html&quot;&gt;
+    &lt;ons-tabbar var=&quot;tabbar&quot;&gt;
+        &lt;ons-tab page=&quot;home.html&quot; label=&quot;Home&quot; icon=&quot;ion-home&quot; active=&quot;true&quot;&gt;&lt;/ons-tab&gt;
+      &lt;ons-tab page=&quot;comments.html&quot; label=&quot;Comments&quot; icon=&quot;ion-chatbox-working&quot;&gt;&lt;/ons-tab&gt;
+      &lt;ons-tab page=&quot;tags.html&quot; label=&quot;Tags&quot; icon=&quot;ion-ios-pricetag&quot;&gt;&lt;/ons-tab&gt;
+      &lt;ons-tab page=&quot;settings.html&quot; label=&quot;Settings&quot; icon=&quot;ion-ios-cog&quot;&gt;
+    &lt;/ons-tab&gt;
+  &lt;/ons-tabbar&gt;
+&lt;/ons-template&gt;
+&lt;!-- /フッター --&gt;
 </code></pre>
 <h4 id="各メニューのページ内容を表示するテンプレートを作成する">各メニューのページ内容を表示するテンプレートを作成する</h4>
 <pre><code class="language-menu.blade.php">
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-sliding-menu</span> <span class="hljs-attr">var</span>=<span class="hljs-string">&quot;menu&quot;</span> <span class="hljs-attr">menu-page</span>=<span class="hljs-string">&quot;menu.html&quot;</span> <span class="hljs-attr">main-page</span>=<span class="hljs-string">&quot;tabbar.html&quot;</span> <span class="hljs-attr">side</span>=<span class="hljs-string">&quot;left&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;push&quot;</span> <span class="hljs-attr">max-slide-distance</span>=<span class="hljs-string">&quot;200px&quot;</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-sliding-menu</span>&gt;</span>
+&lt;ons-sliding-menu var=&quot;menu&quot; menu-page=&quot;menu.html&quot; main-page=&quot;tabbar.html&quot; side=&quot;left&quot; type=&quot;push&quot; max-slide-distance=&quot;200px&quot;&gt;
+&lt;/ons-sliding-menu&gt;
 
-<span class="hljs-comment">&lt;!-- サイドメニュー --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;menu.html&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">ons-list</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-list-item</span> <span class="hljs-attr">modifier</span>=<span class="hljs-string">&quot;chevron&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;tabbar.setActiveTab(0), menu.closeMenu()&quot;</span>&gt;</span>
+&lt;!-- サイドメニュー --&gt;
+&lt;ons-template id=&quot;menu.html&quot;&gt;
+  &lt;ons-list&gt;
+    &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(0), menu.closeMenu()&quot;&gt;
       Home
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list-item</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-list-item</span> <span class="hljs-attr">modifier</span>=<span class="hljs-string">&quot;chevron&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;tabbar.setActiveTab(1), menu.closeMenu()&quot;</span>&gt;</span>
+    &lt;/ons-list-item&gt;
+    &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(1), menu.closeMenu()&quot;&gt;
       Comments
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list-item</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-list-item</span> <span class="hljs-attr">modifier</span>=<span class="hljs-string">&quot;chevron&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;tabbar.setActiveTab(2), menu.closeMenu()&quot;</span>&gt;</span>
+    &lt;/ons-list-item&gt;
+    &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(2), menu.closeMenu()&quot;&gt;
       Tags
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list-item</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-list-item</span> <span class="hljs-attr">modifier</span>=<span class="hljs-string">&quot;chevron&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;tabbar.setActiveTab(3), menu.closeMenu()&quot;</span>&gt;</span>
+    &lt;/ons-list-item&gt;
+    &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(3), menu.closeMenu()&quot;&gt;
       Settings
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list-item</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- /サイドメニュー --&gt;</span>
+    &lt;/ons-list-item&gt;
+  &lt;/ons-list&gt;
+&lt;/ons-template&gt;
+&lt;!-- /サイドメニュー --&gt;
 
-<span class="hljs-comment">&lt;!-- メニューのコンテンツ内容 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;home.html&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">ons-page</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; color: #999; padding-top: 50px;&quot;</span>&gt;</span>
+&lt;!-- メニューのコンテンツ内容 --&gt;
+&lt;ons-template id=&quot;home.html&quot;&gt;
+  &lt;ons-page&gt;
+    &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
       Home
-    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ons-page</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
+    &lt;/p&gt;
+  &lt;/ons-page&gt;
+&lt;/ons-template&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;comments.html&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">ons-page</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; color: #999; padding-top: 50px;&quot;</span>&gt;</span>
+&lt;ons-template id=&quot;comments.html&quot;&gt;
+  &lt;ons-page&gt;
+    &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
       Comments
-    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ons-page</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
+    &lt;/p&gt;
+  &lt;/ons-page&gt;
+&lt;/ons-template&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tags.html&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">ons-page</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; color: #999; padding-top: 50px;&quot;</span>&gt;</span>
+&lt;ons-template id=&quot;tags.html&quot;&gt;
+  &lt;ons-page&gt;
+    &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
       Tags
-    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ons-page</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
+    &lt;/p&gt;
+  &lt;/ons-page&gt;
+&lt;/ons-template&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;settings.html&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">ons-page</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; color: #999; padding-top: 50px;&quot;</span>&gt;</span>
+&lt;ons-template id=&quot;settings.html&quot;&gt;
+  &lt;ons-page&gt;
+    &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
       Setting
-    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ons-page</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- /メニューのコンテンツ内容 --&gt;</span>
+    &lt;/p&gt;
+  &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+&lt;!-- /メニューのコンテンツ内容 --&gt;
 </code></pre>
 <h4 id="ヘッダー部">ヘッダー部</h4>
-<pre><code class="language-header.blade.php"><span class="hljs-comment">&lt;!-- ヘッダー --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;header.html&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-toolbar</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span>
-            <span class="hljs-comment">&lt;!-- サイドメニューを表示する三表示 --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ons-toolbar-button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">&quot;menu.toggleMenu()&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">ons-icon</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;bars&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ons-icon</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ons-toolbar-button</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- タイトル --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>SyoNet<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-toolbar</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- フッターを呼び出す --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ng-include</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&#x27;tabbar.html&#x27;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-include</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- /ヘッダー --&gt;</span>
+<pre><code class="language-header.blade.php">&lt;!-- ヘッダー --&gt;
+&lt;ons-template id=&quot;header.html&quot;&gt;
+    &lt;ons-toolbar&gt;
+        &lt;div class=&quot;left&quot;&gt;
+            &lt;!-- サイドメニューを表示する三表示 --&gt;
+            &lt;ons-toolbar-button ng-click=&quot;menu.toggleMenu()&quot;&gt;
+                &lt;ons-icon icon=&quot;bars&quot;&gt;&lt;/ons-icon&gt;
+            &lt;/ons-toolbar-button&gt;
+        &lt;/div&gt;
+        &lt;!-- タイトル --&gt;
+        &lt;div class=&quot;center&quot;&gt;SyoNet&lt;/div&gt;
+    &lt;/ons-toolbar&gt;
+    &lt;!-- フッターを呼び出す --&gt;
+    &lt;ng-include src=&quot;&#39;tabbar.html&#39;&quot;&gt;&lt;/ng-include&gt;
+&lt;/ons-template&gt;
+&lt;!-- /ヘッダー --&gt;
 </code></pre>
 <p>これでサイドナビゲーションとタブバーの実装ができる</p>
 <h1 id="所感">所感</h1>
@@ -1140,107 +184,107 @@ OnsenUI2でサイドナビゲーションが使えるようになった！</p>
 <p><img src="https://raw.githubusercontent.com/igara/qiita-export
 /master/data/igara/2015-12-05 15-01-14 OnsenUIでスマホアプリみたいなサイトを作ってみる/3-md.png" alt="スクリーンショット 2015-12-06 16.27.21.png"></p>
 <pre><code class="language-public/docs/screen/top/design/design.html">
-<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../../../../css/lib/onsenui/onsenui.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../../../../css/lib/onsenui/onsen-css-components-dark-theme.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../../../../js/lib/systemjs/system.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../../../../js/lib/angular/angular.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../../../../js/lib/onsenui/onsenui.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;link href=&quot;../../../../css/lib/onsenui/onsenui.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+        &lt;link href=&quot;../../../../css/lib/onsenui/onsen-css-components-dark-theme.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;../../../../js/lib/systemjs/system.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;../../../../js/lib/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;../../../../js/lib/onsenui/onsenui.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
             ons.bootstrap();
-        <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ng-include</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&#x27;../../common/design/design_menu.html&#x27;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-include</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;ng-include src=&quot;&#39;../../common/design/design_menu.html&#39;&quot;&gt;&lt;/ng-include&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 <pre><code class="language-public/docs/screen/common/design/design_footer.html">
-<span class="hljs-comment">&lt;!-- フッター --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-tabbar</span> <span class="hljs-attr">var</span>=<span class="hljs-string">&quot;tabbar&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-tab</span> <span class="hljs-attr">page</span>=<span class="hljs-string">&quot;home.html&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Home&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;ion-home&quot;</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ons-tab</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-tab</span> <span class="hljs-attr">page</span>=<span class="hljs-string">&quot;comments.html&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Comments&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;ion-chatbox-working&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ons-tab</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-tab</span> <span class="hljs-attr">page</span>=<span class="hljs-string">&quot;tags.html&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Tags&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;ion-ios-pricetag&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ons-tab</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-tab</span> <span class="hljs-attr">page</span>=<span class="hljs-string">&quot;settings.html&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Settings&quot;</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;ion-ios-cog&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-tab</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-tabbar</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- /フッター --&gt;</span>
+&lt;!-- フッター --&gt;
+&lt;ons-tabbar var=&quot;tabbar&quot;&gt;
+    &lt;ons-tab page=&quot;home.html&quot; label=&quot;Home&quot; icon=&quot;ion-home&quot; active=&quot;true&quot;&gt;&lt;/ons-tab&gt;
+    &lt;ons-tab page=&quot;comments.html&quot; label=&quot;Comments&quot; icon=&quot;ion-chatbox-working&quot;&gt;&lt;/ons-tab&gt;
+    &lt;ons-tab page=&quot;tags.html&quot; label=&quot;Tags&quot; icon=&quot;ion-ios-pricetag&quot;&gt;&lt;/ons-tab&gt;
+    &lt;ons-tab page=&quot;settings.html&quot; label=&quot;Settings&quot; icon=&quot;ion-ios-cog&quot;&gt;
+    &lt;/ons-tab&gt;
+&lt;/ons-tabbar&gt;
+&lt;!-- /フッター --&gt;
 </code></pre>
 <pre><code class="language-public/docs/screen/common/design/design_menu.html">
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-sliding-menu</span> <span class="hljs-attr">var</span>=<span class="hljs-string">&quot;menu&quot;</span> <span class="hljs-attr">menu-page</span>=<span class="hljs-string">&quot;menu.html&quot;</span> <span class="hljs-attr">main-page</span>=<span class="hljs-string">&quot;../../common/design/design_header.html&quot;</span> <span class="hljs-attr">side</span>=<span class="hljs-string">&quot;left&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;push&quot;</span> <span class="hljs-attr">max-slide-distance</span>=<span class="hljs-string">&quot;200px&quot;</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-sliding-menu</span>&gt;</span>
+&lt;ons-sliding-menu var=&quot;menu&quot; menu-page=&quot;menu.html&quot; main-page=&quot;../../common/design/design_header.html&quot; side=&quot;left&quot; type=&quot;push&quot; max-slide-distance=&quot;200px&quot;&gt;
+&lt;/ons-sliding-menu&gt;
 
-<span class="hljs-comment">&lt;!-- サイドメニュー --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;menu.html&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-list</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ons-list-item</span> <span class="hljs-attr">modifier</span>=<span class="hljs-string">&quot;chevron&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;tabbar.setActiveTab(0), menu.closeMenu()&quot;</span>&gt;</span>
+&lt;!-- サイドメニュー --&gt;
+&lt;ons-template id=&quot;menu.html&quot;&gt;
+    &lt;ons-list&gt;
+        &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(0), menu.closeMenu()&quot;&gt;
             Home
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list-item</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ons-list-item</span> <span class="hljs-attr">modifier</span>=<span class="hljs-string">&quot;chevron&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;tabbar.setActiveTab(1), menu.closeMenu()&quot;</span>&gt;</span>
+        &lt;/ons-list-item&gt;
+        &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(1), menu.closeMenu()&quot;&gt;
             Comments
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list-item</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ons-list-item</span> <span class="hljs-attr">modifier</span>=<span class="hljs-string">&quot;chevron&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;tabbar.setActiveTab(2), menu.closeMenu()&quot;</span>&gt;</span>
+        &lt;/ons-list-item&gt;
+        &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(2), menu.closeMenu()&quot;&gt;
             Tags
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list-item</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ons-list-item</span> <span class="hljs-attr">modifier</span>=<span class="hljs-string">&quot;chevron&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;tabbar.setActiveTab(3), menu.closeMenu()&quot;</span>&gt;</span>
+        &lt;/ons-list-item&gt;
+        &lt;ons-list-item modifier=&quot;chevron&quot; onclick=&quot;tabbar.setActiveTab(3), menu.closeMenu()&quot;&gt;
             Settings
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list-item</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-list</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- /サイドメニュー --&gt;</span>
+        &lt;/ons-list-item&gt;
+    &lt;/ons-list&gt;
+&lt;/ons-template&gt;
+&lt;!-- /サイドメニュー --&gt;
 
-<span class="hljs-comment">&lt;!-- メニューのコンテンツ内容 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;home.html&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-page</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; color: #999; padding-top: 50px;&quot;</span>&gt;</span>
+&lt;!-- メニューのコンテンツ内容 --&gt;
+&lt;ons-template id=&quot;home.html&quot;&gt;
+    &lt;ons-page&gt;
+        &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
             Home
-        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-page</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
+        &lt;/p&gt;
+    &lt;/ons-page&gt;
+&lt;/ons-template&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;comments.html&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-page</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; color: #999; padding-top: 50px;&quot;</span>&gt;</span>
+&lt;ons-template id=&quot;comments.html&quot;&gt;
+    &lt;ons-page&gt;
+        &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
             Comments
-        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-page</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
+        &lt;/p&gt;
+    &lt;/ons-page&gt;
+&lt;/ons-template&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tags.html&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-page</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; color: #999; padding-top: 50px;&quot;</span>&gt;</span>
+&lt;ons-template id=&quot;tags.html&quot;&gt;
+    &lt;ons-page&gt;
+        &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
             Tags
-        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-page</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
+        &lt;/p&gt;
+    &lt;/ons-page&gt;
+&lt;/ons-template&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;settings.html&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ons-page</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center; color: #999; padding-top: 50px;&quot;</span>&gt;</span>
+&lt;ons-template id=&quot;settings.html&quot;&gt;
+    &lt;ons-page&gt;
+        &lt;p style=&quot;text-align: center; color: #999; padding-top: 50px;&quot;&gt;
             Setting
-        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ons-page</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-template</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- /メニューのコンテンツ内容 --&gt;</span>
+        &lt;/p&gt;
+    &lt;/ons-page&gt;
+&lt;/ons-template&gt;
+&lt;!-- /メニューのコンテンツ内容 --&gt;
 </code></pre>
 <pre><code class="language-public/docs/screen/common/design/design_header.html">
-<span class="hljs-comment">&lt;!-- ヘッダー --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ons-toolbar</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- サイドメニューを表示する三表示 --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ons-toolbar-button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">&quot;menu.toggleMenu()&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ons-icon</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;bars&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ons-icon</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ons-toolbar-button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- タイトル --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>SyoNet<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ons-toolbar</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- /ヘッダー --&gt;</span>
+&lt;!-- ヘッダー --&gt;
+&lt;ons-toolbar&gt;
+    &lt;div class=&quot;left&quot;&gt;
+        &lt;!-- サイドメニューを表示する三表示 --&gt;
+        &lt;ons-toolbar-button ng-click=&quot;menu.toggleMenu()&quot;&gt;
+            &lt;ons-icon icon=&quot;bars&quot;&gt;&lt;/ons-icon&gt;
+        &lt;/ons-toolbar-button&gt;
+    &lt;/div&gt;
+    &lt;!-- タイトル --&gt;
+    &lt;div class=&quot;center&quot;&gt;SyoNet&lt;/div&gt;
+&lt;/ons-toolbar&gt;
+&lt;!-- /ヘッダー --&gt;
 
-<span class="hljs-comment">&lt;!-- フッターを呼び出す --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ng-include</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&#x27;../../common/design/design_footer.html&#x27;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-include</span>&gt;</span>
+&lt;!-- フッターを呼び出す --&gt;
+&lt;ng-include src=&quot;&#39;../../common/design/design_footer.html&#39;&quot;&gt;&lt;/ng-include&gt;
 </code></pre>
 <p>たまに描画ができないときがある</p>
 

@@ -20,8 +20,6 @@
   },
   "homepage": "https://github.com/igara/qiita-export#readme",
   "dependencies": {
-    "github-markdown-css": "5.1.0",
-    "highlight.js": "11.5.0",
     "isomorphic-unfetch": "3.0.0",
     "marked": "4.0.12",
     "request-promise": "4.2.5"

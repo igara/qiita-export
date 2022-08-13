@@ -1,18 +1,6 @@
 import * as childProcess from "child_process";
 import * as fs from "fs";
-import highlight from "highlight.js";
 import * as marked from "marked";
-
-const highlightStyle = fs.readFileSync("./node_modules/highlight.js/styles/github.css", "utf8");
-const markdownStyle = fs.readFileSync("./node_modules/github-markdown-css/github-markdown-light.css", "utf8");
-const styleTag = `<style>
-${highlightStyle}
-${markdownStyle}
-.markdown-body img {
-  object-fit: contain;
-  height: auto;
-}
-</style>`;
 
 const exec = () => {
   const gitUrl = childProcess.execSync("git config --get remote.origin.url").toString();
@@ -34,9 +22,6 @@ const exec = () => {
 
       let body = marked.marked(markdown, {
         gfm: true,
-        highlight: (code) => {
-          return highlight.highlightAuto(code).value;
-        },
         renderer,
       });
       body = body.replace(
@@ -48,7 +33,7 @@ const exec = () => {
   ${body}
 </div>`;
 
-      fs.writeFileSync(`data/${qiitaIDDirectoryName}/${qiitaItemDirectoryName}/README.html`, styleTag + body);
+      fs.writeFileSync(`data/${qiitaIDDirectoryName}/${qiitaItemDirectoryName}/README.html`, body);
     });
   });
 };
